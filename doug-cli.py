@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
 	cliparser = subargs.add_parser('docker-cli', help='Parse Dockers CLI')
 	cliparser.add_argument('cli', nargs='*', help='Docker command')
-
+	
 	depparser = subargs.add_parser('dependencies', help='Visualize dependencies of target Image')
 	depparser.add_argument('image', help='Target image ID or Repo[:Tag]')
 
@@ -129,8 +129,9 @@ if __name__ == '__main__':
 			parsed.repo = "stackbrew/" + parsed.repo
 	registry = Registry(parsed.registry)
 
-	if parsed.user == None:
-		parsed.user, parsed.password, parsed.email = wipe_newlines(open('.userinfo').readline().split(':'))
+	if parsed.action in ['update', 'dump-remote']:
+		if parsed.user == None:
+			parsed.user, parsed.password, parsed.email = wipe_newlines(open('.userinfo').readline().split(':'))
 	user = UserInfo(parsed.user, parsed.password, parsed.email)
 
 	cli_command(parsed)
