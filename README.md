@@ -1,5 +1,5 @@
 # docker-doug
-DOUG - DOcker Update Guard
+DOUG - DOcker Update Guard ([Documentation](https://shaded-enmity.github.io/docker-doug/))
 
 ## What it is?
 First and foremost, the project is split into a CLI and a library. The CLI
