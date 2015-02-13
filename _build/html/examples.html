@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="prev" title="REST and CLI APIs" href="restcli.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/examples.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>The following examples are excerpts from <tt class="docutils literal"><span class="pre">doug-cli.py</span></tt> that can be found in root directory of the repository at GitHub (<a class="reference external" href="https://github.com/shaded-enmity/docker-doug/">https://github.com/shaded-enmity/docker-doug/</a>)</p>
+<div class="section" id="print-local-tags">
+<h2>Print local tags<a class="headerlink" href="#print-local-tags" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">libdoug.docker_api</span> <span class="kn">import</span> <span class="n">DockerLocal</span>
+<span class="kn">from</span> <span class="nn">libdoug.history</span> <span class="kn">import</span> <span class="n">ImageHistory</span>
+<span class="n">docker</span> <span class="o">=</span> <span class="n">DockerLocal</span><span class="p">()</span>
+<span class="n">repo</span> <span class="o">=</span> <span class="s">&#39;fedora&#39;</span>
+
+<span class="k">print</span> <span class="s">&quot;Local tags:&quot;</span>
+<span class="n">local</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">getimages</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span>
+<span class="n">localhistory</span> <span class="o">=</span> <span class="n">ImageHistory</span><span class="p">(</span><span class="n">local</span><span class="p">)</span>
+<span class="n">localhistory</span><span class="o">.</span><span class="n">printout</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="print-remote-tags">
+<h2>Print remote tags<a class="headerlink" href="#print-remote-tags" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">libdoug.registry</span> <span class="kn">import</span> <span class="n">Registry</span>
+<span class="kn">from</span> <span class="nn">libdoug.history</span> <span class="kn">import</span> <span class="n">ImageHistory</span>
+<span class="kn">from</span> <span class="nn">libdoug.docker_api</span> <span class="kn">import</span> <span class="n">UserInfo</span>
+<span class="n">repo</span> <span class="o">=</span> <span class="s">&#39;fedora&#39;</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">UserInfo</span><span class="p">(</span><span class="s">&#39;me&#39;</span><span class="p">,</span> <span class="s">&#39;mypass&#39;</span><span class="p">,</span> <span class="s">&#39;my@mail.org&#39;</span><span class="p">)</span>
+<span class="n">registry</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="s">&#39;docker.io&#39;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&quot;Remote tags:&quot;</span>
+<span class="n">remotehistory</span> <span class="o">=</span> <span class="n">ImageHistory</span><span class="o">.</span><span class="n">fromjson</span><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">querytags</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">))</span>
+<span class="n">remotehistory</span><span class="o">.</span><span class="n">printout</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="visualize-dependencies">
+<h2>Visualize dependencies<a class="headerlink" href="#visualize-dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">libdoug.docker_api</span> <span class="kn">import</span> <span class="n">DockerLocal</span>
+<span class="kn">from</span> <span class="nn">libdoug.utils</span> <span class="kn">import</span> <span class="n">get_image</span>
+<span class="kn">from</span> <span class="nn">libdoug.dependency_walker</span> <span class="kn">import</span> <span class="n">DependencyWalker</span>
+<span class="kn">from</span> <span class="nn">libdoug.graph</span> <span class="kn">import</span> <span class="n">DependencyType</span>
+<span class="n">docker</span> <span class="o">=</span> <span class="n">DockerLocal</span><span class="p">()</span>
+<span class="n">img</span> <span class="o">=</span> <span class="s">&#39;fedora:21&#39;</span>
+
+<span class="k">print</span> <span class="s">&quot;Dependency Walker:&quot;</span>
+<span class="n">allimages</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">getallimages</span><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">get_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">allimages</span><span class="p">)</span>
+<span class="n">walker</span> <span class="o">=</span> <span class="n">DependencyWalker</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">DependencyType</span><span class="o">.</span><span class="n">IMAGE</span><span class="p">)</span>
+<span class="n">walker</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">docker</span><span class="o">.</span><span class="n">getallimages</span><span class="p">())</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="explain-docker-commands">
+<h2>Explain Docker Commands<a class="headerlink" href="#explain-docker-commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">libdoug.api.flags</span> <span class="kn">import</span> <span class="n">parse_cli</span>
+
+<span class="n">cli</span> <span class="o">=</span> <span class="n">parse_cli</span><span class="p">(</span><span class="s">&#39;docker run -it --rm -p 3000:3000 -v /:/volume -v /another:/some/place/else -e A=B -e B=C myImage /bin/bash -c &quot;echo Test!&quot;&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;Flags:   &#39;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">         &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> = </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">cli</span><span class="o">.</span><span class="n">flags</span><span class="p">])</span>
+<span class="k">print</span> <span class="s">&#39;Verb:    &#39;</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">verb</span>
+<span class="k">print</span> <span class="s">&#39;Context: &#39;</span><span class="p">,</span> <span class="n">cli</span><span class="o">.</span><span class="n">context</span>
+<span class="k">print</span> <span class="s">&#39;Workdir: &#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="make-conflict-solvers-do-your-bidding">
+<h2>Make conflict solvers do your bidding<a class="headerlink" href="#make-conflict-solvers-do-your-bidding" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to <a class="reference external" href="https://github.com/shaded-enmity/docker-doug/blob/master/doug-cli.py#L54">doug-cli</a> example.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="restcli.html" class="btn btn-neutral" title="REST and CLI APIs"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libdoug.api.flags &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>libdoug.api.flags</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for libdoug.api.flags</h1><div class="highlight"><pre>
+<span class="c"># vim: set fileencoding=utf-8</span>
+<span class="c"># Pavel Odvody &lt;podvody@redhat.com&gt;</span>
+<span class="c">#</span>
+<span class="c"># libdoug - DOcker Update Guard</span>
+<span class="c">#</span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 2 of</span>
+<span class="c"># the License, or (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; if not, write to the Free Software</span>
+<span class="c"># Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA</span>
+<span class="c"># 02111-1307 USA</span>
+<span class="kn">from</span> <span class="nn">libdoug.utils</span> <span class="kn">import</span> <span class="n">flag_gen</span> 
+
+<div class="viewcode-block" id="CliCapture"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.CliCapture">[docs]</a><span class="k">class</span> <span class="nc">CliCapture</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Capture Dockers CLI state in this object</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">verb</span> <span class="o">=</span> <span class="bp">None</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">flags</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="CliCapture.addflag"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.CliCapture.addflag">[docs]</a>	<span class="k">def</span> <span class="nf">addflag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+		<span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">FauxVerb</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">setverb</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</div>
+<div class="viewcode-block" id="CliCapture.addcontext"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.CliCapture.addcontext">[docs]</a>	<span class="k">def</span> <span class="nf">addcontext</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="CliCapture.setverb"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.CliCapture.setverb">[docs]</a>	<span class="k">def</span> <span class="nf">setverb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verb</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Attempt to replace verb: </span><span class="si">%s</span><span class="s"> with: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verb</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">verb</span> <span class="o">=</span> <span class="n">v</span>
+
+</div></div>
+<div class="viewcode-block" id="ArgType"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.ArgType">[docs]</a><span class="k">class</span> <span class="nc">ArgType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	 We can have 1 Verb, N flags, and N context args</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="p">(</span><span class="n">Invalid</span><span class="p">,</span> <span class="n">Verb</span><span class="p">,</span> <span class="n">Flag</span><span class="p">,</span> <span class="n">Context</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="DockerVerb"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.DockerVerb">[docs]</a><span class="k">class</span> <span class="nc">DockerVerb</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	 Enumeration of Docker CLI sub-commands or &quot;verbs&quot;.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="p">(</span><span class="n">Invalid</span><span class="p">,</span> <span class="n">Attach</span><span class="p">,</span> <span class="n">Build</span><span class="p">,</span> <span class="n">Commit</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span> <span class="n">Create</span><span class="p">,</span> 
+	 <span class="n">Diff</span><span class="p">,</span> <span class="n">Events</span><span class="p">,</span> <span class="n">Exec</span><span class="p">,</span> <span class="n">Export</span><span class="p">,</span> <span class="n">History</span><span class="p">,</span> <span class="n">Images</span><span class="p">,</span> 
+	 <span class="n">Import</span><span class="p">,</span> <span class="n">Info</span><span class="p">,</span> <span class="n">Inspect</span><span class="p">,</span> <span class="n">Kill</span><span class="p">,</span> <span class="n">Load</span><span class="p">,</span> <span class="n">Login</span><span class="p">,</span> 
+	 <span class="n">Logout</span><span class="p">,</span> <span class="n">Logs</span><span class="p">,</span> <span class="n">Port</span><span class="p">,</span> <span class="n">Pause</span><span class="p">,</span> <span class="n">Ps</span><span class="p">,</span> <span class="n">Pull</span><span class="p">,</span> <span class="n">Push</span><span class="p">,</span> 
+	 <span class="n">Restart</span><span class="p">,</span> <span class="n">Rm</span><span class="p">,</span> <span class="n">Rmi</span><span class="p">,</span> <span class="n">Run</span><span class="p">,</span> <span class="n">Save</span><span class="p">,</span> <span class="n">Search</span><span class="p">,</span> <span class="n">Start</span><span class="p">,</span> 
+	 <span class="n">Stop</span><span class="p">,</span> <span class="n">Tag</span><span class="p">,</span> <span class="n">Top</span><span class="p">,</span> <span class="n">Unpause</span><span class="p">)</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="FlagType"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.FlagType">[docs]</a><span class="k">class</span> <span class="nc">FlagType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	 Class describing what kind of information</span>
+<span class="sd">	 is stored in the flag.</span>
+
+<span class="sd">	 `PureBool` specifies a flag which is toggled</span>
+<span class="sd">	 if no explicit value is specified (i.e. you </span>
+<span class="sd">	 don&#39;t need to write --verbose=true)</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="p">(</span><span class="n">Invalid</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Int</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="n">Pure</span><span class="p">,</span> <span class="n">FauxVerb</span><span class="p">)</span> <span class="o">=</span> <span class="n">flag_gen</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+	<span class="n">PureBool</span> <span class="o">=</span> <span class="n">Bool</span> <span class="o">|</span> <span class="n">Pure</span>
+</div>
+<div class="viewcode-block" id="Flag"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.Flag">[docs]</a><span class="k">class</span> <span class="nc">Flag</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	 Flags for the Docker CLI</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Invalid</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">names</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
+
+	<span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="n">s</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+		<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+			<span class="n">p</span> <span class="o">=</span> <span class="s">&#39;-&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s">&#39;--&#39;</span>
+			<span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s">&#39; / &#39;</span> <span class="o">+</span> <span class="n">p</span> <span class="o">+</span> <span class="n">n</span>
+		<span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+	
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Flag.new"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.Flag.new">[docs]</a>	<span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+		<span class="n">f</span> <span class="o">=</span> <span class="n">Flag</span><span class="p">()</span>
+		<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">kv</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+			<span class="nb">setattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">f</span>
+</div></div>
+<div class="viewcode-block" id="FlagCollection"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.FlagCollection">[docs]</a><span class="k">class</span> <span class="nc">FlagCollection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Provides command level mapping for flag</span>
+<span class="sd">	objects</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">flagmap</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="bp">None</span>
+
+	<span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+		<span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagmap</span>
+
+<div class="viewcode-block" id="FlagCollection.map"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.FlagCollection.map">[docs]</a>	<span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">flagmap</span><span class="p">[</span><span class="n">cmd</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="FlagCollection.getdefault"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.FlagCollection.getdefault">[docs]</a>	<span class="k">def</span> <span class="nf">getdefault</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="FlagCollection.new"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.FlagCollection.new">[docs]</a>	<span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="o">**</span><span class="n">kv</span><span class="p">):</span>
+		<span class="n">fc</span> <span class="o">=</span> <span class="n">FlagCollection</span><span class="p">()</span>
+		<span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">kv</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+			<span class="c"># take only the part before &#39;_&#39;, if present</span>
+			<span class="n">key</span> <span class="o">=</span> <span class="n">key</span> <span class="k">if</span> <span class="s">&#39;_&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span> <span class="k">else</span> <span class="n">key</span><span class="p">[:</span><span class="n">key</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">)]</span>
+			<span class="n">fc</span><span class="o">.</span><span class="n">flagmap</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">fc</span><span class="o">.</span><span class="n">default</span><span class="p">:</span>
+				<span class="n">fc</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">value</span>
+		<span class="k">return</span> <span class="n">fc</span>
+</div></div>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Docker Devour Python Flag bindings</span>
+<span class="sd">Autogenerated by ./python-bindings.sh against:</span>
+<span class="sd">Docker version 1.4.1, build 5bc2ff8/1.4.1 </span>
+<span class="sd">May require manual edits afterwards!</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">_flags</span> <span class="o">=</span> <span class="n">FlagCollection</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+	<span class="c"># docker [OPTIONS] COMMAND [arg...]</span>
+	<span class="n">DOCKER_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;api-enable-cors&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;bridge&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;bip&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;D&#39;</span><span class="p">,</span> <span class="s">&#39;debug&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;daemon&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns-search&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;exec-driver&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;native&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;G&#39;</span><span class="p">,</span> <span class="s">&#39;group&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;docker&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;graph&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;/var/lib/docker&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;H&#39;</span><span class="p">,</span> <span class="s">&#39;host&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;icc&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;insecure-registry&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ip&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ip-forward&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ip-masq&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;iptables&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;log-level&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;info&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;label&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;mtu&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;pidfile&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;/var/run/docker.pid&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;registry-mirror&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="s">&#39;storage-driver&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;selinux-enabled&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;storage-opt&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;tls&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;tlscacert&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;~/.docker/ca.pem&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;tlscert&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;~/.docker/cert.pem&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;tlskey&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;~/.docker/key.pem&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;tlsverify&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;version&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">FauxVerb</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker build [OPTIONS] PATH | URL | -</span>
+	<span class="n">BUILD_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;force-rm&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;no-cache&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;pull&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;q&#39;</span><span class="p">,</span> <span class="s">&#39;quiet&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;rm&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;tag&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span>
+	<span class="n">RUN_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;attach&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;add-host&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;cpu-shares&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cap-add&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cap-drop&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cidfile&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cpuset&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">,</span> <span class="s">&#39;detach&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;device&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns-search&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;env&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;entrypoint&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;env-file&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;expopse&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;hostname&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;interactive&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ipc&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;lxc-conf&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;m&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;mac-address&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;net&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;bridge&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;P&#39;</span><span class="p">,</span> <span class="s">&#39;publish-all&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;publish&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;privileged&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;restart&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;rm&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;security-opt&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;sig-proxy&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;tty&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;user&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;volume&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;volumes-from&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;w&#39;</span><span class="p">,</span> <span class="s">&#39;workdir&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</span>
+	<span class="n">COMMIT_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;author&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="s">&#39;message&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;pause&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker create [OPTIONS] IMAGE [COMMAND] [ARG...]</span>
+	<span class="n">CREATE_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;attach&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;add-host&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;cpu-shares&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cap-add&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cap-drop&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cidfile&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cpuset&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;device&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;dns-search&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;env&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;entrypoint&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;env-file&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;expopse&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;h&#39;</span><span class="p">,</span> <span class="s">&#39;hostname&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;i&#39;</span><span class="p">,</span> <span class="s">&#39;interactive&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;ipc&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;link&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;lxc-conf&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;m&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;mac-address&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;net&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;bridge&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;P&#39;</span><span class="p">,</span> <span class="s">&#39;publish-all&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;p&#39;</span><span class="p">,</span> <span class="s">&#39;publish&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;privileged&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;restart&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;security-opt&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;t&#39;</span><span class="p">,</span> <span class="s">&#39;tty&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;u&#39;</span><span class="p">,</span> <span class="s">&#39;user&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;volume&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;volumes-from&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker pull [OPTIONS] NAME[:TAG]</span>
+	<span class="n">PULL_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;all-tags&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker rm [OPTIONS] CONTAINER [CONTAINER...]</span>
+	<span class="n">RM_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;force&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;l&#39;</span><span class="p">,</span> <span class="s">&#39;link&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;v&#39;</span><span class="p">,</span> <span class="s">&#39;volumes&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker rmi [OPTIONS] IMAGE [IMAGE...]</span>
+	<span class="n">RMI_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;force&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;no-prune&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]</span>
+	<span class="n">TAG_FLAGS</span> <span class="o">=</span> <span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;force&#39;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker attach [OPTIONS] CONTAINER</span>
+	<span class="n">ATTACH_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;no-stdin&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;sig-proxy&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker events [OPTIONS] </span>
+	<span class="n">EVENTS_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;filter&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;since&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;until&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="c"># docker exec [OPTIONS] CONTAINER COMMAND [ARG...]</span>
+	<span class="n">EXEC_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;d&quot;</span><span class="p">,</span> <span class="s">&quot;detach&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;interactive&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;tty&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">HISTORY_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;no-trunc&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;quiet&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">IMAGES_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;all&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;filter&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;no-trunc&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;quiet&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">INSPECT_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;format&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">KILL_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;signal&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;KILL&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">LOAD_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;input&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">LOGIN_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;e&quot;</span><span class="p">,</span> <span class="s">&quot;email&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;p&quot;</span><span class="p">,</span> <span class="s">&quot;password&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;u&quot;</span><span class="p">,</span> <span class="s">&quot;username&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">LOGS_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;follow&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;timestamps&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;tail&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">PS_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;all&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;before&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="s">&quot;filter&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;l&quot;</span><span class="p">,</span> <span class="s">&quot;latest&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;n&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;-1&#39;</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;no-trunc&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;q&quot;</span><span class="p">,</span> <span class="s">&quot;quiet&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;size&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;since&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">RESTART_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;time&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">SAVE_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;output&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+	<span class="p">],</span>
+
+
+	<span class="n">SEARCH_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;automated&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;no-trunc&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;s&quot;</span><span class="p">,</span> <span class="s">&quot;stars&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">START_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;attach&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;i&quot;</span><span class="p">,</span> <span class="s">&quot;interactive&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">STOP_FLAGS</span><span class="o">=</span><span class="p">[</span>
+		<span class="n">Flag</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="s">&quot;time&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+	<span class="p">],</span>
+
+	<span class="n">LOGOUT_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">PORT_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">PAUSE_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">TOP_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">UNPAUSE_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">VERSION_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">WAIT_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">CP_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">DIFF_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">IMPORT_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">INFO_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="n">EXPORT_FLAGS</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="c"># docker push NAME[:TAG]</span>
+	<span class="n">PUSH_FLAGS</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="p">)</span>
+
+<span class="n">_stringverbs</span> <span class="o">=</span> <span class="p">[</span><span class="n">verb</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">verb</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">DockerVerb</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">verb</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;__&#39;</span><span class="p">)]</span>
+
+<div class="viewcode-block" id="flag_value_from_str"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.flag_value_from_str">[docs]</a><span class="k">def</span> <span class="nf">flag_value_from_str</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+	<span class="k">if</span> <span class="n">flag</span><span class="o">.</span><span class="n">type</span> <span class="o">&amp;</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">Bool</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s">&#39;true&#39;</span>
+	<span class="k">elif</span> <span class="n">flag</span><span class="o">.</span><span class="n">type</span> <span class="o">&amp;</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">Int</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+		<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">s</span>
+</div>
+<div class="viewcode-block" id="flag_type_compare"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.flag_type_compare">[docs]</a><span class="k">def</span> <span class="nf">flag_type_compare</span><span class="p">(</span><span class="n">ft</span><span class="p">,</span> <span class="n">rft</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">ft</span><span class="o">.</span><span class="n">type</span> <span class="o">&amp;</span> <span class="n">rft</span> <span class="o">!=</span> <span class="mi">0</span>
+</div>
+<div class="viewcode-block" id="parse_cli"><a class="viewcode-back" href="../../../restcli.html#libdoug.api.flags.parse_cli">[docs]</a><span class="k">def</span> <span class="nf">parse_cli</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">flagcol</span><span class="o">=</span><span class="n">_flags</span><span class="p">):</span>
+	<span class="n">argit</span><span class="p">,</span> <span class="n">cli</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">CliCapture</span><span class="p">()</span>
+	<span class="n">flagset</span> <span class="o">=</span> <span class="n">flagcol</span><span class="o">.</span><span class="n">getdefault</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">in_flag_set</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+		<span class="n">flagname</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">flag</span> <span class="ow">in</span> <span class="n">flagset</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">flagname</span> <span class="ow">in</span> <span class="n">flag</span><span class="o">.</span><span class="n">names</span><span class="p">:</span>
+				<span class="k">return</span> <span class="n">flag</span>
+		<span class="k">return</span> <span class="bp">None</span>
+
+	<span class="k">try</span><span class="p">:</span>
+		<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+			<span class="n">item</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">argit</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">_stringverbs</span><span class="p">:</span>
+				<span class="n">cli</span><span class="o">.</span><span class="n">setverb</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">flagcol</span><span class="p">:</span>
+					<span class="n">flagset</span> <span class="o">=</span> <span class="n">flagcol</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;--&#39;</span><span class="p">):</span>
+				<span class="n">flag</span> <span class="o">=</span> <span class="n">in_flag_set</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+					<span class="k">if</span> <span class="n">flag_type_compare</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">FauxVerb</span><span class="p">):</span>
+						<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="n">has_eq</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
+						<span class="k">if</span> <span class="ow">not</span> <span class="n">flag_type_compare</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">)</span> <span class="ow">or</span> <span class="n">has_eq</span><span class="p">:</span>
+							<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">flag_value_from_str</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">argit</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">has_eq</span> <span class="k">else</span> <span class="n">item</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+						<span class="k">else</span><span class="p">:</span>
+							<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="ow">not</span> <span class="n">flag</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">print</span> <span class="s">&#39;UNKOWN FLAG: &#39;</span><span class="p">,</span> <span class="n">item</span>
+			<span class="k">elif</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;-&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+				<span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+					<span class="n">flag</span> <span class="o">=</span> <span class="n">in_flag_set</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+					<span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+						<span class="k">if</span> <span class="n">flag_type_compare</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">FauxVerb</span><span class="p">):</span>
+							<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+						<span class="k">else</span><span class="p">:</span>
+							<span class="k">if</span> <span class="ow">not</span> <span class="n">flag_type_compare</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">FlagType</span><span class="o">.</span><span class="n">PureBool</span><span class="p">):</span>
+								<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="n">flag_value_from_str</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">argit</span><span class="p">)))</span>
+							<span class="k">else</span><span class="p">:</span>
+								<span class="n">cli</span><span class="o">.</span><span class="n">addflag</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span> <span class="ow">not</span> <span class="n">flag</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="k">print</span> <span class="s">&#39;UNKOWN FLAG: &#39;</span><span class="p">,</span> <span class="n">item</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+					<span class="n">cli</span><span class="o">.</span><span class="n">addcontext</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+					<span class="n">item</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">argit</span><span class="p">)</span>
+				<span class="k">break</span>
+	<span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+		<span class="k">pass</span>
+
+	<span class="k">return</span> <span class="n">cli</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

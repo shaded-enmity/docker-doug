@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Conflict resolution objects &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="Optimistic Solver" href="optimistic.html"/>
+        <link rel="prev" title="Conflict solver" href="consolver.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Conflict resolution objects</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/resolution.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="module-libdoug.conflict_resolution">
+<span id="conflict-resolution-objects"></span><h1>Conflict resolution objects<a class="headerlink" href="#module-libdoug.conflict_resolution" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="libdoug.conflict_resolution.Resolution">
+<em class="property">class </em><tt class="descclassname">libdoug.conflict_resolution.</tt><tt class="descname">Resolution</tt><big>(</big><em>rtype</em>, <em>args</em><big>)</big><a class="reference internal" href="_modules/libdoug/conflict_resolution.html#Resolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.conflict_resolution.Resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a generic conflict resolution object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>rtype</strong> &#8211; <a class="reference internal" href="#libdoug.conflict_resolution.ResolutionType" title="libdoug.conflict_resolution.ResolutionType"><tt class="xref py py-class docutils literal"><span class="pre">ResolutionType</span></tt></a>, Type of the resolution</li>
+<li><strong>args</strong> &#8211; <cite>list</cite>, Arguments to use during execution</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="libdoug.conflict_resolution.Resolution.execute">
+<tt class="descname">execute</tt><big>(</big><em>docker</em><big>)</big><a class="reference internal" href="_modules/libdoug/conflict_resolution.html#Resolution.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.conflict_resolution.Resolution.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the given resolution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>docker</strong> &#8211; <a class="reference internal" href="dockerapi.html#libdoug.docker_api.DockerLocal" title="libdoug.docker_api.DockerLocal"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.docker_api.DockerLocal</span></tt></a>, Instance of <tt class="docutils literal"><span class="pre">DockerLocal</span></tt> object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><cite>string</cite> the command executed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.conflict_resolution.Resolution.getargs">
+<tt class="descname">getargs</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/conflict_resolution.html#Resolution.getargs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.conflict_resolution.Resolution.getargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arguments for the resolution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><cite>list</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.conflict_resolution.Resolution.gettype">
+<tt class="descname">gettype</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/conflict_resolution.html#Resolution.gettype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.conflict_resolution.Resolution.gettype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of the resolution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#libdoug.conflict_resolution.ResolutionType" title="libdoug.conflict_resolution.ResolutionType"><tt class="xref py py-class docutils literal"><span class="pre">ResolutionType</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.conflict_resolution.ResolutionType">
+<em class="property">class </em><tt class="descclassname">libdoug.conflict_resolution.</tt><tt class="descname">ResolutionType</tt><a class="reference internal" href="_modules/libdoug/conflict_resolution.html#ResolutionType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic type of the resolution</p>
+<dl class="attribute">
+<dt id="libdoug.conflict_resolution.ResolutionType.NONE">
+<tt class="descname">NONE</tt><em class="property"> = 0</em><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.conflict_resolution.ResolutionType.PULL">
+<tt class="descname">PULL</tt><em class="property"> = 4</em><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType.PULL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.conflict_resolution.ResolutionType.PUSH">
+<tt class="descname">PUSH</tt><em class="property"> = 2</em><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType.PUSH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.conflict_resolution.ResolutionType.REMOVE">
+<tt class="descname">REMOVE</tt><em class="property"> = 8</em><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType.REMOVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.conflict_resolution.ResolutionType.TAG">
+<tt class="descname">TAG</tt><em class="property"> = 1</em><a class="headerlink" href="#libdoug.conflict_resolution.ResolutionType.TAG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="optimistic.html" class="btn btn-neutral float-right" title="Optimistic Solver"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="consolver.html" class="btn btn-neutral" title="Conflict solver"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

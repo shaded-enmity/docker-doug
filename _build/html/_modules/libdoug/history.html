@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libdoug.history &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>libdoug.history</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for libdoug.history</h1><div class="highlight"><pre>
+<span class="c"># vim: set fileencoding=utf-8</span>
+<span class="c"># Pavel Odvody &lt;podvody@redhat.com&gt;</span>
+<span class="c">#</span>
+<span class="c"># libdoug - DOcker Update Guard</span>
+<span class="c">#</span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 2 of</span>
+<span class="c"># the License, or (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; if not, write to the Free Software</span>
+<span class="c"># Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA</span>
+<span class="c"># 02111-1307 USA</span>
+<span class="kn">from</span> <span class="nn">libdoug.values</span> <span class="kn">import</span> <span class="n">EmptyDiff</span>
+
+<div class="viewcode-block" id="ImageHistory"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory">[docs]</a><span class="k">class</span> <span class="nc">ImageHistory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Object that holds a full list of tags of</span>
+<span class="sd">	a given `repository`.</span>
+
+<span class="sd">	:param images: `list` of `Image Dictionary`</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="ImageHistory.Entry"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry">[docs]</a>	<span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Provides unique mapping/ordering of `Image Id`&#39;s and `tag`&#39;s.</span>
+
+<span class="sd">		:param tag: `string`, A tag</span>
+<span class="sd">		:param imgid: `string`, An image id</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">imgid</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">imgid</span>
+
+<div class="viewcode-block" id="ImageHistory.Entry.gettag"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.gettag">[docs]</a>		<span class="k">def</span> <span class="nf">gettag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>
+</div>
+<div class="viewcode-block" id="ImageHistory.Entry.getid"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.getid">[docs]</a>		<span class="k">def</span> <span class="nf">getid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+</div>
+<div class="viewcode-block" id="ImageHistory.Entry.__repr__"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.__repr__">[docs]</a>		<span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="sd">&quot;&quot;&quot; Prints as `tag` : `id` &quot;&quot;&quot;</span>
+			<span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> : </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gettag</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">getid</span><span class="p">())</span>
+ </div>
+<div class="viewcode-block" id="ImageHistory.Entry.__eq__"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.__eq__">[docs]</a>		<span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+			<span class="sd">&quot;&quot;&quot; Equal if both parts are same &quot;&quot;&quot;</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">tag</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span>
+</div>
+<div class="viewcode-block" id="ImageHistory.Entry.__hash__"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.__hash__">[docs]</a>		<span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+			<span class="sd">&quot;&quot;&quot; Concats `tag` and `id` and from that computes the hash &quot;&quot;&quot;</span>
+			<span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ImageHistory.Entry.__gt__"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry.__gt__">[docs]</a>		<span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+			<span class="sd">&quot;&quot;&quot; We order only by tags &quot;&quot;&quot;</span>
+			<span class="k">return</span> <span class="nb">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+
+</div></div>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_addimages</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ImageHistory.fromjson"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.fromjson">[docs]</a>	<span class="k">def</span> <span class="nf">fromjson</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Parse :class:`ImageHistory` from `json`</span>
+
+<span class="sd">		:param json: `json object` of `tag`, `id` pairs</span>
+<span class="sd">		:return: :class:`ImageHistory` object with the parsed history</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">hist</span> <span class="o">=</span> <span class="n">ImageHistory</span><span class="p">([])</span>
+		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+			<span class="n">hist</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ImageHistory</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>		
+		<span class="k">return</span> <span class="n">hist</span>
+</div>
+	<span class="k">def</span> <span class="nf">_addimages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+		<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+			<span class="k">for</span> <span class="n">repotag</span> <span class="ow">in</span> <span class="n">img</span><span class="p">[</span><span class="s">&#39;RepoTags&#39;</span><span class="p">]:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">repotag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">img</span><span class="p">[</span><span class="s">&#39;Id&#39;</span><span class="p">])</span>
+				<span class="p">)</span>
+
+<div class="viewcode-block" id="ImageHistory.getimages"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.getimages">[docs]</a>	<span class="k">def</span> <span class="nf">getimages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; A `list` of :class:`Entry` entries &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">images</span>
+</div>
+<div class="viewcode-block" id="ImageHistory.printout"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.printout">[docs]</a>	<span class="k">def</span> <span class="nf">printout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Print all :class:`Entry` entries &quot;&quot;&quot;</span>
+		<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">img</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">images</span><span class="p">)):</span>
+			<span class="k">print</span> <span class="s">&quot;  </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="HistoryDiff"><a class="viewcode-back" href="../../history.html#libdoug.history.HistoryDiff">[docs]</a><span class="k">class</span> <span class="nc">HistoryDiff</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Compute a diff between two :class:`ImageHistory` objects</span>
+
+<span class="sd">	:param a: :class:`ImageHistory` A side</span>
+<span class="sd">	:param b: :class:`ImageHistory` B side</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+<div class="viewcode-block" id="HistoryDiff.diff"><a class="viewcode-back" href="../../history.html#libdoug.history.HistoryDiff.diff">[docs]</a>	<span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Compute the diff between `A` and `B`</span>
+
+<span class="sd">		:return: `tuple of lists` of :class:`Entry` object, or :class:`libdoug.values.EmptyDiff`</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">getimages</span><span class="p">()),</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">getimages</span><span class="p">())</span>
+		<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">EmptyDiff</span>
+
+		<span class="k">return</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="HistoryDiff.printout"><a class="viewcode-back" href="../../history.html#libdoug.history.HistoryDiff.printout">[docs]</a>	<span class="k">def</span> <span class="nf">printout</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Print value as returned by :meth:`diff` (sorted) &quot;&quot;&quot;</span>
+		<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">delta</span>
+		<span class="k">if</span> <span class="n">left</span><span class="p">:</span>
+			<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;  L &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">left</span><span class="p">))])</span>
+		
+		<span class="k">if</span> <span class="n">right</span><span class="p">:</span>
+			<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;  R &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">right</span><span class="p">))])</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

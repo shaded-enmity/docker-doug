@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Graph facilities &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="Docker API" href="dockerapi.html"/>
+        <link rel="prev" title="Module Overview" href="clsoverview.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Graph facilities</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/graph.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="graph-facilities">
+<h1>Graph facilities<a class="headerlink" href="#graph-facilities" title="Permalink to this headline">¶</a></h1>
+<p>Graph is used to manage the relationship between <tt class="docutils literal"><span class="pre">parent</span></tt> and <tt class="docutils literal"><span class="pre">child</span></tt> nodes.
+Also contains the <a class="reference internal" href="#libdoug.graph.TreeState" title="libdoug.graph.TreeState"><tt class="xref py py-class docutils literal"><span class="pre">TreeState</span></tt></a> class that is used to visualize dependencies as nifty unicode rendered tree.</p>
+<span class="target" id="module-libdoug.graph"></span><dl class="class">
+<dt id="libdoug.graph.DependencyType">
+<em class="property">class </em><tt class="descclassname">libdoug.graph.</tt><tt class="descname">DependencyType</tt><a class="reference internal" href="_modules/libdoug/graph.html#DependencyType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.DependencyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Differentiate between <cite>Image</cite> and <cite>Container</cite> graphs</p>
+<dl class="attribute">
+<dt id="libdoug.graph.DependencyType.CONTAINER">
+<tt class="descname">CONTAINER</tt><em class="property"> = 2</em><a class="headerlink" href="#libdoug.graph.DependencyType.CONTAINER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.graph.DependencyType.IMAGE">
+<tt class="descname">IMAGE</tt><em class="property"> = 1</em><a class="headerlink" href="#libdoug.graph.DependencyType.IMAGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.graph.DependencyType.NONE">
+<tt class="descname">NONE</tt><em class="property"> = 0</em><a class="headerlink" href="#libdoug.graph.DependencyType.NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.graph.GraphNode">
+<em class="property">class </em><tt class="descclassname">libdoug.graph.</tt><tt class="descname">GraphNode</tt><big>(</big><em>parent</em>, <em>tid</em>, <em>children=None</em><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#GraphNode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.GraphNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic class representing a <cite>node</cite> in a graph</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parent</strong> &#8211; <a class="reference internal" href="#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">GraphNode</span></tt></a>, Parent node</li>
+<li><strong>tid</strong> &#8211; <cite>id</cite>, Our <cite>Id</cite> value</li>
+<li><strong>children</strong> &#8211; <cite>dict</cite>, Children nodes</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="libdoug.graph.GraphNode.addchild">
+<tt class="descname">addchild</tt><big>(</big><em>nid</em><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#GraphNode.addchild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.GraphNode.addchild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new child based on parameter <cite>nid</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nid</strong> &#8211; <cite>Id</cite>, Node <cite>Id</cite> to add</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.GraphNode.getchildren">
+<tt class="descname">getchildren</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#GraphNode.getchildren"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.GraphNode.getchildren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get children <a class="reference internal" href="#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">GraphNode</span></tt></a> nodes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.GraphNode.getid">
+<tt class="descname">getid</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#GraphNode.getid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.GraphNode.getid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get <cite>Id</cite></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.GraphNode.getparent">
+<tt class="descname">getparent</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#GraphNode.getparent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.GraphNode.getparent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parent <a class="reference internal" href="#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">GraphNode</span></tt></a> node</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.graph.TreeState">
+<em class="property">class </em><tt class="descclassname">libdoug.graph.</tt><tt class="descname">TreeState</tt><a class="reference internal" href="_modules/libdoug/graph.html#TreeState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.TreeState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper object for drawing <cite>Unicode</cite> trees from
+graph node objects.</p>
+<dl class="method">
+<dt id="libdoug.graph.TreeState.formatline">
+<tt class="descname">formatline</tt><big>(</big><em>img</em>, <em>isleaf</em><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#TreeState.formatline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.TreeState.formatline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorate the value in <cite>img</cite> with tree drawing symols</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>img</strong> &#8211; <cite>Id</cite>, TODO: Make this more generic</li>
+<li><strong>isleaf</strong> &#8211; <cite>bool</cite>, It&#8217;s a leaf node</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.TreeState.peek">
+<tt class="descname">peek</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#TreeState.peek"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.TreeState.peek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return last pushed value or <cite>False</cite> if empty.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.TreeState.popbranch">
+<tt class="descname">popbranch</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#TreeState.popbranch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.TreeState.popbranch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop branch from the <cite>links</cite> list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.graph.TreeState.pushbranch">
+<tt class="descname">pushbranch</tt><big>(</big><em>link</em><big>)</big><a class="reference internal" href="_modules/libdoug/graph.html#TreeState.pushbranch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.graph.TreeState.pushbranch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push a new branch into the <cite>TreeState</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>link</strong> &#8211; <cite>bool</cite>, Draw a link for this branch</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dockerapi.html" class="btn btn-neutral float-right" title="Docker API"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clsoverview.html" class="btn btn-neutral" title="Module Overview"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

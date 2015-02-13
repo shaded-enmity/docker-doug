@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dependency Walker &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="History objects" href="history.html"/>
+        <link rel="prev" title="Request Decorators" href="decorators.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Dependency Walker</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/depwalker.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="module-libdoug.dependency_walker">
+<span id="dependency-walker"></span><h1>Dependency Walker<a class="headerlink" href="#module-libdoug.dependency_walker" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="libdoug.dependency_walker.DependencyWalker">
+<em class="property">class </em><tt class="descclassname">libdoug.dependency_walker.</tt><tt class="descname">DependencyWalker</tt><big>(</big><em>tid</em>, <em>deptype</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#DependencyWalker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.DependencyWalker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tree-drawing dependency walker</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tid</strong> &#8211; <ul>
+<li><cite>string</cite>, ID for which walk the dependencies</li>
+</ul>
+</li>
+<li><strong>deptype</strong> &#8211; <ul>
+<li><a class="reference internal" href="graph.html#libdoug.graph.DependencyType" title="libdoug.graph.DependencyType"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.DependencyType</span></tt></a>, Image or Container</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="libdoug.dependency_walker.DependencyWalker.makegraph">
+<tt class="descname">makegraph</tt><big>(</big><em>root</em>, <em>allimages</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#DependencyWalker.makegraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.DependencyWalker.makegraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a graph of <cite>root</cite> nodes children</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>root</strong> &#8211; <a class="reference internal" href="graph.html#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.GraphNode</span></tt></a>, From where to start constructing the graph</li>
+<li><strong>allimages</strong> &#8211; <cite>dict</cite>, All Docker images</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="graph.html#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.GraphNode</span></tt></a>, <cite>root</cite> node</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.dependency_walker.DependencyWalker.printtree">
+<tt class="descname">printtree</tt><big>(</big><em>allimages</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#DependencyWalker.printtree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.DependencyWalker.printtree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the graph as nicely structured tree</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>allimages</strong> &#8211; <cite>dict</cite>, All Docker images</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.dependency_walker.DependencyWalker.walk">
+<tt class="descname">walk</tt><big>(</big><em>allimages</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#DependencyWalker.walk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.DependencyWalker.walk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bootstrap the walker and just printout for now</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>allimages</strong> &#8211; <cite>list</cite>, All Docker images</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.dependency_walker.DependencyWalker.walkgraphrecurse">
+<tt class="descname">walkgraphrecurse</tt><big>(</big><em>root</em>, <em>allimages</em>, <em>ts</em>, <em>walkcb</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#DependencyWalker.walkgraphrecurse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.DependencyWalker.walkgraphrecurse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walk the graph from <cite>root</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>root</strong> &#8211; <a class="reference internal" href="graph.html#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.GraphNode</span></tt></a>, From where to start constructing the graph</li>
+<li><strong>allimages</strong> &#8211; <cite>dict</cite>, All Docker images</li>
+<li><strong>ts</strong> &#8211; <a class="reference internal" href="graph.html#libdoug.graph.TreeState" title="libdoug.graph.TreeState"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.TreeState</span></tt></a>, Current state of the tree</li>
+<li><strong>walkcb</strong> &#8211; <a class="reference internal" href="#libdoug.dependency_walker.graph_walk_callback" title="libdoug.dependency_walker.graph_walk_callback"><tt class="xref py py-func docutils literal"><span class="pre">graph_walk_callback()</span></tt></a>, Used during graph walk</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="libdoug.dependency_walker.graph_walk_callback">
+<tt class="descclassname">libdoug.dependency_walker.</tt><tt class="descname">graph_walk_callback</tt><big>(</big><em>image</em>, <em>ts</em>, <em>islast</em><big>)</big><a class="reference internal" href="_modules/libdoug/dependency_walker.html#graph_walk_callback"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.dependency_walker.graph_walk_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements a generic callback used during walking the graph</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>image</strong> &#8211; <ul>
+<li><cite>dict</cite>, Image Dictionary</li>
+</ul>
+</li>
+<li><strong>ts</strong> &#8211; <a class="reference internal" href="graph.html#libdoug.graph.TreeState" title="libdoug.graph.TreeState"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.graph.TreeState</span></tt></a> - State of the tree</li>
+<li><strong>islast</strong> &#8211; <ul>
+<li><cite>bool</cite>, Denotes a leaf node</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="history.html" class="btn btn-neutral float-right" title="History objects"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="decorators.html" class="btn btn-neutral" title="Request Decorators"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

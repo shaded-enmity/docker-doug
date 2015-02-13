@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>REST and CLI APIs &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="next" title="Examples" href="examples.html"/>
+        <link rel="prev" title="Special Values" href="values.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>REST and CLI APIs</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/restcli.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="rest-and-cli-apis">
+<h1>REST and CLI APIs<a class="headerlink" href="#rest-and-cli-apis" title="Permalink to this headline">¶</a></h1>
+<p>This section describes several APIs for interfacing with <tt class="docutils literal"><span class="pre">Docker's</span></tt> CLI, Socket, Registry and Hub.</p>
+<div class="section" id="cli">
+<h2>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h2>
+<p>To see all the particular flags definition please refer to: <a class="reference external" href="https://github.com/shaded-enmity/docker-doug/blob/master/libdoug/api/flags.py#L134">flags.py</a></p>
+<span class="target" id="module-libdoug.api.flags"></span><dl class="class">
+<dt id="libdoug.api.flags.ArgType">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">ArgType</tt><a class="reference internal" href="_modules/libdoug/api/flags.html#ArgType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.ArgType" title="Permalink to this definition">¶</a></dt>
+<dd><p>We can have 1 Verb, N flags, and N context args</p>
+<dl class="attribute">
+<dt id="libdoug.api.flags.ArgType.Context">
+<tt class="descname">Context</tt><em class="property"> = 3</em><a class="headerlink" href="#libdoug.api.flags.ArgType.Context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.ArgType.Flag">
+<tt class="descname">Flag</tt><em class="property"> = 2</em><a class="headerlink" href="#libdoug.api.flags.ArgType.Flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.ArgType.Invalid">
+<tt class="descname">Invalid</tt><em class="property"> = 0</em><a class="headerlink" href="#libdoug.api.flags.ArgType.Invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.ArgType.Verb">
+<tt class="descname">Verb</tt><em class="property"> = 1</em><a class="headerlink" href="#libdoug.api.flags.ArgType.Verb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.api.flags.CliCapture">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">CliCapture</tt><a class="reference internal" href="_modules/libdoug/api/flags.html#CliCapture"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.CliCapture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Capture Dockers CLI state in this object</p>
+<dl class="method">
+<dt id="libdoug.api.flags.CliCapture.addcontext">
+<tt class="descname">addcontext</tt><big>(</big><em>c</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#CliCapture.addcontext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.CliCapture.addcontext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libdoug.api.flags.CliCapture.addflag">
+<tt class="descname">addflag</tt><big>(</big><em>f</em>, <em>v</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#CliCapture.addflag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.CliCapture.addflag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libdoug.api.flags.CliCapture.setverb">
+<tt class="descname">setverb</tt><big>(</big><em>v</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#CliCapture.setverb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.CliCapture.setverb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.api.flags.DockerVerb">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">DockerVerb</tt><a class="reference internal" href="_modules/libdoug/api/flags.html#DockerVerb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.DockerVerb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enumeration of Docker CLI sub-commands or &#8220;verbs&#8221;.</p>
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Attach">
+<tt class="descname">Attach</tt><em class="property"> = 1</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Attach" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Build">
+<tt class="descname">Build</tt><em class="property"> = 2</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Commit">
+<tt class="descname">Commit</tt><em class="property"> = 3</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Commit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Cp">
+<tt class="descname">Cp</tt><em class="property"> = 4</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Cp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Create">
+<tt class="descname">Create</tt><em class="property"> = 5</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Diff">
+<tt class="descname">Diff</tt><em class="property"> = 6</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Diff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Events">
+<tt class="descname">Events</tt><em class="property"> = 7</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Exec">
+<tt class="descname">Exec</tt><em class="property"> = 8</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Exec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Export">
+<tt class="descname">Export</tt><em class="property"> = 9</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Export" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.History">
+<tt class="descname">History</tt><em class="property"> = 10</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.History" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Images">
+<tt class="descname">Images</tt><em class="property"> = 11</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Import">
+<tt class="descname">Import</tt><em class="property"> = 12</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Import" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Info">
+<tt class="descname">Info</tt><em class="property"> = 13</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Inspect">
+<tt class="descname">Inspect</tt><em class="property"> = 14</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Inspect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Invalid">
+<tt class="descname">Invalid</tt><em class="property"> = 0</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Kill">
+<tt class="descname">Kill</tt><em class="property"> = 15</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Kill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Load">
+<tt class="descname">Load</tt><em class="property"> = 16</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Login">
+<tt class="descname">Login</tt><em class="property"> = 17</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Logout">
+<tt class="descname">Logout</tt><em class="property"> = 18</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Logout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Logs">
+<tt class="descname">Logs</tt><em class="property"> = 19</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Logs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Pause">
+<tt class="descname">Pause</tt><em class="property"> = 21</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Pause" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Port">
+<tt class="descname">Port</tt><em class="property"> = 20</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Ps">
+<tt class="descname">Ps</tt><em class="property"> = 22</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Ps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Pull">
+<tt class="descname">Pull</tt><em class="property"> = 23</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Pull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Push">
+<tt class="descname">Push</tt><em class="property"> = 24</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Push" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Restart">
+<tt class="descname">Restart</tt><em class="property"> = 25</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Restart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Rm">
+<tt class="descname">Rm</tt><em class="property"> = 26</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Rm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Rmi">
+<tt class="descname">Rmi</tt><em class="property"> = 27</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Rmi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Run">
+<tt class="descname">Run</tt><em class="property"> = 28</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Save">
+<tt class="descname">Save</tt><em class="property"> = 29</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Search">
+<tt class="descname">Search</tt><em class="property"> = 30</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Start">
+<tt class="descname">Start</tt><em class="property"> = 31</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Stop">
+<tt class="descname">Stop</tt><em class="property"> = 32</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Tag">
+<tt class="descname">Tag</tt><em class="property"> = 33</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Top">
+<tt class="descname">Top</tt><em class="property"> = 34</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Top" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.DockerVerb.Unpause">
+<tt class="descname">Unpause</tt><em class="property"> = 35</em><a class="headerlink" href="#libdoug.api.flags.DockerVerb.Unpause" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.api.flags.Flag">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">Flag</tt><big>(</big><em>names=</em>, <span class="optional">[</span><span class="optional">]</span><em>type=0</em>, <em>value=None</em>, <em>default=None</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#Flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.Flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flags for the Docker CLI</p>
+<dl class="staticmethod">
+<dt id="libdoug.api.flags.Flag.new">
+<em class="property">static </em><tt class="descname">new</tt><big>(</big><em>**kv</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#Flag.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.Flag.new" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.api.flags.FlagCollection">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">FlagCollection</tt><a class="reference internal" href="_modules/libdoug/api/flags.html#FlagCollection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.FlagCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides command level mapping for flag
+objects</p>
+<dl class="method">
+<dt id="libdoug.api.flags.FlagCollection.getdefault">
+<tt class="descname">getdefault</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#FlagCollection.getdefault"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.FlagCollection.getdefault" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libdoug.api.flags.FlagCollection.map">
+<tt class="descname">map</tt><big>(</big><em>cmd</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#FlagCollection.map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.FlagCollection.map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="libdoug.api.flags.FlagCollection.new">
+<em class="property">static </em><tt class="descname">new</tt><big>(</big><em>**kv</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#FlagCollection.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.FlagCollection.new" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.api.flags.FlagType">
+<em class="property">class </em><tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">FlagType</tt><a class="reference internal" href="_modules/libdoug/api/flags.html#FlagType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.FlagType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class describing what kind of information
+is stored in the flag.</p>
+<p><cite>PureBool</cite> specifies a flag which is toggled
+if no explicit value is specified (i.e. you 
+don&#8217;t need to write &#8211;verbose=true)</p>
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.Bool">
+<tt class="descname">Bool</tt><em class="property"> = 1</em><a class="headerlink" href="#libdoug.api.flags.FlagType.Bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.FauxVerb">
+<tt class="descname">FauxVerb</tt><em class="property"> = 32</em><a class="headerlink" href="#libdoug.api.flags.FlagType.FauxVerb" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.Int">
+<tt class="descname">Int</tt><em class="property"> = 2</em><a class="headerlink" href="#libdoug.api.flags.FlagType.Int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.Invalid">
+<tt class="descname">Invalid</tt><em class="property"> = 0</em><a class="headerlink" href="#libdoug.api.flags.FlagType.Invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.Path">
+<tt class="descname">Path</tt><em class="property"> = 8</em><a class="headerlink" href="#libdoug.api.flags.FlagType.Path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.Pure">
+<tt class="descname">Pure</tt><em class="property"> = 16</em><a class="headerlink" href="#libdoug.api.flags.FlagType.Pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.PureBool">
+<tt class="descname">PureBool</tt><em class="property"> = 17</em><a class="headerlink" href="#libdoug.api.flags.FlagType.PureBool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.api.flags.FlagType.String">
+<tt class="descname">String</tt><em class="property"> = 4</em><a class="headerlink" href="#libdoug.api.flags.FlagType.String" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="libdoug.api.flags.flag_type_compare">
+<tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">flag_type_compare</tt><big>(</big><em>ft</em>, <em>rft</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#flag_type_compare"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.flag_type_compare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="libdoug.api.flags.flag_value_from_str">
+<tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">flag_value_from_str</tt><big>(</big><em>flag</em>, <em>s=''</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#flag_value_from_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.flag_value_from_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="libdoug.api.flags.parse_cli">
+<tt class="descclassname">libdoug.api.flags.</tt><tt class="descname">parse_cli</tt><big>(</big><em>args</em>, <em>flagcol=&lt;libdoug.api.flags.FlagCollection object at 0x7f3760e0bad0&gt;</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/flags.html#parse_cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.flags.parse_cli" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-libdoug.api.remote_base">
+<span id="remote-base"></span><h2>Remote Base<a class="headerlink" href="#module-libdoug.api.remote_base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="libdoug.api.remote_base.DockerAPIRequest">
+<em class="property">class </em><tt class="descclassname">libdoug.api.remote_base.</tt><tt class="descname">DockerAPIRequest</tt><a class="reference internal" href="_modules/libdoug/api/remote_base.html#DockerAPIRequest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.remote_base.DockerAPIRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class describing a generic
+Docker Remote API request</p>
+<dl class="method">
+<dt id="libdoug.api.remote_base.DockerAPIRequest.formaturl">
+<tt class="descname">formaturl</tt><big>(</big><em>endpoint</em>, <em>subs</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/remote_base.html#DockerAPIRequest.formaturl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.remote_base.DockerAPIRequest.formaturl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="libdoug.api.remote_base.DockerAPIRequest.new">
+<em class="property">static </em><tt class="descname">new</tt><big>(</big><em>**kv</em><big>)</big><a class="reference internal" href="_modules/libdoug/api/remote_base.html#DockerAPIRequest.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.api.remote_base.DockerAPIRequest.new" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="docker-socket-api">
+<h2>Docker Socket API<a class="headerlink" href="#docker-socket-api" title="Permalink to this headline">¶</a></h2>
+<p>For the description of <tt class="docutils literal"><span class="pre">REST</span></tt> APIs exposed by <tt class="docutils literal"><span class="pre">Docker</span> <span class="pre">daemon</span></tt> please refer to <a class="reference external" href="https://github.com/shaded-enmity/docker-doug/blob/master/libdoug/api/remote_docker.py">remote_docker.py</a></p>
+</div>
+<div class="section" id="registry-api">
+<h2>Registry API<a class="headerlink" href="#registry-api" title="Permalink to this headline">¶</a></h2>
+<p>For the description of <tt class="docutils literal"><span class="pre">REST</span></tt> APIs exposed by <tt class="docutils literal"><span class="pre">Docker</span> <span class="pre">Registry</span></tt> please refer to <a class="reference external" href="https://github.com/shaded-enmity/docker-doug/blob/master/libdoug/api/remote_registry.py">remote_registry.py</a></p>
+</div>
+<div class="section" id="hub-api">
+<h2>Hub API<a class="headerlink" href="#hub-api" title="Permalink to this headline">¶</a></h2>
+<p>For the description of <tt class="docutils literal"><span class="pre">REST</span></tt> APIs exposed by <tt class="docutils literal"><span class="pre">Docker</span> <span class="pre">Hub</span></tt> please refer to <a class="reference external" href="https://github.com/shaded-enmity/docker-doug/blob/master/libdoug/api/remote_hub.py">remote_hub.py</a></p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="values.html" class="btn btn-neutral" title="Special Values"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

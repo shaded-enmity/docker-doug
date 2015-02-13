@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libdoug.graph &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>libdoug.graph</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for libdoug.graph</h1><div class="highlight"><pre>
+<span class="c"># vim: set fileencoding=utf-8</span>
+<span class="c"># Pavel Odvody &lt;podvody@redhat.com&gt;</span>
+<span class="c">#</span>
+<span class="c"># libdoug - DOcker Update Guard</span>
+<span class="c">#</span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 2 of</span>
+<span class="c"># the License, or (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; if not, write to the Free Software</span>
+<span class="c"># Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA</span>
+<span class="c"># 02111-1307 USA</span>
+<span class="kn">from</span> <span class="nn">libdoug.values</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">libdoug.utils</span> <span class="kn">import</span> <span class="n">flag_gen</span>
+
+<span class="k">class</span> <span class="nc">_ReferenceType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="p">(</span><span class="n">NONE</span><span class="p">,</span> <span class="n">CHILDOF</span><span class="p">,</span> <span class="n">PARENTOF</span><span class="p">)</span> <span class="o">=</span> <span class="n">flag_gen</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="DependencyType"><a class="viewcode-back" href="../../graph.html#libdoug.graph.DependencyType">[docs]</a><span class="k">class</span> <span class="nc">DependencyType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot; Differentiate between `Image` and `Container` graphs &quot;&quot;&quot;</span>
+	<span class="p">(</span><span class="n">NONE</span><span class="p">,</span> <span class="n">IMAGE</span><span class="p">,</span> <span class="n">CONTAINER</span><span class="p">)</span> <span class="o">=</span> <span class="n">flag_gen</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="GraphNode"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode">[docs]</a><span class="k">class</span> <span class="nc">GraphNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Generic class representing a `node` in a graph</span>
+
+<span class="sd">	:param parent: :class:`GraphNode`, Parent node</span>
+<span class="sd">	:param tid: `id`, Our `Id` value</span>
+<span class="sd">	:param children: `dict`, Children nodes</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">tid</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">tid</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span> <span class="k">if</span> <span class="n">children</span> <span class="k">else</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="GraphNode.getid"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode.getid">[docs]</a>	<span class="k">def</span> <span class="nf">getid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Get `Id` &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
+</div>
+<div class="viewcode-block" id="GraphNode.getparent"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode.getparent">[docs]</a>	<span class="k">def</span> <span class="nf">getparent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Get parent :class:`GraphNode` node &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span>
+</div>
+<div class="viewcode-block" id="GraphNode.getchildren"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode.getchildren">[docs]</a>	<span class="k">def</span> <span class="nf">getchildren</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Get children :class:`GraphNode` nodes &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">itervalues</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="GraphNode.addchild"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode.addchild">[docs]</a>	<span class="k">def</span> <span class="nf">addchild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nid</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Add a new child based on parameter `nid`</span>
+
+<span class="sd">		:param nid: `Id`, Node `Id` to add </span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">nid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+			<span class="n">node</span> <span class="o">=</span> <span class="n">GraphNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nid</span><span class="p">)</span> 
+			<span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">nid</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+			<span class="k">return</span> <span class="n">node</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;We already have this kid :?&#39;</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="TreeState"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState">[docs]</a><span class="k">class</span> <span class="nc">TreeState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Helper object for drawing `Unicode` trees from</span>
+<span class="sd">	graph node objects.&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">numpushes</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="TreeState.pushbranch"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.pushbranch">[docs]</a>	<span class="k">def</span> <span class="nf">pushbranch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Push a new branch into the `TreeState`</span>
+
+<span class="sd">		:param link: `bool`, Draw a link for this branch</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">numpushes</span> <span class="o">+=</span> <span class="mi">1</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="TreeState.popbranch"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.popbranch">[docs]</a>	<span class="k">def</span> <span class="nf">popbranch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Pop branch from the `links` list &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="TreeState.peek"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.peek">[docs]</a>	<span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Return last pushed value or `False` if empty. &quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">False</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</div>
+	<span class="k">def</span> <span class="nf">_formatlinks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Draw a vertical link where `True` &quot;&quot;&quot;</span>
+		<span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;│&#39;</span> <span class="k">if</span> <span class="n">l</span> <span class="k">else</span> <span class="s">u&#39; &#39;</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="p">]</span>
+		<span class="k">if</span> <span class="n">links</span><span class="p">:</span>
+			<span class="k">return</span>  <span class="s">u&#39; &#39;</span> <span class="o">+</span> <span class="s">u&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+		<span class="k">return</span> <span class="s">u&#39;&#39;</span>
+
+	<span class="k">def</span> <span class="nf">_boolindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+		<span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">b</span> <span class="k">else</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="TreeState.formatline"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.formatline">[docs]</a>	<span class="k">def</span> <span class="nf">formatline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">isleaf</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Decorate the value in `img` with tree drawing symols</span>
+
+<span class="sd">		:param img: `Id`, TODO: Make this more generic</span>
+<span class="sd">		:param isleaf: `bool`, It&#39;s a leaf node</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">horizontals</span><span class="p">,</span> <span class="n">verticals</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;├&#39;</span><span class="p">,</span> <span class="s">u&#39;└&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">u&#39;─&#39;</span><span class="p">,</span> <span class="s">u&#39;┬&#39;</span><span class="p">]</span>
+		<span class="n">vert</span><span class="p">,</span> <span class="n">horiz</span> <span class="o">=</span> <span class="s">u&#39;╺&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">numpushes</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> \
+			<span class="n">horizontals</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_boolindex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">peek</span><span class="p">())],</span> \
+			<span class="n">verticals</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_boolindex</span><span class="p">(</span><span class="n">isleaf</span><span class="p">)]</span>
+		<span class="n">treedeco</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_formatlinks</span><span class="p">()</span> <span class="o">+</span> <span class="n">vert</span> <span class="o">+</span> <span class="n">horiz</span>
+		<span class="k">return</span> <span class="n">treedeco</span> <span class="o">+</span> <span class="s">u&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="s">&#39;Id&#39;</span><span class="p">],</span> 
+			<span class="n">img</span><span class="p">[</span><span class="s">&#39;RepoTags&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">img</span><span class="p">[</span><span class="s">&#39;RepoTags&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">EmptyTag</span> <span class="k">else</span> <span class="s">&#39;&#39;</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

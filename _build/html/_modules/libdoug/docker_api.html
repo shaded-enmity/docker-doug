@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libdoug.docker_api &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>libdoug.docker_api</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for libdoug.docker_api</h1><div class="highlight"><pre>
+<span class="c"># vim: set fileencoding=utf-8</span>
+<span class="c"># Pavel Odvody &lt;podvody@redhat.com&gt;</span>
+<span class="c">#</span>
+<span class="c"># libdoug - DOcker Update Guard</span>
+<span class="c">#</span>
+<span class="c"># This program is free software; you can redistribute it and/or</span>
+<span class="c"># modify it under the terms of the GNU General Public License as</span>
+<span class="c"># published by the Free Software Foundation; either version 2 of</span>
+<span class="c"># the License, or (at your option) any later version.</span>
+<span class="c">#</span>
+<span class="c"># This program is distributed in the hope that it will be useful,</span>
+<span class="c"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c"># GNU General Public License for more details.</span>
+<span class="c">#</span>
+<span class="c"># You should have received a copy of the GNU General Public License</span>
+<span class="c"># along with this program; if not, write to the Free Software</span>
+<span class="c"># Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA</span>
+<span class="c"># 02111-1307 USA</span>
+<span class="kn">import</span> <span class="nn">docker</span>
+
+<div class="viewcode-block" id="UserInfo"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.UserInfo">[docs]</a><span class="k">class</span> <span class="nc">UserInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Stores authentication info for DockerHub</span>
+
+<span class="sd">	:param name: `string` User name</span>
+<span class="sd">	:param password: `string` Password</span>
+<span class="sd">	:param email: `string` Email</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+
+<div class="viewcode-block" id="UserInfo.getname"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.UserInfo.getname">[docs]</a>	<span class="k">def</span> <span class="nf">getname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+</div>
+<div class="viewcode-block" id="UserInfo.getpassw"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.UserInfo.getpassw">[docs]</a>	<span class="k">def</span> <span class="nf">getpassw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span>
+</div>
+<div class="viewcode-block" id="UserInfo.getemail"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.UserInfo.getemail">[docs]</a>	<span class="k">def</span> <span class="nf">getemail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span>
+</div>
+	<span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">True</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">password</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">True</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">email</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">True</span>
+
+		<span class="k">return</span> <span class="bp">False</span>
+
+</div>
+<div class="viewcode-block" id="DockerLocal"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal">[docs]</a><span class="k">class</span> <span class="nc">DockerLocal</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;Object that communicates with local `Docker daemon` throough the</span>
+<span class="sd">	`Unix Domain Socket` exposed in `/var/run/docker.sock`</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">docker</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s">&#39;unix://var/run/docker.sock&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DockerLocal.getimages"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.getimages">[docs]</a>	<span class="k">def</span> <span class="nf">getimages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Get images in the given `repo`</span>
+
+<span class="sd">		:param repo: - `string`, `repo`/`name`</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">images</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">repo</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="DockerLocal.getallimages"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.getallimages">[docs]</a>	<span class="k">def</span> <span class="nf">getallimages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Get all local Docker images &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">images</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="DockerLocal.getinfo"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.getinfo">[docs]</a>	<span class="k">def</span> <span class="nf">getinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Get info about Docker daemon &quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</div>
+	<span class="k">def</span> <span class="nf">_wipe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Remove the `stackbrew/` user part </span>
+<span class="sd">		if it&#39;s an official image </span>
+
+<span class="sd">		:param v: - `string`, value to wipe</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">v</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nulluser</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nulluser</span><span class="p">):]</span>
+
+<div class="viewcode-block" id="DockerLocal.tag"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.tag">[docs]</a>	<span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Tag `image` in a `repository` with a new `tag` </span>
+<span class="sd">		</span>
+<span class="sd">		:param args: [`imageID`, `repoName`, `tag`] - List of arguments</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="DockerLocal.push"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.push">[docs]</a>	<span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Push a `tag` into `repository`</span>
+<span class="sd">		</span>
+<span class="sd">		:param args: [`repoName`, `tag`] - List of arguments</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="DockerLocal.pull"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.pull">[docs]</a>	<span class="k">def</span> <span class="nf">pull</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Pull a `tag` from `repository`</span>
+<span class="sd">		</span>
+<span class="sd">		:param args: [`repoName`, `tag`] - List of arguments</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="DockerLocal.removeimage"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.removeimage">[docs]</a>	<span class="k">def</span> <span class="nf">removeimage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;Remove `name`:`tag` from repository</span>
+<span class="sd">		</span>
+<span class="sd">		:param args: [`name`, `tag`] - List of arguments</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">remove_image</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="s">&#39;:&#39;</span><span class="o">+</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</div>
+	<span class="n">nulluser</span> <span class="o">=</span> <span class="s">&#39;stackbrew/&#39;</span>
+	<span class="sd">&quot;&quot;&quot; User used by Docker Hub in place for official repos &quot;&quot;&quot;</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

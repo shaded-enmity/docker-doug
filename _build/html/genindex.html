@@ -1,0 +1,1159 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Index &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li></li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.__eq__">__eq__() (libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.__gt__">__gt__() (libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.__hash__">__hash__() (libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.__repr__">__repr__() (libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="token.html#libdoug.token.AccessValue">AccessValue (class in libdoug.token)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPRequest.addbauth">addbauth() (libdoug.http.HTTPRequest method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.GraphNode.addchild">addchild() (libdoug.graph.GraphNode method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.CliCapture.addcontext">addcontext() (libdoug.api.flags.CliCapture method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.CliCapture.addflag">addflag() (libdoug.api.flags.CliCapture method)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPRequest.addheader">addheader() (libdoug.http.HTTPRequest method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictSolver.addresolution">addresolution() (libdoug.conflict.ConflictSolver method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.addtoken">addtoken() (libdoug.token.TokenCache method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.ArgType">ArgType (class in libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.CacheEntry.asdictionary">asdictionary() (libdoug.token.TokenCache.CacheEntry method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Attach">Attach (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="registry.html#libdoug.registry.Registry.authtoken">authtoken() (libdoug.registry.Registry method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.Bool">Bool (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Build">Build (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.CliCapture">CliCapture (class in libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Commit">Commit (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictSolver">ConflictSolver (class in libdoug.conflict)</a>
+  </dt>
+
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictType">ConflictType (class in libdoug.conflict)</a>
+  </dt>
+
+      
+  <dt><a href="utils.html#libdoug.utils.Console">Console (class in libdoug.utils)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="graph.html#libdoug.graph.DependencyType.CONTAINER">CONTAINER (libdoug.graph.DependencyType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.ArgType.Context">Context (libdoug.api.flags.ArgType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Cp">Cp (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Create">Create (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="graph.html#libdoug.graph.DependencyType">DependencyType (class in libdoug.graph)</a>
+  </dt>
+
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.DependencyWalker">DependencyWalker (class in libdoug.dependency_walker)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Diff">Diff (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.HistoryDiff.diff">diff() (libdoug.history.HistoryDiff method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.remote_base.DockerAPIRequest">DockerAPIRequest (class in libdoug.api.remote_base)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal">DockerLocal (class in libdoug.docker_api)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb">DockerVerb (class in libdoug.api.flags)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="values.html#libdoug.values.EmptyDiff">EmptyDiff (in module libdoug.values)</a>
+  </dt>
+
+      
+  <dt><a href="values.html#libdoug.values.EmptyTag">EmptyTag (in module libdoug.values)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Events">Events (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Exec">Exec (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.Resolution.execute">execute() (libdoug.conflict_resolution.Resolution method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Export">Export (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.FauxVerb">FauxVerb (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.Flag">Flag (class in libdoug.api.flags)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="restcli.html#libdoug.api.flags.ArgType.Flag">(libdoug.api.flags.ArgType attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="utils.html#libdoug.utils.flag_gen">flag_gen() (in module libdoug.utils)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.flag_type_compare">flag_type_compare() (in module libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.flag_value_from_str">flag_value_from_str() (in module libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagCollection">FlagCollection (class in libdoug.api.flags)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType">FlagType (class in libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.TreeState.formatline">formatline() (libdoug.graph.TreeState method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.remote_base.DockerAPIRequest.formaturl">formaturl() (libdoug.api.remote_base.DockerAPIRequest method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.CacheEntry.fromdictionary">fromdictionary() (libdoug.token.TokenCache.CacheEntry static method)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.fromjson">fromjson() (libdoug.history.ImageHistory static method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.html#libdoug.utils.get_image">get_image() (in module libdoug.utils)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.getallimages">getallimages() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.Resolution.getargs">getargs() (libdoug.conflict_resolution.Resolution method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.GraphNode.getchildren">getchildren() (libdoug.graph.GraphNode method)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPResponse.getcode">getcode() (libdoug.http.HTTPResponse method)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPResponse.getcontent">getcontent() (libdoug.http.HTTPResponse method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagCollection.getdefault">getdefault() (libdoug.api.flags.FlagCollection method)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.UserInfo.getemail">getemail() (libdoug.docker_api.UserInfo method)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPResponse.getheader">getheader() (libdoug.http.HTTPResponse method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.GraphNode.getid">getid() (libdoug.graph.GraphNode method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.getid">(libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.getimages">getimages() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="history.html#libdoug.history.ImageHistory.getimages">(libdoug.history.ImageHistory method)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.getinfo">getinfo() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="vrsolver.html#libdoug.vr_solver.VRConflictSolver.getlocalhead">getlocalhead() (libdoug.vr_solver.VRConflictSolver method)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.UserInfo.getname">getname() (libdoug.docker_api.UserInfo method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.GraphNode.getparent">getparent() (libdoug.graph.GraphNode method)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.UserInfo.getpassw">getpassw() (libdoug.docker_api.UserInfo method)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry.gettag">gettag() (libdoug.history.ImageHistory.Entry method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.CacheEntry.gettoken">gettoken() (libdoug.token.TokenCache.CacheEntry method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.gettokenfor">gettokenfor() (libdoug.token.TokenCache method)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.Resolution.gettype">gettype() (libdoug.conflict_resolution.Resolution method)</a>
+  </dt>
+
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.graph_walk_callback">graph_walk_callback() (in module libdoug.dependency_walker)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.GraphNode">GraphNode (class in libdoug.graph)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictSolver.handleleft">handleleft() (libdoug.conflict.ConflictSolver method)</a>
+  </dt>
+
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictSolver.handleright">handleright() (libdoug.conflict.ConflictSolver method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.CacheEntry.hasexpired">hasexpired() (libdoug.token.TokenCache.CacheEntry method)</a>
+  </dt>
+
+      
+  <dt><a href="values.html#libdoug.values.HashLength">HashLength (in module libdoug.values)</a>
+  </dt>
+
+      
+  <dt><a href="utils.html#libdoug.utils.Console.height">height() (libdoug.utils.Console static method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.History">History (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.HistoryDiff">HistoryDiff (class in libdoug.history)</a>
+  </dt>
+
+      
+  <dt><a href="decorators.html#libdoug.decorators.http_request_decorate">http_request_decorate() (in module libdoug.decorators)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPRequest">HTTPRequest (class in libdoug.http)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPResponse">HTTPResponse (class in libdoug.http)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="graph.html#libdoug.graph.DependencyType.IMAGE">IMAGE (libdoug.graph.DependencyType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory">ImageHistory (class in libdoug.history)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.ImageHistory.Entry">ImageHistory.Entry (class in libdoug.history)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Images">Images (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Import">Import (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Info">Info (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Inspect">Inspect (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.Int">Int (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.ArgType.Invalid">Invalid (libdoug.api.flags.ArgType attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Invalid">(libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+        
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.Invalid">(libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Kill">Kill (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#module-libdoug.api.flags">libdoug.api.flags (module)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#module-libdoug.api.remote_base">libdoug.api.remote_base (module)</a>
+  </dt>
+
+      
+  <dt><a href="consolver.html#module-libdoug.conflict">libdoug.conflict (module)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#module-libdoug.conflict_resolution">libdoug.conflict_resolution (module)</a>
+  </dt>
+
+      
+  <dt><a href="depwalker.html#module-libdoug.dependency_walker">libdoug.dependency_walker (module)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#module-libdoug.graph">libdoug.graph (module)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#module-libdoug.history">libdoug.history (module)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#module-libdoug.http">libdoug.http (module)</a>
+  </dt>
+
+      
+  <dt><a href="optimistic.html#module-libdoug.optimistic_solver">libdoug.optimistic_solver (module)</a>
+  </dt>
+
+      
+  <dt><a href="registry.html#module-libdoug.registry">libdoug.registry (module)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="token.html#module-libdoug.token">libdoug.token (module)</a>
+  </dt>
+
+      
+  <dt><a href="utils.html#module-libdoug.utils">libdoug.utils (module)</a>
+  </dt>
+
+      
+  <dt><a href="values.html#module-libdoug.values">libdoug.values (module)</a>
+  </dt>
+
+      
+  <dt><a href="vrsolver.html#module-libdoug.vr_solver">libdoug.vr_solver (module)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Load">Load (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.load">load() (libdoug.token.TokenCache method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Login">Login (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Logout">Logout (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Logs">Logs (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.DependencyWalker.makegraph">makegraph() (libdoug.dependency_walker.DependencyWalker method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagCollection.map">map() (libdoug.api.flags.FlagCollection method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.Flag.new">new() (libdoug.api.flags.Flag static method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="restcli.html#libdoug.api.flags.FlagCollection.new">(libdoug.api.flags.FlagCollection static method)</a>
+  </dt>
+
+        
+  <dt><a href="restcli.html#libdoug.api.remote_base.DockerAPIRequest.new">(libdoug.api.remote_base.DockerAPIRequest static method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType.NONE">NONE (libdoug.conflict_resolution.ResolutionType attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="graph.html#libdoug.graph.DependencyType.NONE">(libdoug.graph.DependencyType attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.nulluser">nulluser (libdoug.docker_api.DockerLocal attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="optimistic.html#libdoug.optimistic_solver.OptimisticConflictSolver">OptimisticConflictSolver (class in libdoug.optimistic_solver)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.parse_cli">parse_cli() (in module libdoug.api.flags)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.Path">Path (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Pause">Pause (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.TreeState.peek">peek() (libdoug.graph.TreeState method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.TreeState.popbranch">popbranch() (libdoug.graph.TreeState method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Port">Port (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="history.html#libdoug.history.HistoryDiff.printout">printout() (libdoug.history.HistoryDiff static method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="history.html#libdoug.history.ImageHistory.printout">(libdoug.history.ImageHistory method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.DependencyWalker.printtree">printtree() (libdoug.dependency_walker.DependencyWalker method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Ps">Ps (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Pull">Pull (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType.PULL">PULL (libdoug.conflict_resolution.ResolutionType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.pull">pull() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.Pure">Pure (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.PureBool">PureBool (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Push">Push (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType.PUSH">PUSH (libdoug.conflict_resolution.ResolutionType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.push">push() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.TreeState.pushbranch">pushbranch() (libdoug.graph.TreeState method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="registry.html#libdoug.registry.Registry.querytags">querytags() (libdoug.registry.Registry method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="registry.html#libdoug.registry.Registry">Registry (class in libdoug.registry)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType.REMOVE">REMOVE (libdoug.conflict_resolution.ResolutionType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.removeimage">removeimage() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="http.html#libdoug.http.HTTPRequest.request">request() (libdoug.http.HTTPRequest method)</a>
+  </dt>
+
+      
+  <dt><a href="decorators.html#libdoug.decorators.RequestDecorator">RequestDecorator (class in libdoug.decorators)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.RequestToken">RequestToken (class in libdoug.token)</a>
+  </dt>
+
+      
+  <dt><a href="decorators.html#libdoug.decorators.RequestTokenDecorator">RequestTokenDecorator (class in libdoug.decorators)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.Resolution">Resolution (class in libdoug.conflict_resolution)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType">ResolutionType (class in libdoug.conflict_resolution)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Restart">Restart (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Rm">Rm (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Rmi">Rmi (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="values.html#libdoug.values.RootImage">RootImage (in module libdoug.values)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Run">Run (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Save">Save (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.save">save() (libdoug.token.TokenCache method)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Search">Search (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.CliCapture.setverb">setverb() (libdoug.api.flags.CliCapture method)</a>
+  </dt>
+
+      
+  <dt><a href="utils.html#libdoug.utils.SollipsistException">SollipsistException</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="consolver.html#libdoug.conflict.ConflictSolver.solve">solve() (libdoug.conflict.ConflictSolver method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="vrsolver.html#libdoug.vr_solver.VRConflictSolver.solve">(libdoug.vr_solver.VRConflictSolver method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Start">Start (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Stop">Stop (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.FlagType.String">String (libdoug.api.flags.FlagType attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Tag">Tag (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="resolution.html#libdoug.conflict_resolution.ResolutionType.TAG">TAG (libdoug.conflict_resolution.ResolutionType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.DockerLocal.tag">tag() (libdoug.docker_api.DockerLocal method)</a>
+  </dt>
+
+      
+  <dt><a href="token.html#libdoug.token.TokenCache">TokenCache (class in libdoug.token)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="token.html#libdoug.token.TokenCache.CacheEntry">TokenCache.CacheEntry (class in libdoug.token)</a>
+  </dt>
+
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Top">Top (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="graph.html#libdoug.graph.TreeState">TreeState (class in libdoug.graph)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.DockerVerb.Unpause">Unpause (libdoug.api.flags.DockerVerb attribute)</a>
+  </dt>
+
+      
+  <dt><a href="decorators.html#libdoug.decorators.UserCredentialsDecorator">UserCredentialsDecorator (class in libdoug.decorators)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="dockerapi.html#libdoug.docker_api.UserInfo">UserInfo (class in libdoug.docker_api)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="restcli.html#libdoug.api.flags.ArgType.Verb">Verb (libdoug.api.flags.ArgType attribute)</a>
+  </dt>
+
+      
+  <dt><a href="vrsolver.html#libdoug.vr_solver.VRConflictSolver">VRConflictSolver (class in libdoug.vr_solver)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="values.html#libdoug.values.VRMatch">VRMatch (in module libdoug.values)</a>
+  </dt>
+
+      
+  <dt><a href="vrsolver.html#libdoug.vr_solver.VRTag">VRTag (class in libdoug.vr_solver)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.DependencyWalker.walk">walk() (libdoug.dependency_walker.DependencyWalker method)</a>
+  </dt>
+
+      
+  <dt><a href="depwalker.html#libdoug.dependency_walker.DependencyWalker.walkgraphrecurse">walkgraphrecurse() (libdoug.dependency_walker.DependencyWalker method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="utils.html#libdoug.utils.Console.width">width() (libdoug.utils.Console static method)</a>
+  </dt>
+
+      
+  <dt><a href="utils.html#libdoug.utils.wipe_newlines">wipe_newlines() (in module libdoug.utils)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

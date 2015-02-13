@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Docker API &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="Docker Registry API" href="registry.html"/>
+        <link rel="prev" title="Graph facilities" href="graph.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Docker API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/dockerapi.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="docker-api">
+<h1>Docker API<a class="headerlink" href="#docker-api" title="Permalink to this headline">¶</a></h1>
+<p>This module contains wrapper class around <tt class="docutils literal"><span class="pre">docker-py</span></tt> and also abstracts away user credentials for <tt class="docutils literal"><span class="pre">Docker</span> <span class="pre">Hub</span></tt>.</p>
+<dl class="class">
+<dt id="libdoug.docker_api.DockerLocal">
+<em class="property">class </em><tt class="descclassname">libdoug.docker_api.</tt><tt class="descname">DockerLocal</tt><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object that communicates with local <cite>Docker daemon</cite> throough the
+<cite>Unix Domain Socket</cite> exposed in <cite>/var/run/docker.sock</cite></p>
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.getallimages">
+<tt class="descname">getallimages</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.getallimages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.getallimages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all local Docker images</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.getimages">
+<tt class="descname">getimages</tt><big>(</big><em>repo</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.getimages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.getimages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get images in the given <cite>repo</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>repo</strong> &#8211; <ul class="simple">
+<li><cite>string</cite>, <cite>repo</cite>/<cite>name</cite></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.getinfo">
+<tt class="descname">getinfo</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.getinfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.getinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info about Docker daemon</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="libdoug.docker_api.DockerLocal.nulluser">
+<tt class="descname">nulluser</tt><em class="property"> = 'stackbrew/'</em><a class="headerlink" href="#libdoug.docker_api.DockerLocal.nulluser" title="Permalink to this definition">¶</a></dt>
+<dd><p>User used by Docker Hub in place for official repos</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.pull">
+<tt class="descname">pull</tt><big>(</big><em>args</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.pull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.pull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pull a <cite>tag</cite> from <cite>repository</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.push">
+<tt class="descname">push</tt><big>(</big><em>args</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.push"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push a <cite>tag</cite> into <cite>repository</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.removeimage">
+<tt class="descname">removeimage</tt><big>(</big><em>args</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.removeimage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.removeimage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove <cite>name</cite>:<cite>tag</cite> from repository</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>name</cite>, <cite>tag</cite>] - List of arguments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.DockerLocal.tag">
+<tt class="descname">tag</tt><big>(</big><em>args</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#DockerLocal.tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.DockerLocal.tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tag <cite>image</cite> in a <cite>repository</cite> with a new <cite>tag</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>imageID</cite>, <cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.docker_api.UserInfo">
+<em class="property">class </em><tt class="descclassname">libdoug.docker_api.</tt><tt class="descname">UserInfo</tt><big>(</big><em>name</em>, <em>password</em>, <em>email</em><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#UserInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.UserInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores authentication info for DockerHub</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; <cite>string</cite> User name</li>
+<li><strong>password</strong> &#8211; <cite>string</cite> Password</li>
+<li><strong>email</strong> &#8211; <cite>string</cite> Email</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="libdoug.docker_api.UserInfo.getemail">
+<tt class="descname">getemail</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#UserInfo.getemail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.UserInfo.getemail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.UserInfo.getname">
+<tt class="descname">getname</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#UserInfo.getname"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.UserInfo.getname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="libdoug.docker_api.UserInfo.getpassw">
+<tt class="descname">getpassw</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/docker_api.html#UserInfo.getpassw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.docker_api.UserInfo.getpassw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="registry.html" class="btn btn-neutral float-right" title="Docker Registry API"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="graph.html" class="btn btn-neutral" title="Graph facilities"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

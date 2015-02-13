@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Request Token &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="Request Decorators" href="decorators.html"/>
+        <link rel="prev" title="Docker Registry API" href="registry.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Request Token</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/token.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="module-libdoug.token">
+<span id="request-token"></span><h1>Request Token<a class="headerlink" href="#module-libdoug.token" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="libdoug.token.AccessValue">
+<em class="property">class </em><tt class="descclassname">libdoug.token.</tt><tt class="descname">AccessValue</tt><a class="reference internal" href="_modules/libdoug/token.html#AccessValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.AccessValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of access we need from the registry</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.token.RequestToken">
+<em class="property">class </em><tt class="descclassname">libdoug.token.</tt><tt class="descname">RequestToken</tt><big>(</big><em>repo</em>, <em>user</em>, <em>token</em>, <em>access='read'</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#RequestToken"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.RequestToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Token to get us talking with the registry</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>repo</strong> &#8211; <cite>string</cite> Repository for which the token is valid</li>
+<li><strong>user</strong> &#8211; <a class="reference internal" href="dockerapi.html#libdoug.docker_api.UserInfo" title="libdoug.docker_api.UserInfo"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.docker_api.UserInfo</span></tt></a> User info</li>
+<li><strong>token</strong> &#8211; <cite>string</cite> Token value</li>
+<li><strong>access</strong> &#8211; <a class="reference internal" href="#libdoug.token.AccessValue" title="libdoug.token.AccessValue"><tt class="xref py py-class docutils literal"><span class="pre">AccessValue</span></tt></a>, <tt class="docutils literal"><span class="pre">AccessValue.Read</span></tt> by default</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="libdoug.token.TokenCache">
+<em class="property">class </em><tt class="descclassname">libdoug.token.</tt><tt class="descname">TokenCache</tt><a class="reference internal" href="_modules/libdoug/token.html#TokenCache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maintains a cache of valid <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a>&#8216;s and
+handles <cite>save-to/load-from</cite> disk semantics.</p>
+<dl class="class">
+<dt id="libdoug.token.TokenCache.CacheEntry">
+<em class="property">class </em><tt class="descname">CacheEntry</tt><big>(</big><em>token</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.CacheEntry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.CacheEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cache each token for <tt class="docutils literal"><span class="pre">entry_lifespan</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="libdoug.token.TokenCache.CacheEntry.asdictionary">
+<tt class="descname">asdictionary</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.CacheEntry.asdictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.CacheEntry.asdictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format itself as a <cite>dict</cite> / <tt class="docutils literal"><span class="pre">JSON</span> <span class="pre">Object</span></tt></p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="libdoug.token.TokenCache.CacheEntry.fromdictionary">
+<em class="property">static </em><tt class="descname">fromdictionary</tt><big>(</big><em>d</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.CacheEntry.fromdictionary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.CacheEntry.fromdictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#libdoug.token.TokenCache.CacheEntry" title="libdoug.token.TokenCache.CacheEntry"><tt class="xref py py-class docutils literal"><span class="pre">TokenCache.CacheEntry</span></tt></a> from a <cite>dict</cite> / <tt class="docutils literal"><span class="pre">JSON</span> <span class="pre">Object</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.CacheEntry.gettoken">
+<tt class="descname">gettoken</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.CacheEntry.gettoken"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.CacheEntry.gettoken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the token <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.CacheEntry.hasexpired">
+<tt class="descname">hasexpired</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.CacheEntry.hasexpired"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.CacheEntry.hasexpired" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine if the token has expired</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.addtoken">
+<tt class="descclassname">TokenCache.</tt><tt class="descname">addtoken</tt><big>(</big><em>token</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.addtoken"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.addtoken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add token to the cache</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.gettokenfor">
+<tt class="descclassname">TokenCache.</tt><tt class="descname">gettokenfor</tt><big>(</big><em>repo</em>, <em>user</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.gettokenfor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.gettokenfor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find valid tokens for <tt class="docutils literal"><span class="pre">user</span></tt> and <tt class="docutils literal"><span class="pre">repo</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>repo</strong> &#8211; <cite>string</cite></li>
+<li><strong>user</strong> &#8211; <tt class="xref py py-class docutils literal"><span class="pre">UserInfo</span></tt></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.load">
+<tt class="descclassname">TokenCache.</tt><tt class="descname">load</tt><big>(</big><em>loadfile='.tokencache'</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the token cache from a file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loadfile</strong> &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="libdoug.token.TokenCache.save">
+<tt class="descclassname">TokenCache.</tt><tt class="descname">save</tt><big>(</big><em>savefile='.tokencache'</em><big>)</big><a class="reference internal" href="_modules/libdoug/token.html#TokenCache.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.token.TokenCache.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the token cache to a file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>savefile</strong> &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="decorators.html" class="btn btn-neutral float-right" title="Request Decorators"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="registry.html" class="btn btn-neutral" title="Docker Registry API"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Utility members &mdash; libdoug 0.1-1 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="libdoug 0.1-1 documentation" href="index.html"/>
+        <link rel="up" title="Module Overview" href="clsoverview.html"/>
+        <link rel="next" title="Special Values" href="values.html"/>
+        <link rel="prev" title="Version-Release Solver" href="vrsolver.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> libdoug</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="clsoverview.html">Module Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="graph.html">Graph facilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dockerapi.html">Docker API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry.html">Docker Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="token.html">Request Token</a></li>
+<li class="toctree-l2"><a class="reference internal" href="decorators.html">Request Decorators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="depwalker.html">Dependency Walker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="history.html">History objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">HTTP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consolver.html">Conflict solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resolution.html">Conflict resolution objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimistic.html">Optimistic Solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vrsolver.html">Version-Release Solver</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Utility members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#visualize-dependencies">Visualize dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#explain-docker-commands">Explain Docker Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#make-conflict-solvers-do-your-bidding">Make conflict solvers do your bidding</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">libdoug</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="clsoverview.html">Module Overview</a> &raquo;</li>
+      
+    <li>Utility members</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/utils.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="module-libdoug.utils">
+<span id="utility-members"></span><h1>Utility members<a class="headerlink" href="#module-libdoug.utils" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="libdoug.utils.Console">
+<em class="property">class </em><tt class="descclassname">libdoug.utils.</tt><tt class="descname">Console</tt><a class="reference internal" href="_modules/libdoug/utils.html#Console"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.Console" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility <cite>static class</cite> representing the size
+of the terminal window</p>
+<dl class="staticmethod">
+<dt id="libdoug.utils.Console.height">
+<em class="property">static </em><tt class="descname">height</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/utils.html#Console.height"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.Console.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Height of the terminal window</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="libdoug.utils.Console.width">
+<em class="property">static </em><tt class="descname">width</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/libdoug/utils.html#Console.width"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.Console.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Width of the terminal window</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="libdoug.utils.SollipsistException">
+<em class="property">exception </em><tt class="descclassname">libdoug.utils.</tt><tt class="descname">SollipsistException</tt><a class="reference internal" href="_modules/libdoug/utils.html#SollipsistException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.SollipsistException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thrown if there&#8217;s more than one results</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="libdoug.utils.flag_gen">
+<tt class="descclassname">libdoug.utils.</tt><tt class="descname">flag_gen</tt><big>(</big><em>num</em><big>)</big><a class="reference internal" href="_modules/libdoug/utils.html#flag_gen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.flag_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate <tt class="docutils literal"><span class="pre">num</span></tt> bit flags</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num</strong> &#8211; <cite>int</cite> upper bound</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><cite>list</cite> of bit flags such as <tt class="docutils literal"><span class="pre">len([0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">4</span> <span class="pre">...])</span> <span class="pre">==</span> <span class="pre">num</span></tt></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="libdoug.utils.get_image">
+<tt class="descclassname">libdoug.utils.</tt><tt class="descname">get_image</tt><big>(</big><em>idname</em>, <em>allimages</em><big>)</big><a class="reference internal" href="_modules/libdoug/utils.html#get_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.get_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find an image by <tt class="docutils literal"><span class="pre">id</span></tt> or fall back to 
+<tt class="docutils literal"><span class="pre">name</span></tt> search. Both <tt class="docutils literal"><span class="pre">id</span></tt> and <tt class="docutils literal"><span class="pre">name</span></tt> can be specified partially
+but an <a class="reference internal" href="#libdoug.utils.SollipsistException" title="libdoug.utils.SollipsistException"><tt class="xref py py-class docutils literal"><span class="pre">SollipsistException</span></tt></a> is thrown if multiple images are found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>idname</strong> &#8211; <cite>string</cite> <tt class="docutils literal"><span class="pre">image</span> <span class="pre">id</span></tt> or <tt class="docutils literal"><span class="pre">repo:tag</span></tt></li>
+<li><strong>allimages</strong> &#8211; <cite>list</cite> of all images</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The full <tt class="docutils literal"><span class="pre">image</span> <span class="pre">id</span></tt> or <tt class="docutils literal"><span class="pre">None</span></tt> if not found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="libdoug.utils.wipe_newlines">
+<tt class="descclassname">libdoug.utils.</tt><tt class="descname">wipe_newlines</tt><big>(</big><em>data</em><big>)</big><a class="reference internal" href="_modules/libdoug/utils.html#wipe_newlines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libdoug.utils.wipe_newlines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove newlines from <tt class="docutils literal"><span class="pre">data</span></tt>.
+Works recursively on list of strings too</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> &#8211; <cite>str</cite> or <cite>list</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="values.html" class="btn btn-neutral float-right" title="Special Values"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vrsolver.html" class="btn btn-neutral" title="Version-Release Solver"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Pavel Odvody.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1-1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
