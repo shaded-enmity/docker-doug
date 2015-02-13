@@ -40,7 +40,7 @@ class RequestTokenDecorator(RequestDecorator):
 		if not request.addheader('Authorization', header_string):
 			return False
 
-		return super(RequestTokenDecorator, self).decorate(request)
+		return super(RequestTokenDecorator, self)._decorate(request)
 
 
 class UserCredentialsDecorator(RequestDecorator):
@@ -59,7 +59,7 @@ class UserCredentialsDecorator(RequestDecorator):
 		if not request.addbauth(self.user.getname(), self.user.getpassw()):
 			return False
 
-		return super(UserCredentialsDecorator, self).decorate(request)
+		return super(UserCredentialsDecorator, self)._decorate(request)
 
 
 def http_request_decorate(request, decorator):
