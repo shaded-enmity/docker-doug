@@ -20,6 +20,12 @@
 import docker
 
 class UserInfo(object):
+	"""Stores authentication info for DockerHub
+
+	:param name: `string` User name
+	:param password: `string` Password
+	:param email: `string` Email
+	"""
 	def __init__(self, name, password, email):
 		self.name = name
 		self.password = password
@@ -48,30 +54,62 @@ class UserInfo(object):
 
 
 class DockerLocal(object):
-	nulluser = 'stackbrew/'
-
+	"""Object that communicates with local `Docker daemon` throough the
+	`Unix Domain Socket` exposed in `/var/run/docker.sock`
+	"""
 	def __init__(self):
 		self.docker = docker.Client(base_url='unix://var/run/docker.sock')
 
 	def getimages(self, repo):
+		"""Get images in the given `repo`
+
+		:param repo: - `string`, `repo`/`name`
+		"""
 		return self.docker.images(self._wipe(repo))
 
 	def getallimages(self):
+		""" Get all local Docker images """
 		return self.docker.images(all=True)
 
+	def getinfo(self):
+		""" Get info about Docker daemon """
+		return self.docker.info()
+
 	def _wipe(self, v):
+		""" Remove the `stackbrew/` user part 
+		if it's an official image 
+
+		:param v: - `string`, value to wipe
+		"""
 		return v if not v.startswith(self.nulluser) else v[len(self.nulluser):]
 
 	def tag(self, args):
-		return self.docker.tag(image=args[0], repository=self._wipe(args[1]), tag=args[2])
+		"""Tag `image` in a `repository` with a new `tag` 
+		
+		:param args: [`imageID`, `repoName`, `tag`] - List of arguments
+		"""
+		return self.docker.tag(image=args[0], repository=self._wipe(args[1]), tag=args[2], force=True)
 
 	def push(self, args):
+		"""Push a `tag` into `repository`
+		
+		:param args: [`repoName`, `tag`] - List of arguments
+		"""
 		return self.docker.push(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def pull(self, args):
+		"""Pull a `tag` from `repository`
+		
+		:param args: [`repoName`, `tag`] - List of arguments
+		"""
 		return self.docker.pull(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def removeimage(self, args):
+		"""Remove `name`:`tag` from repository
+		
+		:param args: [`name`, `tag`] - List of arguments
+		"""
 		return self.docker.remove_image(image=self._wipe(args[0])+':'+args[1], force=True)
 
-
+	nulluser = 'stackbrew/'
+	""" User used by Docker Hub in place for official repos """

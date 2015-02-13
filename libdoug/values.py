@@ -17,6 +17,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-EmptyDiff = ([], []) #: 
-EmptyTag = u'<none>:<none>' #:
-RootImage = u'511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158' #:
+import re
+EmptyDiff = ([], []) #: Tuple of ``left`` and ``right`` lists 
+EmptyTag = u'<none>:<none>' #: Special value representing untagged image
+RootImage = u'511136ea3c5a64f264b78b5433614aec563103b4d4702f3ba7d4d2698e22c158' #: Also known as ``scratch`` image in `Docker`
+HashLength = 64 #: Full ``image id`` length
+VRMatch = re.compile('^(\d)\.(\d)\.(\d)[-]?(.*)$') #: ``X.Y.Z-R`` Version-Release matching

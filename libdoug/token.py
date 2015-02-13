@@ -17,22 +17,24 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import json
+import json, os, stat
 from libdoug.docker_api import UserInfo
 from datetime import timedelta, datetime
 
 class AccessValue(object):
-	"""
-	The type of access we need from the registry
-	"""
+	""" The type of access we need from the registry """
 	Read = 'read'
 	Write = 'write'
 	ReadWrite = 'read,write'
 
 
 class RequestToken(object):
-	"""
-	Token to get us talking with the registry
+	"""Token to get us talking with the registry 
+	
+	:param repo: `string` Repository for which the token is valid
+	:param user: :class:`libdoug.docker_api.UserInfo` User info
+	:param token: `string` Token value
+	:param access: :class:`AccessValue`, ``AccessValue.Read`` by default
 	"""
 	def __init__(self, repo, user, token, access=AccessValue.Read):
 		self.token = token
@@ -54,27 +56,29 @@ class RequestToken(object):
 
 
 class TokenCache(object):
-	entry_lifespan = 3600*2
+	"""Maintains a cache of valid :class:`RequestToken`'s and
+	handles `save-to/load-from` disk semantics."""
+	entry_lifespan = 3600*2 # Derived by observation
 
 	class CacheEntry(object):
-		"""
-		Cache the tokens for 2hours
+		"""Cache each token for ``entry_lifespan``
+		
+		:param token: :class:`RequestToken`
 		"""
 		def __init__(self, token):
-			""" """
 			self.token = token
 			self.expire = datetime.now() + timedelta(0, TokenCache.entry_lifespan)
 
 		def gettoken(self):
-			""" Get the value of the token """
+			""" Get the token :class:`RequestToken`"""
 			return self.token
 
 		def hasexpired(self):
-			""" Has the token expired """
+			""" Determine if the token has expired """
 			return self.expire < datetime.now()
 
 		def asdictionary(self):
-			""" Format us as a dictionary """
+			""" Format itself as a `dict` / ``JSON Object`` """
 			return {
 				'Token': { 
 					'Token': self.gettoken().gettoken(),
@@ -91,7 +95,7 @@ class TokenCache(object):
 
 		@staticmethod
 		def fromdictionary(d):
-			"""  """
+			"""Create a new :class:`TokenCache.CacheEntry` from a `dict` / ``JSON Object``"""
 			td, ud = d['Token'], d['Token']['User']
 			user = UserInfo(ud['Name'], ud['Password'], ud['Email'])
 			token = RequestToken(td['Repo'], user, td['Token'], td['Access'])
@@ -104,6 +108,9 @@ class TokenCache(object):
 		self.cache = {}
 
 	def addtoken(self, token):
+		"""Add token to the cache
+		
+		:param token: :class:`RequestToken` """
 		repo = token.getrepo()
 		if repo in self.cache:
 			self.cache[repo].append(self.CacheEntry(token))
@@ -112,6 +119,11 @@ class TokenCache(object):
 		return True
 
 	def gettokenfor(self, repo, user):
+		"""Find valid tokens for ``user`` and ``repo``
+
+		:param repo: `string` 
+		:param user: :class:`UserInfo`
+		"""
 		if not repo in self.cache:
 			return None
 
@@ -128,14 +140,23 @@ class TokenCache(object):
 		return [t.gettoken() for t in valid]
 
 	def save(self, savefile='.tokencache'):
-		fd = open(savefile, 'w+')
+		"""Save the token cache to a file
+
+		:param savefile: Relative to ``$HOME`` directory
+		"""
+		fd = open(os.getenv("HOME") +'/'+savefile, 'w+')
 		dump = json.dump({k:[w.asdictionary() for w in v] for k,v in self.cache.iteritems()}, fd, separators=(',', ':'))
 		#print 'Token cache saved into: %s' % savefile
 		fd.close()
+		os.chmod(os.getenv("HOME") +'/'+savefile, stat.S_IREAD | stat.S_IWRITE)
 		return dump
 
 	def load(self, loadfile='.tokencache'):
-		fd = open(loadfile, 'a+')
+		"""Load the token cache from a file
+		
+		:param loadfile: Relative to ``$HOME`` directory
+		"""
+		fd = open(os.getenv("HOME") + '/' + loadfile, 'a+')
 		try:
 			cachedict = json.load(fd)
 			for k, v in cachedict.iteritems():

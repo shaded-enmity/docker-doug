@@ -131,7 +131,7 @@ if __name__ == '__main__':
 
 	if parsed.action in ['update', 'dump-remote']:
 		if parsed.user == None:
-			parsed.user, parsed.password, parsed.email = wipe_newlines(open('.userinfo').readline().split(':'))
+			parsed.user, parsed.password, parsed.email = wipe_newlines(open(os.getenv("HOME") + '/.douguserinfo').readline().split(':'))
 	user = UserInfo(parsed.user, parsed.password, parsed.email)
 
 	cli_command(parsed)

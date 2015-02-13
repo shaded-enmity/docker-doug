@@ -19,17 +19,20 @@
 # 02111-1307 USA
 class RequestDecorator(object):
 	""" Base class for all request decorators """
-	def decorate(self, request):
+	def _decorate(self, request):
 		return True
 
 
 class RequestTokenDecorator(RequestDecorator):
-	""" Decorates the request with auth token """
+	""" Decorates the request with auth token 
+	
+	:param token: :class:`libdoug.token.RequestToken <RequestToken>` Token to decorate with
+	"""
 	def __init__(self, token):
 		self.token = token
 		super(RequestTokenDecorator, self).__init__()
 
-	def decorate(self, request):
+	def _decorate(self, request):
 		header_string = 'Token signature=%s,repository=%s,access=%s' %\
 					(self.token.gettoken(), self.token.getrepo(),
 					 self.token.getaccess())
@@ -41,12 +44,15 @@ class RequestTokenDecorator(RequestDecorator):
 
 
 class UserCredentialsDecorator(RequestDecorator):
-	""" Decorates the request with user credentials and necessary header """
+	""" Decorates the request with user credentials and necessary header 
+	
+	:param user: :class:`libdoug.docker_api.UserInfo <UserInfo>` User to decorate with
+	"""
 	def __init__(self, user):
 		self.user = user
 		super(UserCredentialsDecorator, self).__init__()
 
-	def decorate(self, request):
+	def _decorate(self, request):
 		if not request.addheader('X-Docker-Token', 'true'):
 			return False
 
@@ -57,5 +63,5 @@ class UserCredentialsDecorator(RequestDecorator):
 
 
 def http_request_decorate(request, decorator):
-	""" Wrapper for returning decorated request """
-	return decorator.decorate(request)
+	""" Apply `decorator` and return `success` """
+	return decorator._decorate(request)

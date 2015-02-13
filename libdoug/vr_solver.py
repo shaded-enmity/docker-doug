@@ -17,20 +17,19 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import re
 from libdoug.conflict import ConflictSolver
 from libdoug.conflict_resolution import Resolution, ResolutionType
+from libdoug.values import VRMatch
 
 class VRTag(object):
-	''' Version-Release '''
-	match = re.compile('^(\d)\.(\d)\.(\d)[-]?(.*)$')
+	"""Wrapper around :class:`ImageHistory.Entry <libdoug.history.ImageHistory.Entry>` to support Version-Release ordering"""
 	def __init__(self, entry):
 		self.entry = entry
 		self.invalid = False
 		self._parsetag(entry.gettag())
 
 	def _parsetag(self, tag):
-		p = self.match.match(tag)
+		p = VRMatch.match(tag)
 		if p:
 			self.major, self.minor, self.build, self.release = p.groups()
 		else:
@@ -60,15 +59,17 @@ class VRTag(object):
 
 
 class VRConflictSolver(ConflictSolver):
-	''' Version-Release '''
+	"""``Version-Release`` subclass of :class:`ConflictSolver <libdoug.conflict.ConflictSolver>`"""
 	def __init__(self, allimages, delta, repo, rt=Resolution):
 		super(VRConflictSolver, self).__init__(allimages, delta, repo, rt)
 		self.localhead = None
 
 	def getlocalhead(self):
+		"""Local head is available after :meth:`solve` had been called"""
 		return self.localhead
 
 	def solve(self, resolutions=None):
+		"""For more information see :meth:`ConflictSolver.solve <libdoug.conflict.ConflictSolver.solve>` """
 		local, remote = self.delta
 
 		localtags = sorted(t for t in [VRTag(e) for e in local.getimages()] if not t.isinvalid())

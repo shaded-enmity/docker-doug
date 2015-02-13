@@ -20,7 +20,17 @@
 from libdoug.values import EmptyDiff
 
 class ImageHistory(object):
+	"""Object that holds a full list of tags of
+	a given `repository`.
+
+	:param images: `list` of `Image Dictionary`
+	"""
 	class Entry(object):
+		"""Provides unique mapping/ordering of `Image Id`'s and `tag`'s.
+
+		:param tag: `string`, A tag
+		:param imgid: `string`, An image id
+		"""
 		def __init__(self, tag, imgid):
 			self.tag = tag
 			self.id = imgid
@@ -32,15 +42,19 @@ class ImageHistory(object):
 			return self.id
 
 		def __repr__(self):
+			""" Prints as `tag` : `id` """
 			return "%s : %s" % (self.gettag(), self.getid())
-
+ 
 		def __eq__(self, other):
+			""" Equal if both parts are same """
 			return self.tag == other.tag and self.id == other.id
 
 		def __hash__(self):
+			""" Concats `tag` and `id` and from that computes the hash """
 			return hash(self.tag + self.id)
 
 		def __gt__(self, other):
+			""" We order only by tags """
 			return cmp(self.tag, other.tag) == 1
 
 
@@ -50,6 +64,11 @@ class ImageHistory(object):
 
 	@staticmethod
 	def fromjson(json):
+		"""Parse :class:`ImageHistory` from `json`
+
+		:param json: `json object` of `tag`, `id` pairs
+		:return: :class:`ImageHistory` object with the parsed history
+		"""
 		hist = ImageHistory([])
 		for k, v in json.iteritems():
 			hist.images.append(ImageHistory.Entry(k, v))		
@@ -63,19 +82,30 @@ class ImageHistory(object):
 				)
 
 	def getimages(self):
+		""" A `list` of :class:`Entry` entries """
 		return self.images
 
 	def printout(self):
+		""" Print all :class:`Entry` entries """
 		for n, img in enumerate(sorted(self.images)):
 			print "  %s" % (img)
 
 
 class HistoryDiff(object):
+	"""Compute a diff between two :class:`ImageHistory` objects
+
+	:param a: :class:`ImageHistory` A side
+	:param b: :class:`ImageHistory` B side
+	"""
 	def __init__(self, a, b):
 		self.a = a
 		self.b = b
 
 	def diff(self):
+		"""Compute the diff between `A` and `B`
+
+		:return: `tuple of lists` of :class:`Entry` object, or :class:`libdoug.values.EmptyDiff`
+		"""
 		a, b = set(self.a.getimages()), set(self.b.getimages())
 		if a == b:
 			return EmptyDiff
@@ -84,6 +114,7 @@ class HistoryDiff(object):
 
 	@staticmethod
 	def printout(delta):
+		""" Print value as returned by :meth:`diff` (sorted) """
 		left, right = delta
 		if left:
 			print '\n'.join(['  L '+str(i) for i in sorted(list(left))])

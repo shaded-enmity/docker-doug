@@ -20,42 +20,59 @@
 import requests
 
 class HTTPResponse(object):
+	"""A HTTP response encapsulation returned by :meth:`HTTPRequest.request`
+
+	:param request: The original :class:`HTTPRequest` object
+	:param response: The response object returned by `requests.get`
+	"""
 	def __init__(self, request, response):
-		""" """
 		self.request = request
 		self.response = response
 
 	def getcode(self):
-		""" """
+		""" HTTP status code """
 		return self.response.status_code
 
 	def getheader(self, key):
-		""" """
+		""" Get header by `key`
+		
+		:param key: `string` Header to retrieve
+		"""
 		return self.response.headers[key]
 
 	def getcontent(self):
-		""" """
+		""" Get the content / response body """
 		return self.response.text
 
 
 class HTTPRequest(object):
+	"""Initiate a HTTP request to a `url`
+	
+	:param url: `string` Target URL 
+	"""
 	def __init__(self, url):
-		""" """
 		self.url = url
 		self.headers = {}
 		self.auth = None
 
 	def addheader(self, key, value):
-		""" """
+		""" Add custom header `key` with value `value` """
 		self.headers[key] = value
 		return True
 
 	def addbauth(self, name, pw):
-		""" """
+		""" Add basic HTTP Auth options
+		
+		:param name: `string` Username
+		:param pw: `string` Password
+		"""
 		self.auth = (name, pw)
 		return True
 
 	def request(self):
-		""" """
+		""" Perform the actual request
+		
+		:returns: :class:`HTTPResponse` object
+		"""
 		res = requests.get(self.url, headers=self.headers, auth=self.auth)
 		return HTTPResponse(self, res)

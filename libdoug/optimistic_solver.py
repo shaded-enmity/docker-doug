@@ -21,6 +21,16 @@ from libdoug.conflict import ConflictSolver
 from libdoug.conflict_resolution import ResolutionType
 
 class OptimisticConflictSolver(ConflictSolver):
+	""" This sublcass of :class:`libdoug.conflict.ConflictSolver` class is called optimistic
+	because it works as follows:
+		
+		1) Push what's missing in the remote
+		2) Pull what's missing locally
+
+	Conflicts are solved by syncing both sides to be the same, it could also be called naive.
+
+	.. note:: `libdoug` also bundles other, more intricate solvers, such as the :class:`libdoug.vr_solver.VRConflictSolver`
+	"""
 	def handleleft(self, left, res):
 		for tag in left:
 			self.addresolution(res, ResolutionType.PUSH, (self.repo, tag.gettag()))

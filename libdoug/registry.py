@@ -18,7 +18,9 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
 import json
-from libdoug.decorators import *
+from libdoug.decorators import RequestTokenDecorator, \
+			UserCredentialsDecorator, \
+			http_request_decorate
 from libdoug.history import ImageHistory
 from libdoug.token import TokenCache, RequestToken
 from libdoug.http import HTTPRequest
@@ -26,6 +28,10 @@ from libdoug.api.remote_registry import repository_tags_get
 from libdoug.api.remote_hub import repository_list
 
 class Registry(object):
+	"""Provides encapsulation for interacting with the Docker registry.
+
+	:param registry: `string`, Domain name of the registry
+	"""
 	def __init__(self, registry):
 		self.cache = TokenCache()
 		self.cache.load('.tokencache.'+registry)
@@ -34,7 +40,12 @@ class Registry(object):
 	def getregistry(self):
 		return self.registry
 
-	def _ensuretoken(self, repo, user):	
+	def _ensuretoken(self, repo, user):
+		"""Make sure `user` has a token for `repo`
+
+		:param repo: `string`, Name of the repository
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		"""
 		cached = self.cache.gettokenfor(repo, user)
 		if cached:
 			return cached[0]
@@ -46,6 +57,13 @@ class Registry(object):
 		return token
 		
 	def querytags(self, repo, user):
+		"""Query the remote `repo` as `user` for a list
+		of all tags
+
+		:param repo: `string`, Target repository
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:return: ``JSON Object`` of (`Id`, `Tag`) pairs
+		"""
 		token = self._ensuretoken(repo, user)
 		url = repository_tags_get.formaturl('https://registry-1.'+self.registry, repo.split('/'))
 		tags_request = HTTPRequest(url)
@@ -62,7 +80,13 @@ class Registry(object):
 				
 		return None
 
-	def authtoken(self, repo , user):
+	def authtoken(self, repo, user):
+		"""Performs authentication for `repo` as `user`
+		
+		:param repo: `string`, Target repository
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:return: A valid :class:`libdoug.token.RequestToken` or ``None`` on error
+		"""
 		url = repository_list.formaturl('https://index.'+self.registry, repo.split('/'))
 		login_request = HTTPRequest(url)
 		success = http_request_decorate(login_request, UserCredentialsDecorator(user))
