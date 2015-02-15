@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import argparse, os, shlex
+import argparse, os, shlex, json, shutil, subprocess
 from libdoug.docker_api import DockerLocal, UserInfo
 from libdoug.history import ImageHistory, HistoryDiff
 from libdoug.registry import Registry
@@ -29,6 +29,8 @@ from libdoug.graph import DependencyType
 from libdoug.values import EmptyDiff, RootImage
 from libdoug.utils import Console, get_image, wipe_newlines
 from libdoug.api.flags import parse_cli
+from libdoug.http import HTTPRequest
+from libdoug.decorators import http_request_decorate, RequestTokenDecorator
 
 docker, registry, user = DockerLocal(), None, None
 
@@ -91,6 +93,75 @@ def dockercli_action(args):
 	print 'Context: ', cli.context
 	print 'Workdir: ', os.getcwd()
 
+
+def _get_filetype(path):
+	return os.popen2('file ' + path)[1].readline()
+
+def squash_images(chain, repo, tag):
+	os.mkdir('_staged')
+	print ''
+	print '        Layers are being squashed.'
+	for img in chain:
+		path = '_staged/'+img['id']
+		filepath = path + '/layer.tar'
+		os.mkdir(path)
+
+		ftype = _get_filetype(img['id'])
+		if 'tar' in ftype:
+			shutil.copyfile(img['id'], filepath)
+		elif 'gzip' in ftype:
+			with open(filepath, 'a') as f:
+				subprocess.call(['gzip',  '-cd', img['id']], stdout=f)
+		else:
+			raise Exception('Invalid filetype: ' + ftype)
+
+		shutil.copyfile(img['id']+'.json', path+'/json')
+		with open(path+'/VERSION', 'a') as f:
+			f.write('1.0')
+
+	if repo and tag:
+		with open('_staged/repositories', 'a') as f:
+			json.dump({repo: {tag: chain[0]['id']}}, f)
+
+	F_NULL = open(os.devnull, 'w')
+	tar = subprocess.Popen(['tar', '-cf', 'image.tar', '.'], stderr=F_NULL,  cwd='_staged')
+	if tar.wait() == 0:
+		shutil.copyfile('_staged/image.tar', 'image.tar')
+		print ''
+		print 'DONE!'
+	else:
+		print 'Bad return code from Tar:', tar.returncode
+
+
+def pullid_action(args):
+	md = registry.pullmetadata(args.id, 'pavelo/doug', user)
+	if not md:
+		raise Exception('Couldn\'t get metadata')
+
+	chain = [md]
+	while 'parent' in md:
+		md = registry.pullmetadata(md['parent'], 'pavelo/doug', user)
+		chain.append(md)
+
+	print 'Layers:', '\n        '.join([i['id']+' = '+(str(i['Size']) if 'Size' in i else '0')+'B' for i in chain])
+
+	print ''
+	print '-' * Console.width()
+	print ''
+
+	for img in chain:
+		img_id = img['id']
+		filename = img_id + '.json'
+		with open(filename, 'a') as f:
+			json.dump(img, f) 
+			print '       ', filename, ' [SAVED]'
+		registry.pulldata(img_id, 'pavelo/doug', user)
+
+	repo, tag = None, None
+	if args.tag.find(':') != -1:
+		repo, tag = args.tag.split(':', 1)
+	squash_images(chain, repo, tag)
+
 def cli_command(args):
 	action = args.action.replace('-', '')
 	actionfunc = globals()[action+'_action']
@@ -119,6 +190,10 @@ if __name__ == '__main__':
 	depparser = subargs.add_parser('dependencies', help='Visualize dependencies of target Image')
 	depparser.add_argument('image', help='Target image ID or Repo[:Tag]')
 
+	pullidparser = subargs.add_parser('pullid', help='Pull image from registry by Image ID')
+	pullidparser.add_argument('-t', '--tag', help='Full repo/name:tag', default='')
+	pullidparser.add_argument('id', help='Image ID')
+
 	updateparser = subargs.add_parser('update', help='Update Local/Remote tags')
 	updateparser.add_argument('-s', '--solver', help='Solver to use (vr = Version-Release)', default='optimistic', choices=['optimistic', 'vr'])
 	updateparser.add_argument('repo', help='Target repository')
@@ -129,7 +204,7 @@ if __name__ == '__main__':
 			parsed.repo = "stackbrew/" + parsed.repo
 	registry = Registry(parsed.registry)
 
-	if parsed.action in ['update', 'dump-remote']:
+	if parsed.action in ['update', 'dump-remote', 'pullid']:
 		if parsed.user == None:
 			parsed.user, parsed.password, parsed.email = wipe_newlines(open(os.getenv("HOME") + '/.douguserinfo').readline().split(':'))
 	user = UserInfo(parsed.user, parsed.password, parsed.email)

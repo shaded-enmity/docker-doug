@@ -24,7 +24,8 @@ from libdoug.decorators import RequestTokenDecorator, \
 from libdoug.history import ImageHistory
 from libdoug.token import TokenCache, RequestToken
 from libdoug.http import HTTPRequest
-from libdoug.api.remote_registry import repository_tags_get
+from libdoug.api.remote_registry import repository_tags_get, \
+	image_layer_get_json, image_layer_get
 from libdoug.api.remote_hub import repository_list
 
 class Registry(object):
@@ -56,6 +57,43 @@ class Registry(object):
 
 		return token
 		
+	def pulldata(self, image_id, repo, user):
+		if len(image_id) != 64:
+			raise ValueError("Full image ID must be supplied")
+
+		url = image_layer_get.formaturl('https://registry-1.'+self.getregistry(), [image_id])
+		token = self._ensuretoken(repo, user)
+		img_request = HTTPRequest(url)
+		success = http_request_decorate(img_request, RequestTokenDecorator(token))
+		if success:
+			response = img_request.requeststream(image_id)
+			if response.getcode() == 200:
+				pass
+			else:
+				print '  Code', response.getcode()
+				print '  Content: ', response.getcontent()
+		else:
+			raise ValueError('Invalid decoration')
+
+	def pullmetadata(self, image_id, repo, user):
+		if len(image_id) != 64:
+			raise ValueError("Full image ID must be supplied")
+
+		url = image_layer_get_json.formaturl('https://registry-1.'+self.getregistry(), [image_id])
+		token = self._ensuretoken(repo, user)
+		img_request = HTTPRequest(url)
+		success = http_request_decorate(img_request, RequestTokenDecorator(token))
+		if success:
+			response = img_request.request()
+
+			if response.getcode() == 200:
+				return json.loads(response.getcontent())
+			else:
+				print '  Code', response.getcode()
+				print '  Content: ', response.getcontent()
+		else:
+			raise ValueError('Invalid decoration')
+
 	def querytags(self, repo, user):
 		"""Query the remote `repo` as `user` for a list
 		of all tags

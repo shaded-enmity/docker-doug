@@ -18,6 +18,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
 import requests
+from clint.textui import progress
 
 class HTTPResponse(object):
 	"""A HTTP response encapsulation returned by :meth:`HTTPRequest.request`
@@ -76,3 +77,13 @@ class HTTPRequest(object):
 		"""
 		res = requests.get(self.url, headers=self.headers, auth=self.auth)
 		return HTTPResponse(self, res)
+
+	def requeststream(self, savepath):
+		r = requests.get(self.url, headers=self.headers, stream=True)
+		with open(savepath, 'wb') as f:
+			total_length = int(r.headers.get('content-length'))
+			for chunk in progress.bar(r.iter_content(chunk_size=1024), label='        ',  expected_size=(total_length/1024) + 1, width=63): 
+				if chunk:
+			    		f.write(chunk)
+			    		f.flush()
+		return HTTPResponse(self, r)
