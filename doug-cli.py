@@ -129,6 +129,13 @@ def squash_images(chain, repo, tag):
 		shutil.copyfile('_staged/image.tar', 'image.tar')
 		print ''
 		print 'DONE!'
+		try:
+			shutil.rmtree('_staged')
+			for img in chain:
+				os.remove(img['id'])
+				os.remove(img['id']+'.json')
+		except:
+			print 'Cleanup failed ...'
 	else:
 		print 'Bad return code from Tar:', tar.returncode
 
