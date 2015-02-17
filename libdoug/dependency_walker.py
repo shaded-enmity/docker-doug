@@ -22,9 +22,9 @@ from libdoug.graph import GraphNode, TreeState
 def graph_walk_callback(image, ts, islast):
 	"""Implements a generic callback used during walking the graph
 
-	:param image: - `dict`, Image Dictionary
-	:param ts: :class:`libdoug.graph.TreeState` - State of the tree
-	:param islast: - `bool`, Denotes a leaf node
+	:param dict image: Image Dictionary
+	:param libdoug.graph.TreeState ts: State of the tree
+	:param bool islast: Denotes a leaf node
 	"""
 	pass
 
@@ -34,8 +34,8 @@ def _print_callback(image, ts, islast):
 class DependencyWalker(object):
 	""" Tree-drawing dependency walker
 
-	:param tid: - `string`, ID for which walk the dependencies
-	:param deptype: - :class:`libdoug.graph.DependencyType`, Image or Container
+	:param str tid: ID for which walk the dependencies
+	:param libdoug.graph.DependencyType deptype: Image or Container
 	"""
 	def __init__(self, tid, deptype):
 		self.id = tid
@@ -44,9 +44,10 @@ class DependencyWalker(object):
 	def _findchildren(self, images, tid=None):
 		"""Find children nodes of `tid` or `self`.`id`
 
-		:param images: `dict`, Docker images to search
-		:param tid: `string`, ID whose children to get
+		:param dict[str, dict] images: Docker images to search
+		:param str tid: ID whose children to get
 		:return: `List` of `Image Dictionaries`
+		:rtype: list[dict[str, dict]]
 		"""
 		tid = tid if tid else self.id
 		return [v for k, v in images.iteritems() if v['ParentId'] == tid]
@@ -54,8 +55,9 @@ class DependencyWalker(object):
 	def _imagechain(self, allimages):
 		"""Find all the parents of `self`.`id` image
 
-		:param allimages: `dict`, All Docker images
+		:param dict[str, dict] allimages: All Docker images
 		:return: `List` of `Image Dictionaries`
+		:rtype: list[dict[str, dict]]
 		"""
 		img = allimages[self.id]
 		chain = [img]
@@ -67,8 +69,9 @@ class DependencyWalker(object):
 	def _listtomap(self, allimages):
 		"""Convert input list into a `Id`-`Image Dictionary` mapping
 
-		:param allimages: `list`, Flat list of all Docker images
+		:param list allimages: Flat list of all Docker images
 		:return: `Id`-`Image Dictionary` `dict` 
+		:rtype: dict[str, dict]
 		"""
 		return {img['Id']: img for img in allimages}
 
@@ -82,9 +85,10 @@ class DependencyWalker(object):
 	def makegraph(self, root, allimages):
 		"""Make a graph of `root` nodes children
 
-		:param root: :class:`libdoug.graph.GraphNode`, From where to start constructing the graph
-		:param allimages: `dict`, All Docker images
-		:return: :class:`libdoug.graph.GraphNode`, `root` node
+		:param libdoug.graph.GraphNode root: From where to start constructing the graph
+		:param dict[str, dict] allimages: `dict`, All Docker images
+		:return: `root` node
+		:rtype: libdoug.graph.GraphNode
 		"""
 		children = self._findchildren(allimages, root.getid())
 		for c in children:
@@ -94,10 +98,10 @@ class DependencyWalker(object):
 	def walkgraphrecurse(self, root, allimages, ts, walkcb):
 		"""Walk the graph from `root`
 
-		:param root: :class:`libdoug.graph.GraphNode`, From where to start constructing the graph
-		:param allimages: `dict`, All Docker images
-		:param ts: :class:`libdoug.graph.TreeState`, Current state of the tree
-		:param walkcb: :func:`graph_walk_callback`, Used during graph walk
+		:param libdoug.graph.GraphNode root: From where to start constructing the graph
+		:param dict[str, dict] allimages: All Docker images
+		:param libdoug.graph.TreeState ts: Current state of the tree
+		:param graph_walk_callback walkcb: Used during graph walk
 		"""
 		allchildren = [v for v in root.getchildren()]
 		nchildren, link, img = len(allchildren), len(allchildren) > 1, allimages[root.getid()]
@@ -128,7 +132,7 @@ class DependencyWalker(object):
 	def printtree(self, allimages):
 		"""Print the graph as nicely structured tree
 
-		:param allimages: `dict`, All Docker images
+		:param dict[str, dict] allimages: All Docker images
 		"""
 		rootnode, ts = GraphNode(None, self.id), TreeState()
 		self.makegraph(rootnode, allimages)
@@ -137,7 +141,7 @@ class DependencyWalker(object):
 	def walk(self, allimages):
 		"""Bootstrap the walker and just printout for now
 
-		:param allimages: `list`, All Docker images
+		:param list[dict] allimages: All Docker images
 		"""
 		allimages = self._listtomap(allimages)
 		ancestry = self._imagechain(allimages)

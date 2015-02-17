@@ -26,7 +26,7 @@ class RequestDecorator(object):
 class RequestTokenDecorator(RequestDecorator):
 	""" Decorates the request with auth token 
 	
-	:param token: :class:`libdoug.token.RequestToken <RequestToken>` Token to decorate with
+	:param libdoug.token.RequestToken token: Token to decorate with
 	"""
 	def __init__(self, token):
 		self.token = token
@@ -46,7 +46,7 @@ class RequestTokenDecorator(RequestDecorator):
 class UserCredentialsDecorator(RequestDecorator):
 	""" Decorates the request with user credentials and necessary header 
 	
-	:param user: :class:`libdoug.docker_api.UserInfo <UserInfo>` User to decorate with
+	:param libdoug.docker_api.UserInfo user: User to decorate with
 	"""
 	def __init__(self, user):
 		self.user = user
