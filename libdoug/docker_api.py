@@ -22,9 +22,9 @@ import docker
 class UserInfo(object):
 	"""Stores authentication info for DockerHub
 
-	:param name: `string` User name
-	:param password: `string` Password
-	:param email: `string` Email
+	:param str name: User name
+	:param str password: Password
+	:param str email: Email
 	"""
 	def __init__(self, name, password, email):
 		self.name = name
@@ -63,7 +63,7 @@ class DockerLocal(object):
 	def getimages(self, repo):
 		"""Get images in the given `repo`
 
-		:param repo: - `string`, `repo`/`name`
+		:param str repo: - `repo`/`name`
 		"""
 		return self.docker.images(self._wipe(repo))
 
@@ -79,35 +79,35 @@ class DockerLocal(object):
 		""" Remove the `stackbrew/` user part 
 		if it's an official image 
 
-		:param v: - `string`, value to wipe
+		:param str v: value to wipe
 		"""
 		return v if not v.startswith(self.nulluser) else v[len(self.nulluser):]
 
 	def tag(self, args):
 		"""Tag `image` in a `repository` with a new `tag` 
 		
-		:param args: [`imageID`, `repoName`, `tag`] - List of arguments
+		:param list args: [`imageID`, `repoName`, `tag`] - List of arguments
 		"""
 		return self.docker.tag(image=args[0], repository=self._wipe(args[1]), tag=args[2], force=True)
 
 	def push(self, args):
 		"""Push a `tag` into `repository`
 		
-		:param args: [`repoName`, `tag`] - List of arguments
+		:param list args: [`repoName`, `tag`] - List of arguments
 		"""
 		return self.docker.push(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def pull(self, args):
 		"""Pull a `tag` from `repository`
 		
-		:param args: [`repoName`, `tag`] - List of arguments
+		:param list args: [`repoName`, `tag`] - List of arguments
 		"""
 		return self.docker.pull(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def removeimage(self, args):
 		"""Remove `name`:`tag` from repository
 		
-		:param args: [`name`, `tag`] - List of arguments
+		:param list args: [`name`, `tag`] - List of arguments
 		"""
 		return self.docker.remove_image(image=self._wipe(args[0])+':'+args[1], force=True)
 

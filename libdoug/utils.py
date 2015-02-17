@@ -29,9 +29,10 @@ def get_image(idname, allimages):
 	``name`` search. Both ``id`` and ``name`` can be specified partially
 	but an :class:`SollipsistException` is thrown if multiple images are found.
 
-	:param idname: `string` ``image id`` or ``repo:tag``
-	:param allimages: `list` of all images
+	:param str idname: ``image id`` or ``repo:tag``
+	:param list allimages: `list` of all images
 	:return: The full ``image id`` or ``None`` if not found
+	:rtype: str
 	"""
 	if len(idname) != HashLength:
 		matching = [img for img in allimages if img['Id'].startswith(idname)]
@@ -55,6 +56,8 @@ def wipe_newlines(data):
 	Works recursively on list of strings too
 	
 	:param data: `str` or `list` 
+	:type data: str or list
+	:rtype: str or list
 	"""
 	if isinstance(data, list):
 		return [wipe_newlines(item) for item in data]
@@ -63,8 +66,9 @@ def wipe_newlines(data):
 def flag_gen(num):
 	"""Generate ``num`` bit flags 
 	
-	:param num: `int` upper bound 
+	:param int num: `int` upper bound 
 	:return: `list` of bit flags such as ``len([0, 1, 2, 4 ...]) == num``
+	:rtype: list
 	"""
 	return [0]+[1<<x for x in range(0, num-1)]
 

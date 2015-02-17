@@ -30,7 +30,7 @@ from libdoug.api.remote_hub import repository_list
 class Registry(object):
 	"""Provides encapsulation for interacting with the Docker registry.
 
-	:param registry: `string`, Domain name of the registry
+	:param str registry: Domain name of the registry
 	"""
 	def __init__(self, registry):
 		self.cache = TokenCache()
@@ -43,8 +43,10 @@ class Registry(object):
 	def _ensuretoken(self, repo, user):
 		"""Make sure `user` has a token for `repo`
 
-		:param repo: `string`, Name of the repository
-		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param str repo: Name of the repository
+		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:return: A valid ``RequestToken``
+		:rtype: libdoug.token.RequestToken
 		"""
 		cached = self.cache.gettokenfor(repo, user)
 		if cached:
@@ -60,9 +62,10 @@ class Registry(object):
 		"""Query the remote `repo` as `user` for a list
 		of all tags
 
-		:param repo: `string`, Target repository
-		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param str repo: Target repository
+		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
 		:return: ``JSON Object`` of (`Id`, `Tag`) pairs
+		:rtype: dict
 		"""
 		token = self._ensuretoken(repo, user)
 		url = repository_tags_get.formaturl('https://registry-1.'+self.registry, repo.split('/'))
@@ -83,9 +86,10 @@ class Registry(object):
 	def authtoken(self, repo, user):
 		"""Performs authentication for `repo` as `user`
 		
-		:param repo: `string`, Target repository
-		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param str repo: Target repository
+		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
 		:return: A valid :class:`libdoug.token.RequestToken` or ``None`` on error
+		:rtype: libdoug.token.RequestToken
 		"""
 		url = repository_list.formaturl('https://index.'+self.registry, repo.split('/'))
 		login_request = HTTPRequest(url)

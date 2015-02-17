@@ -23,13 +23,13 @@ class ImageHistory(object):
 	"""Object that holds a full list of tags of
 	a given `repository`.
 
-	:param images: `list` of `Image Dictionary`
+	:param list images: `list` of `Image Dictionary`
 	"""
 	class Entry(object):
 		"""Provides unique mapping/ordering of `Image Id`'s and `tag`'s.
 
-		:param tag: `string`, A tag
-		:param imgid: `string`, An image id
+		:param str tag: A tag
+		:param str imgid: An image id
 		"""
 		def __init__(self, tag, imgid):
 			self.tag = tag
@@ -66,8 +66,9 @@ class ImageHistory(object):
 	def fromjson(json):
 		"""Parse :class:`ImageHistory` from `json`
 
-		:param json: `json object` of `tag`, `id` pairs
+		:param str json: `json object` of `tag`, `id` pairs
 		:return: :class:`ImageHistory` object with the parsed history
+		:rtype: ImageHistory
 		"""
 		hist = ImageHistory([])
 		for k, v in json.iteritems():
@@ -94,8 +95,8 @@ class ImageHistory(object):
 class HistoryDiff(object):
 	"""Compute a diff between two :class:`ImageHistory` objects
 
-	:param a: :class:`ImageHistory` A side
-	:param b: :class:`ImageHistory` B side
+	:param ImageHistory a: :class:`ImageHistory` A side
+	:param ImageHistory b: :class:`ImageHistory` B side
 	"""
 	def __init__(self, a, b):
 		self.a = a
@@ -105,6 +106,7 @@ class HistoryDiff(object):
 		"""Compute the diff between `A` and `B`
 
 		:return: `tuple of lists` of :class:`Entry` object, or :class:`libdoug.values.EmptyDiff`
+		:rtype: (list, list)
 		"""
 		a, b = set(self.a.getimages()), set(self.b.getimages())
 		if a == b:

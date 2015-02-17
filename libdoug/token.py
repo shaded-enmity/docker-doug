@@ -31,10 +31,10 @@ class AccessValue(object):
 class RequestToken(object):
 	"""Token to get us talking with the registry 
 	
-	:param repo: `string` Repository for which the token is valid
-	:param user: :class:`libdoug.docker_api.UserInfo` User info
-	:param token: `string` Token value
-	:param access: :class:`AccessValue`, ``AccessValue.Read`` by default
+	:param str repo: Repository for which the token is valid
+	:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo` User info
+	:param str token: Token value
+	:param AccessValue access: :class:`AccessValue`, ``AccessValue.Read`` by default
 	"""
 	def __init__(self, repo, user, token, access=AccessValue.Read):
 		self.token = token
@@ -63,7 +63,7 @@ class TokenCache(object):
 	class CacheEntry(object):
 		"""Cache each token for ``entry_lifespan``
 		
-		:param token: :class:`RequestToken`
+		:param RequestToken token: :class:`RequestToken`
 		"""
 		def __init__(self, token):
 			self.token = token
@@ -110,7 +110,7 @@ class TokenCache(object):
 	def addtoken(self, token):
 		"""Add token to the cache
 		
-		:param token: :class:`RequestToken` """
+		:param RequestToken token: :class:`RequestToken` """
 		repo = token.getrepo()
 		if repo in self.cache:
 			self.cache[repo].append(self.CacheEntry(token))
@@ -121,8 +121,8 @@ class TokenCache(object):
 	def gettokenfor(self, repo, user):
 		"""Find valid tokens for ``user`` and ``repo``
 
-		:param repo: `string` 
-		:param user: :class:`UserInfo`
+		:param str repo: `string` 
+		:param libdoug.docker_api.UserInfo user: :class:`UserInfo`
 		"""
 		if not repo in self.cache:
 			return None
@@ -142,7 +142,7 @@ class TokenCache(object):
 	def save(self, savefile='.tokencache'):
 		"""Save the token cache to a file
 
-		:param savefile: Relative to ``$HOME`` directory
+		:param str savefile: Relative to ``$HOME`` directory
 		"""
 		fd = open(os.getenv("HOME") +'/'+savefile, 'w+')
 		dump = json.dump({k:[w.asdictionary() for w in v] for k,v in self.cache.iteritems()}, fd, separators=(',', ':'))
@@ -154,7 +154,7 @@ class TokenCache(object):
 	def load(self, loadfile='.tokencache'):
 		"""Load the token cache from a file
 		
-		:param loadfile: Relative to ``$HOME`` directory
+		:param str loadfile: Relative to ``$HOME`` directory
 		"""
 		fd = open(os.getenv("HOME") + '/' + loadfile, 'a+')
 		try:

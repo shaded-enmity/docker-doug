@@ -22,8 +22,8 @@ import requests
 class HTTPResponse(object):
 	"""A HTTP response encapsulation returned by :meth:`HTTPRequest.request`
 
-	:param request: The original :class:`HTTPRequest` object
-	:param response: The response object returned by `requests.get`
+	:param HTTPRequest request: The original :class:`HTTPRequest` object
+	:param requests.Response response: The response object returned by `requests.get`
 	"""
 	def __init__(self, request, response):
 		self.request = request
@@ -36,7 +36,7 @@ class HTTPResponse(object):
 	def getheader(self, key):
 		""" Get header by `key`
 		
-		:param key: `string` Header to retrieve
+		:param str key: Header to retrieve
 		"""
 		return self.response.headers[key]
 
@@ -48,7 +48,7 @@ class HTTPResponse(object):
 class HTTPRequest(object):
 	"""Initiate a HTTP request to a `url`
 	
-	:param url: `string` Target URL 
+	:param str url: Target URL 
 	"""
 	def __init__(self, url):
 		self.url = url
@@ -63,8 +63,8 @@ class HTTPRequest(object):
 	def addbauth(self, name, pw):
 		""" Add basic HTTP Auth options
 		
-		:param name: `string` Username
-		:param pw: `string` Password
+		:param str name: Username
+		:param str pw: Password
 		"""
 		self.auth = (name, pw)
 		return True
@@ -73,6 +73,7 @@ class HTTPRequest(object):
 		""" Perform the actual request
 		
 		:returns: :class:`HTTPResponse` object
+		:rtype: HTTPRespomse
 		"""
 		res = requests.get(self.url, headers=self.headers, auth=self.auth)
 		return HTTPResponse(self, res)
