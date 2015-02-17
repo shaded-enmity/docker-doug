@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import argparse, os, shlex, json, shutil, subprocess
+import argparse, os, shlex, json, shutil, subprocess, tempfile
 from libdoug.docker_api import DockerLocal, UserInfo
 from libdoug.history import ImageHistory, HistoryDiff
 from libdoug.registry import Registry
@@ -98,11 +98,11 @@ def _get_filetype(path):
 	return os.popen2('file ' + path)[1].readline()
 
 def squash_images(chain, repo, tag, outfile):
-	os.mkdir('_staged')
+	tdir = tempfile.mkdtemp()
 	print ''
 	print '        Layers are being squashed.'
 	for img in chain:
-		path = '_staged/'+img['id']
+		path = tdir + '/'+img['id']
 		filepath = path + '/layer.tar'
 		os.mkdir(path)
 
@@ -120,17 +120,17 @@ def squash_images(chain, repo, tag, outfile):
 			f.write('1.0')
 
 	if repo and tag:
-		with open('_staged/repositories', 'a') as f:
+		with open(tdir+'/repositories', 'a') as f:
 			json.dump({repo: {tag: chain[0]['id']}}, f)
 
 	F_NULL = open(os.devnull, 'w')
-	tar = subprocess.Popen(['tar', '-cf', outfile, '.'], stderr=F_NULL,  cwd='_staged')
+	tar = subprocess.Popen(['tar', '-cf', outfile, '.'], stderr=F_NULL,  cwd=tdir)
 	if tar.wait() == 0:
-		shutil.copyfile('_staged/'+outfile, outfile)
+		shutil.copyfile(tdir+'/'+outfile, outfile)
 		print ''
 		print 'DONE!'
 		try:
-			shutil.rmtree('_staged')
+			shutil.rmtree(tdir)
 			for img in chain:
 				os.remove(img['id'])
 				os.remove(img['id']+'.json')
