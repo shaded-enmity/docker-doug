@@ -97,7 +97,7 @@ def dockercli_action(args):
 def _get_filetype(path):
 	return os.popen2('file ' + path)[1].readline()
 
-def squash_images(chain, repo, tag):
+def squash_images(chain, repo, tag, outfile):
 	os.mkdir('_staged')
 	print ''
 	print '        Layers are being squashed.'
@@ -124,9 +124,9 @@ def squash_images(chain, repo, tag):
 			json.dump({repo: {tag: chain[0]['id']}}, f)
 
 	F_NULL = open(os.devnull, 'w')
-	tar = subprocess.Popen(['tar', '-cf', 'image.tar', '.'], stderr=F_NULL,  cwd='_staged')
+	tar = subprocess.Popen(['tar', '-cf', outfile, '.'], stderr=F_NULL,  cwd='_staged')
 	if tar.wait() == 0:
-		shutil.copyfile('_staged/image.tar', 'image.tar')
+		shutil.copyfile('_staged/'+outfile, outfile)
 		print ''
 		print 'DONE!'
 		try:
@@ -168,7 +168,7 @@ def pullid_action(args):
 	r, t = None, None
 	if args.tag.find(':') != -1:
 		r, t = args.tag.split(':', 1)
-	squash_images(chain, r, t)
+	squash_images(chain, r, t, args.output)
 
 def cli_command(args):
 	action = args.action.replace('-', '')
@@ -200,6 +200,7 @@ if __name__ == '__main__':
 
 	pullidparser = subargs.add_parser('pullid', help='Pull image from registry by Image ID')
 	pullidparser.add_argument('-t', '--tag', help='Full repo/name:tag', default='')
+	pullidparser.add_argument('-o', '--output', help='Output file', default='image.tar')
 	pullidparser.add_argument('-r', '--repo', help='Repository from which we\'re pulling', default='')
 	pullidparser.add_argument('id', help='Image ID')
 
