@@ -141,13 +141,14 @@ def squash_images(chain, repo, tag):
 
 
 def pullid_action(args):
-	md = registry.pullmetadata(args.id, 'pavelo/doug', user)
+	repo = args.repo if args.repo else 'library/scratch'
+	md = registry.pullmetadata(args.id, repo, user)
 	if not md:
 		raise Exception('Couldn\'t get metadata')
 
 	chain = [md]
 	while 'parent' in md:
-		md = registry.pullmetadata(md['parent'], 'pavelo/doug', user)
+		md = registry.pullmetadata(md['parent'], repo, user)
 		chain.append(md)
 
 	print 'Layers:', '\n        '.join([i['id']+' = '+(str(i['Size']) if 'Size' in i else '0')+'B' for i in chain])
@@ -162,12 +163,12 @@ def pullid_action(args):
 		with open(filename, 'a') as f:
 			json.dump(img, f) 
 			print '       ', filename, ' [SAVED]'
-		registry.pulldata(img_id, 'pavelo/doug', user)
+		registry.pulldata(img_id, repo, user)
 
-	repo, tag = None, None
+	r, t = None, None
 	if args.tag.find(':') != -1:
-		repo, tag = args.tag.split(':', 1)
-	squash_images(chain, repo, tag)
+		r, t = args.tag.split(':', 1)
+	squash_images(chain, r, t)
 
 def cli_command(args):
 	action = args.action.replace('-', '')
@@ -199,6 +200,7 @@ if __name__ == '__main__':
 
 	pullidparser = subargs.add_parser('pullid', help='Pull image from registry by Image ID')
 	pullidparser.add_argument('-t', '--tag', help='Full repo/name:tag', default='')
+	pullidparser.add_argument('-r', '--repo', help='Repository from which we\'re pulling', default='')
 	pullidparser.add_argument('id', help='Image ID')
 
 	updateparser = subargs.add_parser('update', help='Update Local/Remote tags')
@@ -207,7 +209,7 @@ if __name__ == '__main__':
 
 	parsed = args.parse_args()
 	if hasattr(parsed, 'repo'):
-		if parsed.repo.count('/') == 0:
+		if parsed.repo.count('/') == 0 and parsed.repo != '':
 			parsed.repo = "stackbrew/" + parsed.repo
 	registry = Registry(parsed.registry)
 
