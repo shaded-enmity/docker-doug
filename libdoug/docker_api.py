@@ -22,9 +22,12 @@ import docker
 class UserInfo(object):
 	"""Stores authentication info for DockerHub
 
-	:param str name: User name
-	:param str password: Password
-	:param str email: Email
+	:param name: User name
+	:type  name: str
+	:param password: Password
+	:type  password: str
+	:param email: Email
+	:type  email: str
 	"""
 	def __init__(self, name, password, email):
 		self.name = name
@@ -63,7 +66,8 @@ class DockerLocal(object):
 	def getimages(self, repo):
 		"""Get images in the given `repo`
 
-		:param str repo: - `repo`/`name`
+		:param repo: - `repo`/`name`
+		:type  repo: str
 		"""
 		return self.docker.images(self._wipe(repo))
 
@@ -79,35 +83,40 @@ class DockerLocal(object):
 		""" Remove the `stackbrew/` user part 
 		if it's an official image 
 
-		:param str v: value to wipe
+		:param v: value to wipe
+		:type  v: str
 		"""
 		return v if not v.startswith(self.nulluser) else v[len(self.nulluser):]
 
 	def tag(self, args):
 		"""Tag `image` in a `repository` with a new `tag` 
 		
-		:param list args: [`imageID`, `repoName`, `tag`] - List of arguments
+		:param args: [`imageID`, `repoName`, `tag`] - List of arguments
+		:type  args: list
 		"""
 		return self.docker.tag(image=args[0], repository=self._wipe(args[1]), tag=args[2], force=True)
 
 	def push(self, args):
 		"""Push a `tag` into `repository`
 		
-		:param list args: [`repoName`, `tag`] - List of arguments
+		:param args: [`repoName`, `tag`] - List of arguments
+		:type  args: list
 		"""
 		return self.docker.push(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def pull(self, args):
 		"""Pull a `tag` from `repository`
 		
-		:param list args: [`repoName`, `tag`] - List of arguments
+		:param args: [`repoName`, `tag`] - List of arguments
+		:type  args: list
 		"""
 		return self.docker.pull(repository=self._wipe(args[0]), tag=args[1], stream=True)
 
 	def removeimage(self, args):
 		"""Remove `name`:`tag` from repository
 		
-		:param list args: [`name`, `tag`] - List of arguments
+		:param args: [`name`, `tag`] - List of arguments
+		:type  args: list
 		"""
 		return self.docker.remove_image(image=self._wipe(args[0])+':'+args[1], force=True)
 

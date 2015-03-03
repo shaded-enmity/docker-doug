@@ -29,8 +29,10 @@ def get_image(idname, allimages):
 	``name`` search. Both ``id`` and ``name`` can be specified partially
 	but an :class:`SollipsistException` is thrown if multiple images are found.
 
-	:param str idname: ``image id`` or ``repo:tag``
-	:param list allimages: `list` of all images
+	:param idname: ``image id`` or ``repo:tag``
+	:type  idname: str
+	:param allimages: `list` of all images
+	:type  allimages: list
 	:return: The full ``image id`` or ``None`` if not found
 	:rtype: str
 	"""
@@ -66,7 +68,8 @@ def wipe_newlines(data):
 def flag_gen(num):
 	"""Generate ``num`` bit flags 
 	
-	:param int num: `int` upper bound 
+	:param num: `int` upper bound 
+	:type  num: int
 	:return: `list` of bit flags such as ``len([0, 1, 2, 4 ...]) == num``
 	:rtype: list
 	"""

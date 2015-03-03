@@ -29,10 +29,14 @@ class ConflictSolver(object):
 	""" :class:`ConflictSolver` is a base class for implementing
 	other conflict solvers.
 
-	:param list allimages: All local images
-	:param (list, list) delta: Delta information between ``Left``/``Right``
-	:param str repo: Name of the repository
-	:param libdoug.conflict_resolution.Resolution rt: Class representing conflict resolutions - :class:`libdoug.conflict_resolution.Resolution`
+	:param allimages: All local images
+	:type  allimages: list
+	:param delta: Delta information between ``Left``/``Right``
+	:type  delta: (list, list)
+	:param repo: Name of the repository
+	:type  repo: str
+	:param rt: Class representing conflict resolutions - :class:`libdoug.conflict_resolution.Resolution`
+	:type  rt: libdoug.conflict_resolution.Resolution 
 	"""
 	def __init__(self, allimages, delta, repo, rt=Resolution):
 		self.allimages = allimages
@@ -43,8 +47,10 @@ class ConflictSolver(object):
 	def handleleft(self, left, resolutions):
 		"""Handle `left` or (local) side of conflict
 
-		:param list left: List of tags to handle
-		:param list resolutions: Add resolutions to this list
+		:param left: List of tags to handle
+		:type  left: list
+		:param resolutions: Add resolutions to this list
+		:type  resolutions: list
 		:return: :class:`ConflictType.LEFT`
 		"""
 		return ConflictType.LEFT
@@ -52,8 +58,10 @@ class ConflictSolver(object):
 	def handleright(self, right, resolutions):
 		"""Handle `right` (remote) side of conflict
 
-		:param list right: List of tags to handle
-		:param list resolutions: Add resolutions to this list
+		:param right: List of tags to handle
+		:type  right: list
+		:param resolutions: Add resolutions to this list
+		:type  resolutions: list
 		:return: :class:`ConflictType.RIGHT`
 		"""
 		return ConflictType.RIGHT
@@ -61,7 +69,8 @@ class ConflictSolver(object):
 	def solve(self, resolutions=None):
 		"""Solve and return resolutions
 
-		:param list resolutions: `list`, Add resolutions to this list
+		:param resolutions: Add resolutions to this list
+		:type  resolutions: list
 		:return: List of resolutions
 		:rtype: list[libdoug.conflict_resolution.Resolution]
 		"""
@@ -70,8 +79,11 @@ class ConflictSolver(object):
 	def addresolution(self, resolutions, rtype, args):
 		"""Add resolution to a list of resolutions
 
-		:param list resolutions: Add resolutions to this list
-		:param libdoug.conflict_resolution.ResolutionType rtype: Type of the resolution
-		:param list args: Args to use during resolution
+		:param resolutions: Add resolutions to this list
+		:type  resolutions: list
+		:param rtype: Type of the resolution
+		:type  rtype: libdoug.conflict_resolution.ResolutionType
+		:param args: Args to use during resolution
+		:type  args: list
 		"""
 		resolutions.append(self.resolution_type(rtype, args))

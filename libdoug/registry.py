@@ -30,7 +30,8 @@ from libdoug.api.remote_hub import repository_list
 class Registry(object):
 	"""Provides encapsulation for interacting with the Docker registry.
 
-	:param str registry: Domain name of the registry
+	:param registry: Domain name of the registry
+	:type  registry: str
 	"""
 	def __init__(self, registry):
 		self.cache = TokenCache()
@@ -43,8 +44,10 @@ class Registry(object):
 	def _ensuretoken(self, repo, user):
 		"""Make sure `user` has a token for `repo`
 
-		:param str repo: Name of the repository
-		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param repo: Name of the repository
+		:type  repo: str
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:type  user: libdoug.docker_api.UserInfo 
 		:return: A valid ``RequestToken``
 		:rtype: libdoug.token.RequestToken
 		"""
@@ -62,8 +65,10 @@ class Registry(object):
 		"""Query the remote `repo` as `user` for a list
 		of all tags
 
-		:param str repo: Target repository
-		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param repo: Target repository
+		:type  repo: str
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:type  user: libdoug.docker_api.UserInfo 
 		:return: ``JSON Object`` of (`Id`, `Tag`) pairs
 		:rtype: dict
 		"""
@@ -86,8 +91,10 @@ class Registry(object):
 	def authtoken(self, repo, user):
 		"""Performs authentication for `repo` as `user`
 		
-		:param str repo: Target repository
-		:param libdoug.docker_api.UserInfo user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:param repo: Target repository
+		:type  repo: str
+		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User
+		:type  user: libdoug.docker_api.UserInfo 
 		:return: A valid :class:`libdoug.token.RequestToken` or ``None`` on error
 		:rtype: libdoug.token.RequestToken
 		"""
