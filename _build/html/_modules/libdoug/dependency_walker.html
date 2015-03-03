@@ -150,9 +150,12 @@
 <div class="viewcode-block" id="graph_walk_callback"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.graph_walk_callback">[docs]</a><span class="k">def</span> <span class="nf">graph_walk_callback</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">islast</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Implements a generic callback used during walking the graph</span>
 
-<span class="sd">	:param image: - `dict`, Image Dictionary</span>
-<span class="sd">	:param ts: :class:`libdoug.graph.TreeState` - State of the tree</span>
-<span class="sd">	:param islast: - `bool`, Denotes a leaf node</span>
+<span class="sd">	:param image: Image Dictionary</span>
+<span class="sd">	:type  image: dict</span>
+<span class="sd">	:param ts: State of the tree</span>
+<span class="sd">	:type  ts: libdoug.graph.TreeState</span>
+<span class="sd">	:param islast: Denotes a leaf node</span>
+<span class="sd">	:type  islast: bool</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">pass</span>
 </div>
@@ -162,8 +165,10 @@
 <div class="viewcode-block" id="DependencyWalker"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.DependencyWalker">[docs]</a><span class="k">class</span> <span class="nc">DependencyWalker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot; Tree-drawing dependency walker</span>
 
-<span class="sd">	:param tid: - `string`, ID for which walk the dependencies</span>
-<span class="sd">	:param deptype: - :class:`libdoug.graph.DependencyType`, Image or Container</span>
+<span class="sd">	:param tid: ID for which walk the dependencies</span>
+<span class="sd">	:type  tid: str</span>
+<span class="sd">	:param deptype: Image or Container</span>
+<span class="sd">	:type  deptype: libdoug.graph.DependencyType</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tid</span><span class="p">,</span> <span class="n">deptype</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">tid</span>
@@ -172,9 +177,12 @@
 	<span class="k">def</span> <span class="nf">_findchildren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">tid</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Find children nodes of `tid` or `self`.`id`</span>
 
-<span class="sd">		:param images: `dict`, Docker images to search</span>
-<span class="sd">		:param tid: `string`, ID whose children to get</span>
+<span class="sd">		:param images: Docker images to search</span>
+<span class="sd">		:type  images: dict[str, dict] </span>
+<span class="sd">		:param tid: ID whose children to get</span>
+<span class="sd">		:type  tid: str</span>
 <span class="sd">		:return: `List` of `Image Dictionaries`</span>
+<span class="sd">		:rtype: list[dict[str, dict]]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">tid</span> <span class="o">=</span> <span class="n">tid</span> <span class="k">if</span> <span class="n">tid</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
 		<span class="k">return</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">images</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s">&#39;ParentId&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tid</span><span class="p">]</span>
@@ -182,8 +190,10 @@
 	<span class="k">def</span> <span class="nf">_imagechain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allimages</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Find all the parents of `self`.`id` image</span>
 
-<span class="sd">		:param allimages: `dict`, All Docker images</span>
+<span class="sd">		:param allimages: All Docker images</span>
+<span class="sd">		:type  allimages: dict[str, dict] </span>
 <span class="sd">		:return: `List` of `Image Dictionaries`</span>
+<span class="sd">		:rtype: list[dict[str, dict]]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">img</span> <span class="o">=</span> <span class="n">allimages</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
 		<span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span><span class="p">]</span>
@@ -195,8 +205,10 @@
 	<span class="k">def</span> <span class="nf">_listtomap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allimages</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Convert input list into a `Id`-`Image Dictionary` mapping</span>
 
-<span class="sd">		:param allimages: `list`, Flat list of all Docker images</span>
+<span class="sd">		:param allimages: Flat list of all Docker images</span>
+<span class="sd">		:type  allimages: list</span>
 <span class="sd">		:return: `Id`-`Image Dictionary` `dict` </span>
+<span class="sd">		:rtype: dict[str, dict]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="p">{</span><span class="n">img</span><span class="p">[</span><span class="s">&#39;Id&#39;</span><span class="p">]:</span> <span class="n">img</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">allimages</span><span class="p">}</span>
 
@@ -210,9 +222,12 @@
 <div class="viewcode-block" id="DependencyWalker.makegraph"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.DependencyWalker.makegraph">[docs]</a>	<span class="k">def</span> <span class="nf">makegraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">allimages</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Make a graph of `root` nodes children</span>
 
-<span class="sd">		:param root: :class:`libdoug.graph.GraphNode`, From where to start constructing the graph</span>
+<span class="sd">		:param root: From where to start constructing the graph</span>
+<span class="sd">		:type  root: libdoug.graph.GraphNode </span>
 <span class="sd">		:param allimages: `dict`, All Docker images</span>
-<span class="sd">		:return: :class:`libdoug.graph.GraphNode`, `root` node</span>
+<span class="sd">		:type  allimages: dict[str, dict]</span>
+<span class="sd">		:return: `root` node</span>
+<span class="sd">		:rtype: libdoug.graph.GraphNode</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_findchildren</span><span class="p">(</span><span class="n">allimages</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">getid</span><span class="p">())</span>
 		<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
@@ -222,10 +237,14 @@
 <div class="viewcode-block" id="DependencyWalker.walkgraphrecurse"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.DependencyWalker.walkgraphrecurse">[docs]</a>	<span class="k">def</span> <span class="nf">walkgraphrecurse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">allimages</span><span class="p">,</span> <span class="n">ts</span><span class="p">,</span> <span class="n">walkcb</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Walk the graph from `root`</span>
 
-<span class="sd">		:param root: :class:`libdoug.graph.GraphNode`, From where to start constructing the graph</span>
-<span class="sd">		:param allimages: `dict`, All Docker images</span>
-<span class="sd">		:param ts: :class:`libdoug.graph.TreeState`, Current state of the tree</span>
-<span class="sd">		:param walkcb: :func:`graph_walk_callback`, Used during graph walk</span>
+<span class="sd">		:param root: From where to start constructing the graph</span>
+<span class="sd">		:type  root: libdoug.graph.GraphNode </span>
+<span class="sd">		:param allimages: All Docker images</span>
+<span class="sd">		:type  allimages: dict[str, dict] </span>
+<span class="sd">		:param ts: Current state of the tree</span>
+<span class="sd">		:type  ts: libdoug.graph.TreeState </span>
+<span class="sd">		:param walkcb: Used during graph walk</span>
+<span class="sd">		:type  walkcb: graph_walk_callback</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">allchildren</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">getchildren</span><span class="p">()]</span>
 		<span class="n">nchildren</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">img</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">allchildren</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">allchildren</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">allimages</span><span class="p">[</span><span class="n">root</span><span class="o">.</span><span class="n">getid</span><span class="p">()]</span>
@@ -256,7 +275,8 @@
 <div class="viewcode-block" id="DependencyWalker.printtree"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.DependencyWalker.printtree">[docs]</a>	<span class="k">def</span> <span class="nf">printtree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allimages</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Print the graph as nicely structured tree</span>
 
-<span class="sd">		:param allimages: `dict`, All Docker images</span>
+<span class="sd">		:param allimages: All Docker images</span>
+<span class="sd">		:type  allimages: dict[str, dict]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">rootnode</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">GraphNode</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">TreeState</span><span class="p">()</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">makegraph</span><span class="p">(</span><span class="n">rootnode</span><span class="p">,</span> <span class="n">allimages</span><span class="p">)</span>
@@ -265,7 +285,8 @@
 <div class="viewcode-block" id="DependencyWalker.walk"><a class="viewcode-back" href="../../depwalker.html#libdoug.dependency_walker.DependencyWalker.walk">[docs]</a>	<span class="k">def</span> <span class="nf">walk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allimages</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Bootstrap the walker and just printout for now</span>
 
-<span class="sd">		:param allimages: `list`, All Docker images</span>
+<span class="sd">		:param allimages: All Docker images</span>
+<span class="sd">		:type  allimages: list[dict]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">allimages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_listtomap</span><span class="p">(</span><span class="n">allimages</span><span class="p">)</span>
 		<span class="n">ancestry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_imagechain</span><span class="p">(</span><span class="n">allimages</span><span class="p">)</span>

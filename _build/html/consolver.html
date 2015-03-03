@@ -77,7 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
@@ -134,10 +141,10 @@ other conflict solvers.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>allimages</strong> &#8211; list, All local images</li>
-<li><strong>delta</strong> &#8211; tuple of lists, Delta information between <tt class="docutils literal"><span class="pre">Left</span></tt>/<tt class="docutils literal"><span class="pre">Right</span></tt></li>
-<li><strong>repo</strong> &#8211; string, Name of the repository</li>
-<li><strong>rt</strong> &#8211; <cite>class</cite>, Class representing conflict resolutions - <a class="reference internal" href="resolution.html#libdoug.conflict_resolution.Resolution" title="libdoug.conflict_resolution.Resolution"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.conflict_resolution.Resolution</span></tt></a></li>
+<li><strong>allimages</strong> (<em>list</em>) &#8211; All local images</li>
+<li><strong>delta</strong> (<em>(list, list)</em>) &#8211; Delta information between <tt class="docutils literal"><span class="pre">Left</span></tt>/<tt class="docutils literal"><span class="pre">Right</span></tt></li>
+<li><strong>repo</strong> (<em>str</em>) &#8211; Name of the repository</li>
+<li><strong>rt</strong> (<a class="reference internal" href="resolution.html#libdoug.conflict_resolution.Resolution" title="libdoug.conflict_resolution.Resolution"><em>libdoug.conflict_resolution.Resolution</em></a>) &#8211; Class representing conflict resolutions - <a class="reference internal" href="resolution.html#libdoug.conflict_resolution.Resolution" title="libdoug.conflict_resolution.Resolution"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.conflict_resolution.Resolution</span></tt></a></li>
 </ul>
 </td>
 </tr>
@@ -152,9 +159,9 @@ other conflict solvers.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>resolutions</strong> &#8211; <cite>list</cite>, Add resolutions to this list</li>
-<li><strong>rtype</strong> &#8211; <a class="reference internal" href="resolution.html#libdoug.conflict_resolution.ResolutionType" title="libdoug.conflict_resolution.ResolutionType"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.conflict_resolution.ResolutionType</span></tt></a>, Type of the resolution</li>
-<li><strong>args</strong> &#8211; <cite>list</cite>, Args to use during resolution</li>
+<li><strong>resolutions</strong> (<em>list</em>) &#8211; Add resolutions to this list</li>
+<li><strong>rtype</strong> (<a class="reference internal" href="resolution.html#libdoug.conflict_resolution.ResolutionType" title="libdoug.conflict_resolution.ResolutionType"><em>libdoug.conflict_resolution.ResolutionType</em></a>) &#8211; Type of the resolution</li>
+<li><strong>args</strong> (<em>list</em>) &#8211; Args to use during resolution</li>
 </ul>
 </td>
 </tr>
@@ -171,8 +178,8 @@ other conflict solvers.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>left</strong> &#8211; <cite>list</cite>, List of tags to handle</li>
-<li><strong>resolutions</strong> &#8211; <cite>list</cite>, Add resolutions to this list</li>
+<li><strong>left</strong> (<em>list</em>) &#8211; List of tags to handle</li>
+<li><strong>resolutions</strong> (<em>list</em>) &#8211; Add resolutions to this list</li>
 </ul>
 </td>
 </tr>
@@ -192,8 +199,8 @@ other conflict solvers.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>right</strong> &#8211; <cite>list</cite>, List of tags to handle</li>
-<li><strong>resolutions</strong> &#8211; <cite>list</cite>, Add resolutions to this list</li>
+<li><strong>right</strong> (<em>list</em>) &#8211; List of tags to handle</li>
+<li><strong>resolutions</strong> (<em>list</em>) &#8211; Add resolutions to this list</li>
 </ul>
 </td>
 </tr>
@@ -212,9 +219,11 @@ other conflict solvers.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resolutions</strong> &#8211; <cite>list</cite>, Add resolutions to this list</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>resolutions</strong> (<em>list</em>) &#8211; Add resolutions to this list</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><cite>list</cite>, List of resolutions</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of resolutions</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list[libdoug.conflict_resolution.Resolution]</td>
 </tr>
 </tbody>
 </table>

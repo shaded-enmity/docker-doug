@@ -150,9 +150,12 @@
 <div class="viewcode-block" id="UserInfo"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.UserInfo">[docs]</a><span class="k">class</span> <span class="nc">UserInfo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Stores authentication info for DockerHub</span>
 
-<span class="sd">	:param name: `string` User name</span>
-<span class="sd">	:param password: `string` Password</span>
-<span class="sd">	:param email: `string` Email</span>
+<span class="sd">	:param name: User name</span>
+<span class="sd">	:type  name: str</span>
+<span class="sd">	:param password: Password</span>
+<span class="sd">	:type  password: str</span>
+<span class="sd">	:param email: Email</span>
+<span class="sd">	:type  email: str</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -191,7 +194,8 @@
 <div class="viewcode-block" id="DockerLocal.getimages"><a class="viewcode-back" href="../../dockerapi.html#libdoug.docker_api.DockerLocal.getimages">[docs]</a>	<span class="k">def</span> <span class="nf">getimages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Get images in the given `repo`</span>
 
-<span class="sd">		:param repo: - `string`, `repo`/`name`</span>
+<span class="sd">		:param repo: - `repo`/`name`</span>
+<span class="sd">		:type  repo: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">images</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">repo</span><span class="p">))</span>
 </div>
@@ -207,7 +211,8 @@
 		<span class="sd">&quot;&quot;&quot; Remove the `stackbrew/` user part </span>
 <span class="sd">		if it&#39;s an official image </span>
 
-<span class="sd">		:param v: - `string`, value to wipe</span>
+<span class="sd">		:param v: value to wipe</span>
+<span class="sd">		:type  v: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="n">v</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nulluser</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nulluser</span><span class="p">):]</span>
 
@@ -215,6 +220,7 @@
 		<span class="sd">&quot;&quot;&quot;Tag `image` in a `repository` with a new `tag` </span>
 <span class="sd">		</span>
 <span class="sd">		:param args: [`imageID`, `repoName`, `tag`] - List of arguments</span>
+<span class="sd">		:type  args: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </div>
@@ -222,6 +228,7 @@
 		<span class="sd">&quot;&quot;&quot;Push a `tag` into `repository`</span>
 <span class="sd">		</span>
 <span class="sd">		:param args: [`repoName`, `tag`] - List of arguments</span>
+<span class="sd">		:type  args: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </div>
@@ -229,6 +236,7 @@
 		<span class="sd">&quot;&quot;&quot;Pull a `tag` from `repository`</span>
 <span class="sd">		</span>
 <span class="sd">		:param args: [`repoName`, `tag`] - List of arguments</span>
+<span class="sd">		:type  args: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">tag</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">stream</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </div>
@@ -236,6 +244,7 @@
 		<span class="sd">&quot;&quot;&quot;Remove `name`:`tag` from repository</span>
 <span class="sd">		</span>
 <span class="sd">		:param args: [`name`, `tag`] - List of arguments</span>
+<span class="sd">		:type  args: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">remove_image</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_wipe</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="s">&#39;:&#39;</span><span class="o">+</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">force</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </div>

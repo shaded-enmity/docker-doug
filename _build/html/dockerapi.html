@@ -77,7 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
@@ -144,8 +151,8 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>repo</strong> &#8211; <ul class="simple">
-<li><cite>string</cite>, <cite>repo</cite>/<cite>name</cite></li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>repo</strong> (<em>str</em>) &#8211; <ul class="simple">
+<li><cite>repo</cite>/<cite>name</cite></li>
 </ul>
 </td>
 </tr>
@@ -173,7 +180,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<em>list</em>) &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
 </tr>
 </tbody>
 </table>
@@ -187,7 +194,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<em>list</em>) &#8211; [<cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
 </tr>
 </tbody>
 </table>
@@ -201,7 +208,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>name</cite>, <cite>tag</cite>] - List of arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<em>list</em>) &#8211; [<cite>name</cite>, <cite>tag</cite>] - List of arguments</td>
 </tr>
 </tbody>
 </table>
@@ -215,7 +222,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> &#8211; [<cite>imageID</cite>, <cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>args</strong> (<em>list</em>) &#8211; [<cite>imageID</cite>, <cite>repoName</cite>, <cite>tag</cite>] - List of arguments</td>
 </tr>
 </tbody>
 </table>
@@ -232,9 +239,9 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> &#8211; <cite>string</cite> User name</li>
-<li><strong>password</strong> &#8211; <cite>string</cite> Password</li>
-<li><strong>email</strong> &#8211; <cite>string</cite> Email</li>
+<li><strong>name</strong> (<em>str</em>) &#8211; User name</li>
+<li><strong>password</strong> (<em>str</em>) &#8211; Password</li>
+<li><strong>email</strong> (<em>str</em>) &#8211; Email</li>
 </ul>
 </td>
 </tr>

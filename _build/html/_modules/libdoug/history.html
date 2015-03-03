@@ -152,12 +152,15 @@
 <span class="sd">	a given `repository`.</span>
 
 <span class="sd">	:param images: `list` of `Image Dictionary`</span>
+<span class="sd">	:type  images: list</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ImageHistory.Entry"><a class="viewcode-back" href="../../history.html#libdoug.history.ImageHistory.Entry">[docs]</a>	<span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Provides unique mapping/ordering of `Image Id`&#39;s and `tag`&#39;s.</span>
 
-<span class="sd">		:param tag: `string`, A tag</span>
-<span class="sd">		:param imgid: `string`, An image id</span>
+<span class="sd">		:param tag: A tag</span>
+<span class="sd">		:type  tag: str</span>
+<span class="sd">		:param imgid: An image id</span>
+<span class="sd">		:type  imgid: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">imgid</span><span class="p">):</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span>
@@ -195,7 +198,9 @@
 		<span class="sd">&quot;&quot;&quot;Parse :class:`ImageHistory` from `json`</span>
 
 <span class="sd">		:param json: `json object` of `tag`, `id` pairs</span>
+<span class="sd">		:type  json: str</span>
 <span class="sd">		:return: :class:`ImageHistory` object with the parsed history</span>
+<span class="sd">		:rtype: libdoug.history.ImageHistory</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">hist</span> <span class="o">=</span> <span class="n">ImageHistory</span><span class="p">([])</span>
 		<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
@@ -223,7 +228,9 @@
 	<span class="sd">&quot;&quot;&quot;Compute a diff between two :class:`ImageHistory` objects</span>
 
 <span class="sd">	:param a: :class:`ImageHistory` A side</span>
+<span class="sd">	:type  a: libdoug.history.ImageHistory</span>
 <span class="sd">	:param b: :class:`ImageHistory` B side</span>
+<span class="sd">	:type  b: libdoug.history.ImageHistory</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
@@ -233,6 +240,7 @@
 		<span class="sd">&quot;&quot;&quot;Compute the diff between `A` and `B`</span>
 
 <span class="sd">		:return: `tuple of lists` of :class:`Entry` object, or :class:`libdoug.values.EmptyDiff`</span>
+<span class="sd">		:rtype: (list, list)</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">getimages</span><span class="p">()),</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">getimages</span><span class="p">())</span>
 		<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>

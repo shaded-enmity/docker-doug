@@ -77,7 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
@@ -132,7 +139,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> &#8211; <cite>string</cite> Target URL</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>str</em>) &#8211; Target URL</td>
 </tr>
 </tbody>
 </table>
@@ -145,8 +152,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> &#8211; <cite>string</cite> Username</li>
-<li><strong>pw</strong> &#8211; <cite>string</cite> Password</li>
+<li><strong>name</strong> (<em>str</em>) &#8211; Username</li>
+<li><strong>pw</strong> (<em>str</em>) &#8211; Password</li>
 </ul>
 </td>
 </tr>
@@ -170,6 +177,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#libdoug.http.HTTPResponse" title="libdoug.http.HTTPResponse"><tt class="xref py py-class docutils literal"><span class="pre">HTTPResponse</span></tt></a> object</td>
 </tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">HTTPRespomse</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -185,8 +194,8 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>request</strong> &#8211; The original <a class="reference internal" href="#libdoug.http.HTTPRequest" title="libdoug.http.HTTPRequest"><tt class="xref py py-class docutils literal"><span class="pre">HTTPRequest</span></tt></a> object</li>
-<li><strong>response</strong> &#8211; The response object returned by <cite>requests.get</cite></li>
+<li><strong>request</strong> (<a class="reference internal" href="#libdoug.http.HTTPRequest" title="libdoug.http.HTTPRequest"><em>libdoug.http.HTTPRequest</em></a>) &#8211; The original <a class="reference internal" href="#libdoug.http.HTTPRequest" title="libdoug.http.HTTPRequest"><tt class="xref py py-class docutils literal"><span class="pre">HTTPRequest</span></tt></a> object</li>
+<li><strong>response</strong> (<em>requests.Response</em>) &#8211; The response object returned by <cite>requests.get</cite></li>
 </ul>
 </td>
 </tr>
@@ -212,7 +221,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; <cite>string</cite> Header to retrieve</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) &#8211; Header to retrieve</td>
 </tr>
 </tbody>
 </table>

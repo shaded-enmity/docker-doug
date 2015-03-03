@@ -151,7 +151,9 @@
 	<span class="sd">&quot;&quot;&quot;A HTTP response encapsulation returned by :meth:`HTTPRequest.request`</span>
 
 <span class="sd">	:param request: The original :class:`HTTPRequest` object</span>
+<span class="sd">	:type  request: libdoug.http.HTTPRequest</span>
 <span class="sd">	:param response: The response object returned by `requests.get`</span>
+<span class="sd">	:type  response: requests.Response </span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">request</span>
@@ -164,7 +166,8 @@
 <div class="viewcode-block" id="HTTPResponse.getheader"><a class="viewcode-back" href="../../http.html#libdoug.http.HTTPResponse.getheader">[docs]</a>	<span class="k">def</span> <span class="nf">getheader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot; Get header by `key`</span>
 <span class="sd">		</span>
-<span class="sd">		:param key: `string` Header to retrieve</span>
+<span class="sd">		:param key: Header to retrieve</span>
+<span class="sd">		:type  key: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 </div>
@@ -176,7 +179,8 @@
 <div class="viewcode-block" id="HTTPRequest"><a class="viewcode-back" href="../../http.html#libdoug.http.HTTPRequest">[docs]</a><span class="k">class</span> <span class="nc">HTTPRequest</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Initiate a HTTP request to a `url`</span>
 <span class="sd">	</span>
-<span class="sd">	:param url: `string` Target URL </span>
+<span class="sd">	:param url: Target URL </span>
+<span class="sd">	:type  url: str</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
@@ -191,8 +195,10 @@
 <div class="viewcode-block" id="HTTPRequest.addbauth"><a class="viewcode-back" href="../../http.html#libdoug.http.HTTPRequest.addbauth">[docs]</a>	<span class="k">def</span> <span class="nf">addbauth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pw</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot; Add basic HTTP Auth options</span>
 <span class="sd">		</span>
-<span class="sd">		:param name: `string` Username</span>
-<span class="sd">		:param pw: `string` Password</span>
+<span class="sd">		:param name: Username</span>
+<span class="sd">		:type  name: str</span>
+<span class="sd">		:param pw: Password</span>
+<span class="sd">		:type  pw: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">pw</span><span class="p">)</span>
 		<span class="k">return</span> <span class="bp">True</span>
@@ -201,6 +207,7 @@
 		<span class="sd">&quot;&quot;&quot; Perform the actual request</span>
 <span class="sd">		</span>
 <span class="sd">		:returns: :class:`HTTPResponse` object</span>
+<span class="sd">		:rtype: HTTPRespomse</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">)</span>
 		<span class="k">return</span> <span class="n">HTTPResponse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span></div></div>

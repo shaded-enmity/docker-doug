@@ -160,9 +160,12 @@
 <div class="viewcode-block" id="GraphNode"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode">[docs]</a><span class="k">class</span> <span class="nc">GraphNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Generic class representing a `node` in a graph</span>
 
-<span class="sd">	:param parent: :class:`GraphNode`, Parent node</span>
-<span class="sd">	:param tid: `id`, Our `Id` value</span>
-<span class="sd">	:param children: `dict`, Children nodes</span>
+<span class="sd">	:param parent: Parent node</span>
+<span class="sd">	:type  parent: libdoug.graph.GraphNode</span>
+<span class="sd">	:param tid: Our `Id` value</span>
+<span class="sd">	:type  tid: str</span>
+<span class="sd">	:param children: Children nodes</span>
+<span class="sd">	:type  children: dict[str, libdoug.graph.GraphNode] </span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">tid</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
@@ -184,7 +187,8 @@
 <div class="viewcode-block" id="GraphNode.addchild"><a class="viewcode-back" href="../../graph.html#libdoug.graph.GraphNode.addchild">[docs]</a>	<span class="k">def</span> <span class="nf">addchild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nid</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Add a new child based on parameter `nid`</span>
 
-<span class="sd">		:param nid: `Id`, Node `Id` to add </span>
+<span class="sd">		:param nid: Node `Id` to add </span>
+<span class="sd">		:type  nid: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">if</span> <span class="n">nid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
 			<span class="n">node</span> <span class="o">=</span> <span class="n">GraphNode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nid</span><span class="p">)</span> 
@@ -204,7 +208,8 @@
 <div class="viewcode-block" id="TreeState.pushbranch"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.pushbranch">[docs]</a>	<span class="k">def</span> <span class="nf">pushbranch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Push a new branch into the `TreeState`</span>
 
-<span class="sd">		:param link: `bool`, Draw a link for this branch</span>
+<span class="sd">		:param link: Draw a link for this branch</span>
+<span class="sd">		:type  link: bool</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">numpushes</span> <span class="o">+=</span> <span class="mi">1</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
@@ -227,13 +232,15 @@
 		<span class="k">return</span> <span class="s">u&#39;&#39;</span>
 
 	<span class="k">def</span> <span class="nf">_boolindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-		<span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">b</span> <span class="k">else</span> <span class="mi">1</span>
+		<span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">b</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TreeState.formatline"><a class="viewcode-back" href="../../graph.html#libdoug.graph.TreeState.formatline">[docs]</a>	<span class="k">def</span> <span class="nf">formatline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">isleaf</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Decorate the value in `img` with tree drawing symols</span>
 
 <span class="sd">		:param img: `Id`, TODO: Make this more generic</span>
-<span class="sd">		:param isleaf: `bool`, It&#39;s a leaf node</span>
+<span class="sd">		:type  img: str</span>
+<span class="sd">		:param isleaf: It&#39;s a leaf node</span>
+<span class="sd">		:type  isleaf: bool</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">horizontals</span><span class="p">,</span> <span class="n">verticals</span> <span class="o">=</span> <span class="p">[</span><span class="s">u&#39;├&#39;</span><span class="p">,</span> <span class="s">u&#39;└&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">u&#39;─&#39;</span><span class="p">,</span> <span class="s">u&#39;┬&#39;</span><span class="p">]</span>
 		<span class="n">vert</span><span class="p">,</span> <span class="n">horiz</span> <span class="o">=</span> <span class="s">u&#39;╺&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">numpushes</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> \

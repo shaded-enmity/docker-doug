@@ -157,10 +157,14 @@
 	<span class="sd">&quot;&quot;&quot; :class:`ConflictSolver` is a base class for implementing</span>
 <span class="sd">	other conflict solvers.</span>
 
-<span class="sd">	:param allimages: list, All local images</span>
-<span class="sd">	:param delta: tuple of lists, Delta information between ``Left``/``Right``</span>
-<span class="sd">	:param repo: string, Name of the repository</span>
-<span class="sd">	:param rt: `class`, Class representing conflict resolutions - :class:`libdoug.conflict_resolution.Resolution`</span>
+<span class="sd">	:param allimages: All local images</span>
+<span class="sd">	:type  allimages: list</span>
+<span class="sd">	:param delta: Delta information between ``Left``/``Right``</span>
+<span class="sd">	:type  delta: (list, list)</span>
+<span class="sd">	:param repo: Name of the repository</span>
+<span class="sd">	:type  repo: str</span>
+<span class="sd">	:param rt: Class representing conflict resolutions - :class:`libdoug.conflict_resolution.Resolution`</span>
+<span class="sd">	:type  rt: libdoug.conflict_resolution.Resolution </span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allimages</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">rt</span><span class="o">=</span><span class="n">Resolution</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">allimages</span> <span class="o">=</span> <span class="n">allimages</span>
@@ -171,8 +175,10 @@
 <div class="viewcode-block" id="ConflictSolver.handleleft"><a class="viewcode-back" href="../../consolver.html#libdoug.conflict.ConflictSolver.handleleft">[docs]</a>	<span class="k">def</span> <span class="nf">handleleft</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">resolutions</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Handle `left` or (local) side of conflict</span>
 
-<span class="sd">		:param left: `list`, List of tags to handle</span>
-<span class="sd">		:param resolutions: `list`, Add resolutions to this list</span>
+<span class="sd">		:param left: List of tags to handle</span>
+<span class="sd">		:type  left: list</span>
+<span class="sd">		:param resolutions: Add resolutions to this list</span>
+<span class="sd">		:type  resolutions: list</span>
 <span class="sd">		:return: :class:`ConflictType.LEFT`</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="n">ConflictType</span><span class="o">.</span><span class="n">LEFT</span>
@@ -180,8 +186,10 @@
 <div class="viewcode-block" id="ConflictSolver.handleright"><a class="viewcode-back" href="../../consolver.html#libdoug.conflict.ConflictSolver.handleright">[docs]</a>	<span class="k">def</span> <span class="nf">handleright</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">resolutions</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Handle `right` (remote) side of conflict</span>
 
-<span class="sd">		:param right: `list`, List of tags to handle</span>
-<span class="sd">		:param resolutions: `list`, Add resolutions to this list</span>
+<span class="sd">		:param right: List of tags to handle</span>
+<span class="sd">		:type  right: list</span>
+<span class="sd">		:param resolutions: Add resolutions to this list</span>
+<span class="sd">		:type  resolutions: list</span>
 <span class="sd">		:return: :class:`ConflictType.RIGHT`</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="n">ConflictType</span><span class="o">.</span><span class="n">RIGHT</span>
@@ -189,17 +197,22 @@
 <div class="viewcode-block" id="ConflictSolver.solve"><a class="viewcode-back" href="../../consolver.html#libdoug.conflict.ConflictSolver.solve">[docs]</a>	<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolutions</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Solve and return resolutions</span>
 
-<span class="sd">		:param resolutions: `list`, Add resolutions to this list</span>
-<span class="sd">		:return: `list`, List of resolutions</span>
+<span class="sd">		:param resolutions: Add resolutions to this list</span>
+<span class="sd">		:type  resolutions: list</span>
+<span class="sd">		:return: List of resolutions</span>
+<span class="sd">		:rtype: list[libdoug.conflict_resolution.Resolution]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="n">resolutions</span>
 </div>
 <div class="viewcode-block" id="ConflictSolver.addresolution"><a class="viewcode-back" href="../../consolver.html#libdoug.conflict.ConflictSolver.addresolution">[docs]</a>	<span class="k">def</span> <span class="nf">addresolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resolutions</span><span class="p">,</span> <span class="n">rtype</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Add resolution to a list of resolutions</span>
 
-<span class="sd">		:param resolutions: `list`, Add resolutions to this list</span>
-<span class="sd">		:param rtype: :class:`libdoug.conflict_resolution.ResolutionType`, Type of the resolution</span>
-<span class="sd">		:param args: `list`, Args to use during resolution</span>
+<span class="sd">		:param resolutions: Add resolutions to this list</span>
+<span class="sd">		:type  resolutions: list</span>
+<span class="sd">		:param rtype: Type of the resolution</span>
+<span class="sd">		:type  rtype: libdoug.conflict_resolution.ResolutionType</span>
+<span class="sd">		:param args: Args to use during resolution</span>
+<span class="sd">		:type  args: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">resolutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resolution_type</span><span class="p">(</span><span class="n">rtype</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span></div></div>
 </pre></div>

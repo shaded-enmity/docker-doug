@@ -77,7 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
@@ -139,10 +146,10 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>repo</strong> &#8211; <cite>string</cite> Repository for which the token is valid</li>
-<li><strong>user</strong> &#8211; <a class="reference internal" href="dockerapi.html#libdoug.docker_api.UserInfo" title="libdoug.docker_api.UserInfo"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.docker_api.UserInfo</span></tt></a> User info</li>
-<li><strong>token</strong> &#8211; <cite>string</cite> Token value</li>
-<li><strong>access</strong> &#8211; <a class="reference internal" href="#libdoug.token.AccessValue" title="libdoug.token.AccessValue"><tt class="xref py py-class docutils literal"><span class="pre">AccessValue</span></tt></a>, <tt class="docutils literal"><span class="pre">AccessValue.Read</span></tt> by default</li>
+<li><strong>repo</strong> (<em>str</em>) &#8211; Repository for which the token is valid</li>
+<li><strong>user</strong> (<a class="reference internal" href="dockerapi.html#libdoug.docker_api.UserInfo" title="libdoug.docker_api.UserInfo"><em>libdoug.docker_api.UserInfo</em></a>) &#8211; <a class="reference internal" href="dockerapi.html#libdoug.docker_api.UserInfo" title="libdoug.docker_api.UserInfo"><tt class="xref py py-class docutils literal"><span class="pre">libdoug.docker_api.UserInfo</span></tt></a> User info</li>
+<li><strong>token</strong> (<em>str</em>) &#8211; Token value</li>
+<li><strong>access</strong> (<a class="reference internal" href="#libdoug.token.AccessValue" title="libdoug.token.AccessValue"><em>libdoug.token.AccessValue</em></a>) &#8211; <a class="reference internal" href="#libdoug.token.AccessValue" title="libdoug.token.AccessValue"><tt class="xref py py-class docutils literal"><span class="pre">AccessValue</span></tt></a>, <tt class="docutils literal"><span class="pre">AccessValue.Read</span></tt> by default</li>
 </ul>
 </td>
 </tr>
@@ -163,7 +170,7 @@ handles <cite>save-to/load-from</cite> disk semantics.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> (<a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><em>libdoug.token.RequestToken</em></a>) &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
 </tr>
 </tbody>
 </table>
@@ -201,7 +208,7 @@ handles <cite>save-to/load-from</cite> disk semantics.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> (<a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><em>libdoug.token.RequestToken</em></a>) &#8211; <a class="reference internal" href="#libdoug.token.RequestToken" title="libdoug.token.RequestToken"><tt class="xref py py-class docutils literal"><span class="pre">RequestToken</span></tt></a></td>
 </tr>
 </tbody>
 </table>
@@ -216,8 +223,8 @@ handles <cite>save-to/load-from</cite> disk semantics.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>repo</strong> &#8211; <cite>string</cite></li>
-<li><strong>user</strong> &#8211; <tt class="xref py py-class docutils literal"><span class="pre">UserInfo</span></tt></li>
+<li><strong>repo</strong> (<em>str</em>) &#8211; <cite>string</cite></li>
+<li><strong>user</strong> (<a class="reference internal" href="dockerapi.html#libdoug.docker_api.UserInfo" title="libdoug.docker_api.UserInfo"><em>libdoug.docker_api.UserInfo</em></a>) &#8211; <tt class="xref py py-class docutils literal"><span class="pre">UserInfo</span></tt></li>
 </ul>
 </td>
 </tr>
@@ -233,7 +240,7 @@ handles <cite>save-to/load-from</cite> disk semantics.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loadfile</strong> &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loadfile</strong> (<em>str</em>) &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
 </tr>
 </tbody>
 </table>
@@ -247,7 +254,7 @@ handles <cite>save-to/load-from</cite> disk semantics.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>savefile</strong> &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>savefile</strong> (<em>str</em>) &#8211; Relative to <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory</td>
 </tr>
 </tbody>
 </table>

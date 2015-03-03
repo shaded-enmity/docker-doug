@@ -158,7 +158,8 @@
 <div class="viewcode-block" id="Registry"><a class="viewcode-back" href="../../registry.html#libdoug.registry.Registry">[docs]</a><span class="k">class</span> <span class="nc">Registry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Provides encapsulation for interacting with the Docker registry.</span>
 
-<span class="sd">	:param registry: `string`, Domain name of the registry</span>
+<span class="sd">	:param registry: Domain name of the registry</span>
+<span class="sd">	:type  registry: str</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">TokenCache</span><span class="p">()</span>
@@ -171,8 +172,12 @@
 	<span class="k">def</span> <span class="nf">_ensuretoken</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Make sure `user` has a token for `repo`</span>
 
-<span class="sd">		:param repo: `string`, Name of the repository</span>
+<span class="sd">		:param repo: Name of the repository</span>
+<span class="sd">		:type  repo: str</span>
 <span class="sd">		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User</span>
+<span class="sd">		:type  user: libdoug.docker_api.UserInfo </span>
+<span class="sd">		:return: A valid ``RequestToken``</span>
+<span class="sd">		:rtype: libdoug.token.RequestToken</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">cached</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">gettokenfor</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 		<span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
@@ -188,9 +193,12 @@
 		<span class="sd">&quot;&quot;&quot;Query the remote `repo` as `user` for a list</span>
 <span class="sd">		of all tags</span>
 
-<span class="sd">		:param repo: `string`, Target repository</span>
+<span class="sd">		:param repo: Target repository</span>
+<span class="sd">		:type  repo: str</span>
 <span class="sd">		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User</span>
+<span class="sd">		:type  user: libdoug.docker_api.UserInfo </span>
 <span class="sd">		:return: ``JSON Object`` of (`Id`, `Tag`) pairs</span>
+<span class="sd">		:rtype: dict</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ensuretoken</span><span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 		<span class="n">url</span> <span class="o">=</span> <span class="n">repository_tags_get</span><span class="o">.</span><span class="n">formaturl</span><span class="p">(</span><span class="s">&#39;https://registry-1.&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="p">,</span> <span class="n">repo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">))</span>
@@ -211,9 +219,12 @@
 <div class="viewcode-block" id="Registry.authtoken"><a class="viewcode-back" href="../../registry.html#libdoug.registry.Registry.authtoken">[docs]</a>	<span class="k">def</span> <span class="nf">authtoken</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Performs authentication for `repo` as `user`</span>
 <span class="sd">		</span>
-<span class="sd">		:param repo: `string`, Target repository</span>
+<span class="sd">		:param repo: Target repository</span>
+<span class="sd">		:type  repo: str</span>
 <span class="sd">		:param user: :class:`libdoug.docker_api.UserInfo`, Hub User</span>
+<span class="sd">		:type  user: libdoug.docker_api.UserInfo </span>
 <span class="sd">		:return: A valid :class:`libdoug.token.RequestToken` or ``None`` on error</span>
+<span class="sd">		:rtype: libdoug.token.RequestToken</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">url</span> <span class="o">=</span> <span class="n">repository_list</span><span class="o">.</span><span class="n">formaturl</span><span class="p">(</span><span class="s">&#39;https://index.&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="p">,</span> <span class="n">repo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">))</span>
 		<span class="n">login_request</span> <span class="o">=</span> <span class="n">HTTPRequest</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>

@@ -159,10 +159,14 @@
 <div class="viewcode-block" id="RequestToken"><a class="viewcode-back" href="../../token.html#libdoug.token.RequestToken">[docs]</a><span class="k">class</span> <span class="nc">RequestToken</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Token to get us talking with the registry </span>
 <span class="sd">	</span>
-<span class="sd">	:param repo: `string` Repository for which the token is valid</span>
+<span class="sd">	:param repo: Repository for which the token is valid</span>
+<span class="sd">	:type  repo: str</span>
 <span class="sd">	:param user: :class:`libdoug.docker_api.UserInfo` User info</span>
-<span class="sd">	:param token: `string` Token value</span>
+<span class="sd">	:type  user: libdoug.docker_api.UserInfo </span>
+<span class="sd">	:param token: Token value</span>
+<span class="sd">	:type  token: str</span>
 <span class="sd">	:param access: :class:`AccessValue`, ``AccessValue.Read`` by default</span>
+<span class="sd">	:type  access: libdoug.token.AccessValue</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">access</span><span class="o">=</span><span class="n">AccessValue</span><span class="o">.</span><span class="n">Read</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
@@ -192,6 +196,7 @@
 		<span class="sd">&quot;&quot;&quot;Cache each token for ``entry_lifespan``</span>
 <span class="sd">		</span>
 <span class="sd">		:param token: :class:`RequestToken`</span>
+<span class="sd">		:type  token: libdoug.token.RequestToken</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
@@ -238,7 +243,9 @@
 <div class="viewcode-block" id="TokenCache.addtoken"><a class="viewcode-back" href="../../token.html#libdoug.token.TokenCache.addtoken">[docs]</a>	<span class="k">def</span> <span class="nf">addtoken</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Add token to the cache</span>
 <span class="sd">		</span>
-<span class="sd">		:param token: :class:`RequestToken` &quot;&quot;&quot;</span>
+<span class="sd">		:param token: :class:`RequestToken`</span>
+<span class="sd">		:type  token: libdoug.token.RequestToken</span>
+<span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">repo</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">getrepo</span><span class="p">()</span>
 		<span class="k">if</span> <span class="n">repo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
 			<span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">repo</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">CacheEntry</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
@@ -250,7 +257,9 @@
 		<span class="sd">&quot;&quot;&quot;Find valid tokens for ``user`` and ``repo``</span>
 
 <span class="sd">		:param repo: `string` </span>
+<span class="sd">		:type  repo: str</span>
 <span class="sd">		:param user: :class:`UserInfo`</span>
+<span class="sd">		:type  user: libdoug.docker_api.UserInfo </span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">if</span> <span class="ow">not</span> <span class="n">repo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
 			<span class="k">return</span> <span class="bp">None</span>
@@ -271,6 +280,7 @@
 		<span class="sd">&quot;&quot;&quot;Save the token cache to a file</span>
 
 <span class="sd">		:param savefile: Relative to ``$HOME`` directory</span>
+<span class="sd">		:type  savefile: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;HOME&quot;</span><span class="p">)</span> <span class="o">+</span><span class="s">&#39;/&#39;</span><span class="o">+</span><span class="n">savefile</span><span class="p">,</span> <span class="s">&#39;w+&#39;</span><span class="p">)</span>
 		<span class="n">dump</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">({</span><span class="n">k</span><span class="p">:[</span><span class="n">w</span><span class="o">.</span><span class="n">asdictionary</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()},</span> <span class="n">fd</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">,</span> <span class="s">&#39;:&#39;</span><span class="p">))</span>
@@ -283,6 +293,7 @@
 		<span class="sd">&quot;&quot;&quot;Load the token cache from a file</span>
 <span class="sd">		</span>
 <span class="sd">		:param loadfile: Relative to ``$HOME`` directory</span>
+<span class="sd">		:type  loadfile: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;HOME&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;/&#39;</span> <span class="o">+</span> <span class="n">loadfile</span><span class="p">,</span> <span class="s">&#39;a+&#39;</span><span class="p">)</span>
 		<span class="k">try</span><span class="p">:</span>

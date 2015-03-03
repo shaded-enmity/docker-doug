@@ -154,7 +154,8 @@
 <div class="viewcode-block" id="RequestTokenDecorator"><a class="viewcode-back" href="../../decorators.html#libdoug.decorators.RequestTokenDecorator">[docs]</a><span class="k">class</span> <span class="nc">RequestTokenDecorator</span><span class="p">(</span><span class="n">RequestDecorator</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot; Decorates the request with auth token </span>
 <span class="sd">	</span>
-<span class="sd">	:param token: :class:`libdoug.token.RequestToken &lt;RequestToken&gt;` Token to decorate with</span>
+<span class="sd">	:param token: Token to decorate with</span>
+<span class="sd">	:type  token: libdoug.token.RequestToken</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="n">token</span>
@@ -168,13 +169,14 @@
 		<span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">addheader</span><span class="p">(</span><span class="s">&#39;Authorization&#39;</span><span class="p">,</span> <span class="n">header_string</span><span class="p">):</span>
 			<span class="k">return</span> <span class="bp">False</span>
 
-		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">RequestTokenDecorator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">decorate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">RequestTokenDecorator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_decorate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="UserCredentialsDecorator"><a class="viewcode-back" href="../../decorators.html#libdoug.decorators.UserCredentialsDecorator">[docs]</a><span class="k">class</span> <span class="nc">UserCredentialsDecorator</span><span class="p">(</span><span class="n">RequestDecorator</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot; Decorates the request with user credentials and necessary header </span>
 <span class="sd">	</span>
-<span class="sd">	:param user: :class:`libdoug.docker_api.UserInfo &lt;UserInfo&gt;` User to decorate with</span>
+<span class="sd">	:param user: User to decorate with</span>
+<span class="sd">	:type  user: libdoug.docker_api.UserInfo</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
@@ -187,7 +189,7 @@
 		<span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">addbauth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">getname</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">getpassw</span><span class="p">()):</span>
 			<span class="k">return</span> <span class="bp">False</span>
 
-		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UserCredentialsDecorator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">decorate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">UserCredentialsDecorator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_decorate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="http_request_decorate"><a class="viewcode-back" href="../../decorators.html#libdoug.decorators.http_request_decorate">[docs]</a><span class="k">def</span> <span class="nf">http_request_decorate</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">decorator</span><span class="p">):</span>

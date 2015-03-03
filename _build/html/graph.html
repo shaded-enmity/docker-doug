@@ -77,7 +77,14 @@
 <li class="toctree-l2"><a class="reference internal" href="values.html">Special Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restcli.html">REST and CLI APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#module-libdoug.api.remote_base">Remote Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#docker-socket-api">Docker Socket API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#registry-api">Registry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restcli.html#hub-api">Hub API</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-local-tags">Print local tags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#print-remote-tags">Print remote tags</a></li>
@@ -156,9 +163,9 @@ Also contains the <a class="reference internal" href="#libdoug.graph.TreeState" 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>parent</strong> &#8211; <a class="reference internal" href="#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><tt class="xref py py-class docutils literal"><span class="pre">GraphNode</span></tt></a>, Parent node</li>
-<li><strong>tid</strong> &#8211; <cite>id</cite>, Our <cite>Id</cite> value</li>
-<li><strong>children</strong> &#8211; <cite>dict</cite>, Children nodes</li>
+<li><strong>parent</strong> (<a class="reference internal" href="#libdoug.graph.GraphNode" title="libdoug.graph.GraphNode"><em>libdoug.graph.GraphNode</em></a>) &#8211; Parent node</li>
+<li><strong>tid</strong> (<em>str</em>) &#8211; Our <cite>Id</cite> value</li>
+<li><strong>children</strong> (<em>dict[str, libdoug.graph.GraphNode]</em>) &#8211; Children nodes</li>
 </ul>
 </td>
 </tr>
@@ -172,7 +179,7 @@ Also contains the <a class="reference internal" href="#libdoug.graph.TreeState" 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nid</strong> &#8211; <cite>Id</cite>, Node <cite>Id</cite> to add</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nid</strong> (<em>str</em>) &#8211; Node <cite>Id</cite> to add</td>
 </tr>
 </tbody>
 </table>
@@ -212,8 +219,8 @@ graph node objects.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>img</strong> &#8211; <cite>Id</cite>, TODO: Make this more generic</li>
-<li><strong>isleaf</strong> &#8211; <cite>bool</cite>, It&#8217;s a leaf node</li>
+<li><strong>img</strong> (<em>str</em>) &#8211; <cite>Id</cite>, TODO: Make this more generic</li>
+<li><strong>isleaf</strong> (<em>bool</em>) &#8211; It&#8217;s a leaf node</li>
 </ul>
 </td>
 </tr>
@@ -241,7 +248,7 @@ graph node objects.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>link</strong> &#8211; <cite>bool</cite>, Draw a link for this branch</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>link</strong> (<em>bool</em>) &#8211; Draw a link for this branch</td>
 </tr>
 </tbody>
 </table>

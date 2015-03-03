@@ -156,8 +156,10 @@
 <div class="viewcode-block" id="Resolution"><a class="viewcode-back" href="../../resolution.html#libdoug.conflict_resolution.Resolution">[docs]</a><span class="k">class</span> <span class="nc">Resolution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 	<span class="sd">&quot;&quot;&quot;Represents a generic conflict resolution object</span>
 
-<span class="sd">	:param rtype: :class:`ResolutionType`, Type of the resolution</span>
-<span class="sd">	:param args: `list`, Arguments to use during execution</span>
+<span class="sd">	:param rtype: Type of the resolution</span>
+<span class="sd">	:type  rtype: libdoug.conflict_resolution.ResolutionType</span>
+<span class="sd">	:param args: Arguments to use during execution</span>
+<span class="sd">	:type  args: list</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rtype</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 		<span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">rtype</span>
@@ -166,21 +168,22 @@
 <div class="viewcode-block" id="Resolution.gettype"><a class="viewcode-back" href="../../resolution.html#libdoug.conflict_resolution.Resolution.gettype">[docs]</a>	<span class="k">def</span> <span class="nf">gettype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Type of the resolution</span>
 
-<span class="sd">		:return: :class:`ResolutionType`</span>
+<span class="sd">		:rtype: :class:`ResolutionType`</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span>
 </div>
 <div class="viewcode-block" id="Resolution.getargs"><a class="viewcode-back" href="../../resolution.html#libdoug.conflict_resolution.Resolution.getargs">[docs]</a>	<span class="k">def</span> <span class="nf">getargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Arguments for the resolution</span>
 
-<span class="sd">		:return: `list`</span>
+<span class="sd">		:rtype: list</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span> 
 </div>
 	<span class="k">def</span> <span class="nf">_getstream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Helper to get download/upload progress bars</span>
 
-<span class="sd">		:param stream: `string generator`, Input stream</span>
+<span class="sd">		:param stream: Input stream</span>
+<span class="sd">		:type  stream: list[str]</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="k">def</span> <span class="nf">_format</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
 			<span class="k">if</span> <span class="s">u&#39;progress&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
@@ -195,8 +198,10 @@
 <div class="viewcode-block" id="Resolution.execute"><a class="viewcode-back" href="../../resolution.html#libdoug.conflict_resolution.Resolution.execute">[docs]</a>	<span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docker</span><span class="p">):</span>
 		<span class="sd">&quot;&quot;&quot;Execute the given resolution</span>
 
-<span class="sd">		:param docker: :class:`libdoug.docker_api.DockerLocal`, Instance of ``DockerLocal`` object</span>
-<span class="sd">		:return: `string` the command executed</span>
+<span class="sd">		:param docker: Instance of ``DockerLocal`` object</span>
+<span class="sd">		:type  docker: libdoug.docker_api.DockerLocal</span>
+<span class="sd">		:return: the command executed</span>
+<span class="sd">		:rtype: str</span>
 <span class="sd">		&quot;&quot;&quot;</span>
 		<span class="n">command</span> <span class="o">=</span> <span class="p">{</span> 
 			<span class="n">ResolutionType</span><span class="o">.</span><span class="n">TAG</span><span class="p">:</span>  <span class="s">u&#39;  ┍ docker tag </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">:</span><span class="si">%s</span><span class="s">&#39;</span><span class="p">,</span>

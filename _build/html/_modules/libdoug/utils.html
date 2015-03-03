@@ -157,9 +157,12 @@
 <span class="sd">	``name`` search. Both ``id`` and ``name`` can be specified partially</span>
 <span class="sd">	but an :class:`SollipsistException` is thrown if multiple images are found.</span>
 
-<span class="sd">	:param idname: `string` ``image id`` or ``repo:tag``</span>
+<span class="sd">	:param idname: ``image id`` or ``repo:tag``</span>
+<span class="sd">	:type  idname: str</span>
 <span class="sd">	:param allimages: `list` of all images</span>
+<span class="sd">	:type  allimages: list</span>
 <span class="sd">	:return: The full ``image id`` or ``None`` if not found</span>
+<span class="sd">	:rtype: str</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idname</span><span class="p">)</span> <span class="o">!=</span> <span class="n">HashLength</span><span class="p">:</span>
 		<span class="n">matching</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">allimages</span> <span class="k">if</span> <span class="n">img</span><span class="p">[</span><span class="s">&#39;Id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">idname</span><span class="p">)]</span>
@@ -183,6 +186,8 @@
 <span class="sd">	Works recursively on list of strings too</span>
 <span class="sd">	</span>
 <span class="sd">	:param data: `str` or `list` </span>
+<span class="sd">	:type data: str or list</span>
+<span class="sd">	:rtype: str or list</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
 		<span class="k">return</span> <span class="p">[</span><span class="n">wipe_newlines</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
@@ -192,7 +197,9 @@
 	<span class="sd">&quot;&quot;&quot;Generate ``num`` bit flags </span>
 <span class="sd">	</span>
 <span class="sd">	:param num: `int` upper bound </span>
+<span class="sd">	:type  num: int</span>
 <span class="sd">	:return: `list` of bit flags such as ``len([0, 1, 2, 4 ...]) == num``</span>
+<span class="sd">	:rtype: list</span>
 <span class="sd">	&quot;&quot;&quot;</span>
 	<span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
 </div>
