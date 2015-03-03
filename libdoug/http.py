@@ -23,7 +23,9 @@ class HTTPResponse(object):
 	"""A HTTP response encapsulation returned by :meth:`HTTPRequest.request`
 
 	:param request: The original :class:`HTTPRequest` object
+	:type  request: libdoug.http.HTTPRequest
 	:param response: The response object returned by `requests.get`
+	:type  response: requests.Response 
 	"""
 	def __init__(self, request, response):
 		self.request = request
@@ -36,7 +38,8 @@ class HTTPResponse(object):
 	def getheader(self, key):
 		""" Get header by `key`
 		
-		:param key: `string` Header to retrieve
+		:param key: Header to retrieve
+		:type  key: str
 		"""
 		return self.response.headers[key]
 
@@ -48,7 +51,8 @@ class HTTPResponse(object):
 class HTTPRequest(object):
 	"""Initiate a HTTP request to a `url`
 	
-	:param url: `string` Target URL 
+	:param url: Target URL 
+	:type  url: str
 	"""
 	def __init__(self, url):
 		self.url = url
@@ -63,8 +67,10 @@ class HTTPRequest(object):
 	def addbauth(self, name, pw):
 		""" Add basic HTTP Auth options
 		
-		:param name: `string` Username
-		:param pw: `string` Password
+		:param name: Username
+		:type  name: str
+		:param pw: Password
+		:type  pw: str
 		"""
 		self.auth = (name, pw)
 		return True
@@ -73,6 +79,7 @@ class HTTPRequest(object):
 		""" Perform the actual request
 		
 		:returns: :class:`HTTPResponse` object
+		:rtype: HTTPRespomse
 		"""
 		res = requests.get(self.url, headers=self.headers, auth=self.auth)
 		return HTTPResponse(self, res)

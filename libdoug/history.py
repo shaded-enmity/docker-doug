@@ -24,12 +24,15 @@ class ImageHistory(object):
 	a given `repository`.
 
 	:param images: `list` of `Image Dictionary`
+	:type  images: list
 	"""
 	class Entry(object):
 		"""Provides unique mapping/ordering of `Image Id`'s and `tag`'s.
 
-		:param tag: `string`, A tag
-		:param imgid: `string`, An image id
+		:param tag: A tag
+		:type  tag: str
+		:param imgid: An image id
+		:type  imgid: str
 		"""
 		def __init__(self, tag, imgid):
 			self.tag = tag
@@ -67,7 +70,9 @@ class ImageHistory(object):
 		"""Parse :class:`ImageHistory` from `json`
 
 		:param json: `json object` of `tag`, `id` pairs
+		:type  json: str
 		:return: :class:`ImageHistory` object with the parsed history
+		:rtype: libdoug.history.ImageHistory
 		"""
 		hist = ImageHistory([])
 		for k, v in json.iteritems():
@@ -95,7 +100,9 @@ class HistoryDiff(object):
 	"""Compute a diff between two :class:`ImageHistory` objects
 
 	:param a: :class:`ImageHistory` A side
+	:type  a: libdoug.history.ImageHistory
 	:param b: :class:`ImageHistory` B side
+	:type  b: libdoug.history.ImageHistory
 	"""
 	def __init__(self, a, b):
 		self.a = a
@@ -105,6 +112,7 @@ class HistoryDiff(object):
 		"""Compute the diff between `A` and `B`
 
 		:return: `tuple of lists` of :class:`Entry` object, or :class:`libdoug.values.EmptyDiff`
+		:rtype: (list, list)
 		"""
 		a, b = set(self.a.getimages()), set(self.b.getimages())
 		if a == b:

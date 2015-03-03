@@ -31,10 +31,14 @@ class AccessValue(object):
 class RequestToken(object):
 	"""Token to get us talking with the registry 
 	
-	:param repo: `string` Repository for which the token is valid
+	:param repo: Repository for which the token is valid
+	:type  repo: str
 	:param user: :class:`libdoug.docker_api.UserInfo` User info
-	:param token: `string` Token value
+	:type  user: libdoug.docker_api.UserInfo 
+	:param token: Token value
+	:type  token: str
 	:param access: :class:`AccessValue`, ``AccessValue.Read`` by default
+	:type  access: libdoug.token.AccessValue
 	"""
 	def __init__(self, repo, user, token, access=AccessValue.Read):
 		self.token = token
@@ -64,6 +68,7 @@ class TokenCache(object):
 		"""Cache each token for ``entry_lifespan``
 		
 		:param token: :class:`RequestToken`
+		:type  token: libdoug.token.RequestToken
 		"""
 		def __init__(self, token):
 			self.token = token
@@ -110,7 +115,9 @@ class TokenCache(object):
 	def addtoken(self, token):
 		"""Add token to the cache
 		
-		:param token: :class:`RequestToken` """
+		:param token: :class:`RequestToken`
+		:type  token: libdoug.token.RequestToken
+		"""
 		repo = token.getrepo()
 		if repo in self.cache:
 			self.cache[repo].append(self.CacheEntry(token))
@@ -122,7 +129,9 @@ class TokenCache(object):
 		"""Find valid tokens for ``user`` and ``repo``
 
 		:param repo: `string` 
+		:type  repo: str
 		:param user: :class:`UserInfo`
+		:type  user: libdoug.docker_api.UserInfo 
 		"""
 		if not repo in self.cache:
 			return None
@@ -143,6 +152,7 @@ class TokenCache(object):
 		"""Save the token cache to a file
 
 		:param savefile: Relative to ``$HOME`` directory
+		:type  savefile: str
 		"""
 		fd = open(os.getenv("HOME") +'/'+savefile, 'w+')
 		dump = json.dump({k:[w.asdictionary() for w in v] for k,v in self.cache.iteritems()}, fd, separators=(',', ':'))
@@ -155,6 +165,7 @@ class TokenCache(object):
 		"""Load the token cache from a file
 		
 		:param loadfile: Relative to ``$HOME`` directory
+		:type  loadfile: str
 		"""
 		fd = open(os.getenv("HOME") + '/' + loadfile, 'a+')
 		try:

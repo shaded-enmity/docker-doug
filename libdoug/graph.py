@@ -32,9 +32,12 @@ class DependencyType(object):
 class GraphNode(object):
 	"""Generic class representing a `node` in a graph
 
-	:param parent: :class:`GraphNode`, Parent node
-	:param tid: `id`, Our `Id` value
-	:param children: `dict`, Children nodes
+	:param parent: Parent node
+	:type  parent: libdoug.graph.GraphNode
+	:param tid: Our `Id` value
+	:type  tid: str
+	:param children: Children nodes
+	:type  children: dict[str, libdoug.graph.GraphNode] 
 	"""
 	def __init__(self, parent, tid, children=None):
 		self.parent = parent
@@ -56,7 +59,8 @@ class GraphNode(object):
 	def addchild(self, nid):
 		"""Add a new child based on parameter `nid`
 
-		:param nid: `Id`, Node `Id` to add 
+		:param nid: Node `Id` to add 
+		:type  nid: str
 		"""
 		if nid not in self.children:
 			node = GraphNode(self, nid) 
@@ -76,7 +80,8 @@ class TreeState(object):
 	def pushbranch(self, link):
 		"""Push a new branch into the `TreeState`
 
-		:param link: `bool`, Draw a link for this branch
+		:param link: Draw a link for this branch
+		:type  link: bool
 		"""
 		self.numpushes += 1
 		self.links.append(link)
@@ -99,13 +104,15 @@ class TreeState(object):
 		return u''
 
 	def _boolindex(self, b):
-		return 0 if b else 1
+		return int(!b)
 
 	def formatline(self, img, isleaf):
 		"""Decorate the value in `img` with tree drawing symols
 
 		:param img: `Id`, TODO: Make this more generic
-		:param isleaf: `bool`, It's a leaf node
+		:type  img: str
+		:param isleaf: It's a leaf node
+		:type  isleaf: bool
 		"""
 		horizontals, verticals = [u'├', u'└'], [u'─', u'┬']
 		vert, horiz = u'╺' if self.numpushes == 0 else \

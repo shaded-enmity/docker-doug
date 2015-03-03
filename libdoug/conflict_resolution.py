@@ -28,8 +28,10 @@ class ResolutionType(object):
 class Resolution(object):
 	"""Represents a generic conflict resolution object
 
-	:param rtype: :class:`ResolutionType`, Type of the resolution
-	:param args: `list`, Arguments to use during execution
+	:param rtype: Type of the resolution
+	:type  rtype: libdoug.conflict_resolution.ResolutionType
+	:param args: Arguments to use during execution
+	:type  args: list
 	"""
 	def __init__(self, rtype, args):
 		self.type = rtype
@@ -38,21 +40,22 @@ class Resolution(object):
 	def gettype(self):
 		"""Type of the resolution
 
-		:return: :class:`ResolutionType`
+		:rtype: :class:`ResolutionType`
 		"""
 		return self.type
 
 	def getargs(self):
 		"""Arguments for the resolution
 
-		:return: `list`
+		:rtype: list
 		"""
 		return self.args 
 
 	def _getstream(self, stream):
 		"""Helper to get download/upload progress bars
 
-		:param stream: `string generator`, Input stream
+		:param stream: Input stream
+		:type  stream: list[str]
 		"""
 		def _format(obj):
 			if u'progress' in obj:
@@ -67,8 +70,10 @@ class Resolution(object):
 	def execute(self, docker):
 		"""Execute the given resolution
 
-		:param docker: :class:`libdoug.docker_api.DockerLocal`, Instance of ``DockerLocal`` object
-		:return: `string` the command executed
+		:param docker: Instance of ``DockerLocal`` object
+		:type  docker: libdoug.docker_api.DockerLocal
+		:return: the command executed
+		:rtype: str
 		"""
 		command = { 
 			ResolutionType.TAG:  u'  ┍ docker tag %s %s:%s',
