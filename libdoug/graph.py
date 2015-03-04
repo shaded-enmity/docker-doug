@@ -104,7 +104,7 @@ class TreeState(object):
 		return u''
 
 	def _boolindex(self, b):
-		return int(!b)
+		return int(not b)
 
 	def formatline(self, img, isleaf):
 		"""Decorate the value in `img` with tree drawing symols
