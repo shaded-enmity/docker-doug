@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import docker
+#import docker
 
 class UserInfo(object):
 	"""Stores authentication info for DockerHub
@@ -60,8 +60,12 @@ class DockerLocal(object):
 	"""Object that communicates with local `Docker daemon` throough the
 	`Unix Domain Socket` exposed in `/var/run/docker.sock`
 	"""
-	def __init__(self):
-		self.docker = docker.Client(base_url='unix://var/run/docker.sock')
+	def __init__(self, _docker=None):
+		if _docker:
+			self.docker = _docker
+		else:
+			import docker
+			self.docker = docker.Client(base_url='unix://var/run/docker.sock')
 
 	def getimages(self, repo):
 		"""Get images in the given `repo`
