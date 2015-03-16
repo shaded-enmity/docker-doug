@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 setup(
     name = 'libdoug',
-    version = '0.2.1',
+    version = '0.3',
     packages = find_packages(),
     scripts = ['doug-cli.py'],
     install_requires = ['requests<2.5.0', 'docker-py', 'clint'],
