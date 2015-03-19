@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import argparse, os, shlex
+import argparse, os
 from libdoug.docker_api import DockerLocal, UserInfo
 from libdoug.history import ImageHistory, HistoryDiff
 from libdoug.registry import Registry
@@ -82,6 +82,7 @@ def update_action(args):
 
 def dockercli_action(args):
 	if len(args.cli) == 1:
+		import shlex
 		args.cli = shlex.split(args.cli[0])
 	if args.cli[0] == 'docker':
 		args.cli = args.cli[1:]
@@ -95,6 +96,19 @@ def cli_command(args):
 	action = args.action.replace('-', '')
 	actionfunc = globals()[action+'_action']
 	actionfunc(args)
+
+def get_user_info():
+	home = os.getenv("HOME") + '/'
+	doug, docker = '.douguserinfo', '.dockercfg'
+	if os.path.isfile(home + doug):
+		return wipe_newlines(open(home + doug).readline().split(':'))
+	elif os.path.isfile(home + docker):
+		with open(home + docker) as f:
+			import json, base64
+			_, v = json.load(f).popitem()
+			auth = base64.b64decode(v['auth']).split(':')
+			return auth + [v['email']]
+		return None
 
 if __name__ == '__main__':
 	args = argparse.ArgumentParser(description='doug-cli libdoug interface')
@@ -131,7 +145,8 @@ if __name__ == '__main__':
 
 	if parsed.action in ['update', 'dump-remote']:
 		if parsed.user == None:
-			parsed.user, parsed.password, parsed.email = wipe_newlines(open(os.getenv("HOME") + '/.douguserinfo').readline().split(':'))
+			parsed.user, parsed.password, parsed.email = get_user_info()
+
 	user = UserInfo(parsed.user, parsed.password, parsed.email)
 
 	cli_command(parsed)

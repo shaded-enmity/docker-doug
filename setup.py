@@ -2,9 +2,9 @@
 from setuptools import setup, find_packages
 setup(
     name = 'libdoug',
-    version = '0.3',
+    version = '0.4',
     packages = find_packages(),
-    scripts = ['doug-cli.py'],
+    scripts = ['doug-cli'],
     install_requires = ['requests<2.5.0', 'docker-py', 'clint'],
     package_data = {
 	'': ['LICENSE', 'README.md', 'VERSION']

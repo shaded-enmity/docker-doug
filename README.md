@@ -13,8 +13,8 @@ hosts several interesting features that we'll outline below.
 Basic usage for the CLI:
 
 ```bash
-$ ./doug-cli.py --help
-usage: doug-cli.py [-h] [-f] [-u USER] [-p PASSWORD] [-e EMAIL] [-r REGISTRY]
+$ doug-cli --help
+usage: doug-cli [-h] [-f] [-u USER] [-p PASSWORD] [-e EMAIL] [-r REGISTRY]
                    [-a BASEAUTH] [-n]
                    {dump-local,dump-remote,docker-cli,dependencies,update} ...
 
@@ -46,7 +46,7 @@ optional arguments:
 
 Examples:
 ```bash
-$ ./doug-cli.py dependencies fedora:21
+$ doug-cli dependencies fedora:21
 Dependency Walker:
 ╺┬834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89 [u'fedora:21', u'fedora:latest']
  └┬cdbaf1c8a5622728a9ec6502f049ec64b245ad69a3f0436e9c92c051c83ef275 
@@ -55,7 +55,7 @@ Dependency Walker:
   ├─d52aadb426e73771f5545d7e0810733d19e5a5904a26ae1e7435ccb8a7a17b95 [u'pavelo/doug:1.0.0', u'pavelo/doug:1.0.1']
   └─6896ae86f1a1115c028111994efcd617d08ad90eecaf5d1dc2deffcd6d4de5a4 [u'pavelo/doug:latest', u'pavelo/doug:1.0.3']
 
-$ ./doug-cli.py docker-cli -- docker run -it --rm -p 3000:3000 -v /:/volume -v /another:/some/place/else -e A=B -e B=C myImage /bin/bash -c "echo Test!"
+$ doug-cli docker-cli -- docker run -it --rm -p 3000:3000 -v /:/volume -v /another:/some/place/else -e A=B -e B=C myImage /bin/bash -c "echo Test!"
 Flags:    -i / --interactive = True
 	  -t / --tty = True
 	  --rm = True
@@ -68,7 +68,7 @@ Verb:     run
 Context:  ['myImage', '/bin/bash', '-c', 'echo Test!']
 Workdir:  /home/podvody/Repos/docker-doug
 
-$ ./doug-cli.py dump-local fedora
+$ doug-cli dump-local fedora
 Local tags:
   20 : 6cece30db4f924da43969a12fdf47492ada22b372a0968d6ca8b71d25876629f
   21 : 834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89
@@ -76,7 +76,7 @@ Local tags:
   latest : 834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89
   rawhide : aecd12627ded593a207e32e3537661d1fae1cdc8e0f2e074aa4a730213e5a953
 
-$ ./doug-cli.py dump-remote fedora
+$ doug-cli dump-remote fedora
 Remote tags:
   20 : 6cece30db4f924da43969a12fdf47492ada22b372a0968d6ca8b71d25876629f
   21 : 834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89
@@ -84,13 +84,13 @@ Remote tags:
   latest : 834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89
   rawhide : aecd12627ded593a207e32e3537661d1fae1cdc8e0f2e074aa4a730213e5a953
 
-$ ./doug-cli.py update fedora
+$ doug-cli update fedora
 Local and Remote are up to date!
 
 $ docker rmi fedora:latest
 Untagged: fedora:latest
 
-$ ./doug-cli.py update fedora
+$ doug-cli update fedora
 Local and Remote Diffs:
   R latest : 834629358fe214f210b0ed606fba2c17827d7a46dd74bd3309afc2a103ad0e89
 Resolve conflicts [y/n]? [y] y
