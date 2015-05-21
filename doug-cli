@@ -29,6 +29,7 @@ from libdoug.graph import DependencyType
 from libdoug.values import EmptyDiff, RootImage
 from libdoug.utils import Console, get_image, wipe_newlines
 from libdoug.api.flags import parse_cli
+import libdoug.distribution
 
 docker, registry, user = DockerLocal(), None, None
 
@@ -92,6 +93,15 @@ def dockercli_action(args):
 	print 'Context: ', cli.context
 	print 'Workdir: ', os.getcwd()
 
+def digest_action(args):
+	dist = libdoug.distribution.Registry(parsed.registry)
+	colon, tag = args.repo.index(':'), 'latest'
+	if colon:
+		v = args.repo
+		args.repo = v[:colon]
+		tag = v[colon+1:]
+	print dist.querydigest(args.repo, tag) 
+
 def cli_command(args):
 	action = args.action.replace('-', '')
 	actionfunc = globals()[action+'_action']
@@ -137,10 +147,13 @@ if __name__ == '__main__':
 	updateparser.add_argument('-s', '--solver', help='Solver to use (vr = Version-Release)', default='optimistic', choices=['optimistic', 'vr'])
 	updateparser.add_argument('repo', help='Target repository')
 
+	digestparser = subargs.add_parser('digest', help='Obtain a digest from remote V2 registry')
+	digestparser.add_argument('repo', help='Target image Repo:Tag')
+
 	parsed = args.parse_args()
 	if hasattr(parsed, 'repo'):
 		if parsed.repo.count('/') == 0:
-			parsed.repo = "stackbrew/" + parsed.repo
+			parsed.repo = "library/" + parsed.repo
 	registry = Registry(parsed.registry)
 
 	if parsed.action in ['update', 'dump-remote']:
