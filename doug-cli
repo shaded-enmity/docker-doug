@@ -102,6 +102,22 @@ def digest_action(args):
 		tag = v[colon+1:]
 	print dist.querydigest(args.repo, tag) 
 
+def manifests_action(args):
+	outdir = args.out_dir if args.out_dir else ''
+	if not os.path.exists(outdir):
+		os.makedirs(outdir)
+
+	dist = libdoug.distribution.Registry(parsed.registry)
+	tags = dist.queryrepotags(args.repo)
+	print '- Fetching tags:', ", ".join(tags)
+	for t in tags:
+		manifest = dist.getmanifest(args.repo, t)
+		digest = manifest.getheader('Docker-Content-Digest')
+		name = '{0}:{1}:{2}'.format(args.repo.replace('/', '_'), t, digest)
+		with open(outdir + '/' + name, 'w') as f:
+			print '  written manifest:', name
+			f.write(manifest.getcontent())
+
 def cli_command(args):
 	action = args.action.replace('-', '')
 	actionfunc = globals()[action+'_action']
@@ -149,6 +165,10 @@ if __name__ == '__main__':
 
 	digestparser = subargs.add_parser('digest', help='Obtain a digest from remote V2 registry')
 	digestparser.add_argument('repo', help='Target image Repo:Tag')
+
+	manifestsparser = subargs.add_parser('manifests', help='Obtain manifests for all tags in the repository')
+	manifestsparser.add_argument('repo', help='Target image Repo:Tag')
+	manifestsparser.add_argument('-o', '--out-dir', help='Where to store the manifests')
 
 	parsed = args.parse_args()
 	if hasattr(parsed, 'repo'):
