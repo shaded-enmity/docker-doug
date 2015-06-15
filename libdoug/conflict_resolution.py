@@ -60,7 +60,7 @@ class Resolution(object):
 		def _format(obj):
 			if u'progress' in obj:
 				return '%s %s' % (obj['status'], obj['progress'])
-			return obj['status']
+			return obj['status'] if 'status' in obj else '...'
 
 		for sl in stream:
 			print u'  │├╼', _format(json.loads(sl))
@@ -102,9 +102,6 @@ class Resolution(object):
 
 		elif self.type == ResolutionType.REMOVE:
 			done = docker.removeimage(self.args)
-			if done:
-				print u'  ╰╼ done! '
-			else:
-				print u'  ╰╼ node done! :/ '
+			print u'  ╰╼ done! '
 
 		return command

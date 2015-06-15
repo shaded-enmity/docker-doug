@@ -29,6 +29,7 @@ from libdoug.graph import DependencyType
 from libdoug.values import EmptyDiff, RootImage
 from libdoug.utils import Console, get_image, wipe_newlines
 from libdoug.api.flags import parse_cli
+from libdoug.editor import Identifier, IdentifierType, DockerfileEditor
 import libdoug.distribution
 
 docker, registry, user = DockerLocal(), None, None
@@ -77,7 +78,35 @@ def update_action(args):
 	elif solver == 'vr':
 		print "VR Conflict Status:"
 		nevsolver = VRConflictSolver(docker.getallimages(), (localhistory, remotehistory), args.repo)
-		nevsolver.solve()
+		if args.cleanup:
+			nevsolver.setremoveoldtags(True)
+		resolve = nevsolver.solve()
+		if args.rebase:
+			repo = args.repo[args.repo.rindex('/')+1:]
+			if nevsolver.getsubs():
+				a, b = nevsolver.getsubs()
+				subwith =  repo + ':' + a.gettag()
+				idents = [Identifier(IdentifierType.NAMETAG, repo + ':' + str(x.gettag())) for x in b]
+				subs = [subwith] * len(idents)
+				for f in args.rebase:
+					if not os.path.exists(f):
+						print '  File {0} does not exist'.format(f)
+						continue
+
+					text = open(f, 'r').readlines()
+					ed = DockerfileEditor(repo)
+					newtext = ed.substitute(text, idents, subs)
+					newpath = f + ".2"
+					with open(newpath, 'w') as out:
+						out.writelines(newtext)
+					print ' New Dockerfile written at: {0}'.format(newpath)
+
+		if resolve:
+			print 'Resolutions: '
+			for r in resolve:
+				if not args.no_push or r.gettype() != ResolutionType.PUSH:
+					r.execute(docker)
+		
 	else:
 		raise Exception('Unsupported solver: %s' % solver)
 
@@ -117,6 +146,23 @@ def manifests_action(args):
 		with open(outdir + '/' + name, 'w') as f:
 			print '  written manifest:', name
 			f.write(manifest.getcontent())
+
+def rebase_action(args):
+	f = args.path
+	if not os.path.exists(f):
+		print 'File {0} does not exist'.format(f)
+		return
+
+	text = open(f, 'r').readlines()
+	ed = DockerfileEditor('fedora')
+	idents = [Identifier(IdentifierType.NAMETAG, 'fedora:21-1')]
+	subs = ["fedora:21-2"]
+
+	newtext = ed.substitute(text, idents, subs)
+	newpath = f + ".2"
+	with open(newpath, 'w') as out:
+		out.writelines(newtext)
+	print 'New Dockerfile written at: {0}'.format(newpath)
 
 def cli_command(args):
 	action = args.action.replace('-', '')
@@ -161,6 +207,8 @@ if __name__ == '__main__':
 
 	updateparser = subargs.add_parser('update', help='Update Local/Remote tags')
 	updateparser.add_argument('-s', '--solver', help='Solver to use (vr = Version-Release)', default='optimistic', choices=['optimistic', 'vr'])
+	updateparser.add_argument('-r', '--rebase', help='Dockerfile to rebase upon update', action='append')
+	updateparser.add_argument('-c', '--cleanup', help='Remove old tags', action='store_true')
 	updateparser.add_argument('repo', help='Target repository')
 
 	digestparser = subargs.add_parser('digest', help='Obtain a digest from remote V2 registry')
@@ -169,6 +217,9 @@ if __name__ == '__main__':
 	manifestsparser = subargs.add_parser('manifests', help='Obtain manifests for all tags in the repository')
 	manifestsparser.add_argument('repo', help='Target image Repo:Tag')
 	manifestsparser.add_argument('-o', '--out-dir', help='Where to store the manifests')
+
+	##rebaseparser = subargs.add_parser('rebase', help='Rebase a text file upon upgrade')
+	##rebaseparser.add_argument('path', help='Path to the textfile')
 
 	parsed = args.parse_args()
 	if hasattr(parsed, 'repo'):
