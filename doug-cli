@@ -18,7 +18,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
 # 02111-1307 USA
-import argparse, os
+import argparse, os, codecs
 from libdoug.docker_api import DockerLocal, UserInfo
 from libdoug.history import ImageHistory, HistoryDiff
 from libdoug.registry import Registry
@@ -143,7 +143,7 @@ def manifests_action(args):
 		manifest = dist.getmanifest(args.repo, t)
 		digest = manifest.getheader('Docker-Content-Digest')
 		name = '{0}:{1}:{2}'.format(args.repo.replace('/', '_'), t, digest)
-		with open(outdir + '/' + name, 'w') as f:
+		with codecs.open(outdir + '/' + name, 'w', 'utf-8') as f:
 			print '  written manifest:', name
 			f.write(manifest.getcontent())
 
