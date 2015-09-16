@@ -58,7 +58,7 @@ class DockerfileEditor(EditorBase):
 		s = zip(idents, subs)
 		outlines=[]
 		for line in text:
-			if line.startswith("FROM"):
+			if line.strip().startswith("FROM"):
 				newline = None
 				r = filter(None, map(lambda (i, k): (i, k) if self._rematch(i.value, line) else None, s))
 				if len(r) == 1:
