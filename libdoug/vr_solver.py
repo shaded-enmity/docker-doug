@@ -39,6 +39,9 @@ class VRTag(object):
 	def isinvalid(self):
 		return self.invalid
 
+	def gettag(self):
+		return self.entry.gettag()
+
 	def __cmp__(self, other):
 		return self.entry == other.entry
 
@@ -63,38 +66,61 @@ class VRConflictSolver(ConflictSolver):
 	def __init__(self, allimages, delta, repo, rt=Resolution):
 		super(VRConflictSolver, self).__init__(allimages, delta, repo, rt)
 		self.localhead = None
+		self.subs = None
+		self.remove = False
 
 	def getlocalhead(self):
 		"""Local head is available after :meth:`solve` had been called"""
 		return self.localhead
 
+	def getsubs(self):
+		return self.subs
+
+	def getremoveoldtags(self):
+		return self.remove
+
+	def setremoveoldtags(self, v):
+		self.remove = v
+
 	def solve(self, resolutions=None):
 		"""For more information see :meth:`ConflictSolver.solve <libdoug.conflict.ConflictSolver.solve>` """
 		local, remote = self.delta
+		resolutions = []		
 
-		localtags = sorted(t for t in [VRTag(e) for e in local.getimages()] if not t.isinvalid())
+		self.localtags = localtags = sorted(t for t in [VRTag(e) for e in local.getimages()] if not t.isinvalid())
 		remotetags = sorted(t for t in [VRTag(e) for e in remote.getimages()] if not t.isinvalid())
 
-		if not localtags and not remotetags:
+		if not remotetags:
 			print ' Repo not conforming to Version-Release updating'
+			return super(VRConflictSolver, self).solve(resolutions)
+
+		if not localtags:
+			print '  L  None'
+			print '  R ', remotetags[-1]
+			self.addresolution(resolutions, ResolutionType.PULL, (self.repo, remotetags[-1].gettag()))
 			return super(VRConflictSolver, self).solve(resolutions)
 
 		self.localhead, remotehead, localtail, remotetail = localtags[-1], remotetags[-1], \
 			localtags[0], remotetags[0]
 
+		outdated = localtags[:-1]
 		if self.localhead > remotehead:
-			print '  L ', localhead
+			print '  L ', self.localhead
+			self.subs = (self.localhead, outdated)			
 		elif self.localhead < remotehead:
 			print '  R ', remotehead
+			self.subs = (remotehead, localtags)
+			outdated = localtags
+			self.addresolution(resolutions, ResolutionType.PULL, (self.repo, remotehead.gettag()))
 		else:
 			print ' Local and Remote at the same Head: ', self.localhead
 
-		outdated = localtags[:-1]
-		
 		if outdated:
 			print ' Suggested removal of local out-of-date tags:'
 			for lt in outdated:
-				print '  L ', lt		
+				print '  L ', lt
+				if self.getremoveoldtags():
+					self.addresolution(resolutions, ResolutionType.REMOVE, (self.repo, lt.gettag()))
 
 		return super(VRConflictSolver, self).solve(resolutions)
 

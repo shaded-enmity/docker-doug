@@ -28,3 +28,11 @@ manifest_get = DockerAPIRequest.new(desc=u'Get image manifest', type=u'GET',
 			status=[u'200', u'401', u'404'],
 			headers=[])
 
+tags_get = DockerAPIRequest.new(desc=u'Get all tags for manifest', type=u'GET',
+			url=u'/v2/(repo)/tags/list', url_sub=[(4, 10)],
+			get_params=[],
+			filters=[],
+			json=[],
+			status=[u'200', u'401', u'404'],
+			headers=[])
+

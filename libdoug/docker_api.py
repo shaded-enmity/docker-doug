@@ -73,7 +73,10 @@ class DockerLocal(object):
 		:param repo: - `repo`/`name`
 		:type  repo: str
 		"""
-		return self.docker.images(self._wipe(repo))
+		r = self._wipe(repo)
+		if r.count('/') != 2:
+			r = "docker.io/" + r
+		return self.docker.images(r)
 
 	def getallimages(self):
 		""" Get all local Docker images """

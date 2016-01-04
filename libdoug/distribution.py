@@ -22,7 +22,7 @@ from libdoug.token import RequestToken
 from libdoug.decorators import http_request_decorate, RequestDecorator
 from libdoug.history import ImageHistory
 from libdoug.http import HTTPRequest
-from libdoug.api.remote_distv2 import manifest_get
+from libdoug.api.remote_distv2 import manifest_get, tags_get
 
 class BearerTokenDecorator(RequestDecorator):
 	""" Decorates the request with bearer token
@@ -67,8 +67,28 @@ class Registry(object):
 			raise Exception('Authorization failed!')
 
 		return token
-		
-	def querydigest(self, repo, tag):
+
+	def queryrepotags(self, repo):
+		"""
+
+		"""
+		token = self._ensuretoken(repo)
+		url = tags_get.formaturl('https://registry-1.'+self.registry, (repo,))
+		manifest = HTTPRequest(url)
+		success = http_request_decorate(manifest, BearerTokenDecorator(token))
+		if success:
+			response = manifest.request()
+			if response.getcode() == 200:
+				return json.loads(response.getcontent())['tags']
+			else:
+				print 'Bad response code: %d\nText:\n%s' %\
+					(response.getcode(), response.getcontent())
+		else:
+			print 'RequestTokenDecorator has failed'
+				
+		return None
+
+	def getmanifest(self, repo, tag):
 		"""Query the remote `repo`:`tag` for `digest`
 
 		:param repo: Target repository
@@ -85,13 +105,28 @@ class Registry(object):
 		if success:
 			response = manifest.request()
 			if response.getcode() == 200:
-				return response.getheader('Docker-Content-Digest')
+				return response
 			else:
 				print 'Bad response code: %d\nText:\n%s' %\
 					(response.getcode(), response.getcontent())
 		else:
 			print 'RequestTokenDecorator has failed'
 				
+		return None
+		
+	def querydigest(self, repo, tag):
+		"""Query the remote `repo`:`tag` for `digest`
+
+		:param repo: Target repository
+		:type  repo: str
+		:param tag: Tag to query
+		:type  tag: str
+		:return: Digest of the requested image
+		:rtype: str
+		"""
+		manifest = self.getmanifest(repo, tag)
+		if manifest:
+			return manifest.getheader('Docker-Content-Digest')
 		return None
 
 	def authtoken(self, repo):
