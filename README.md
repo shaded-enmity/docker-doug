@@ -6,6 +6,14 @@ First and foremost, the project is split into a CLI and a library. The CLI
 portion of the code is a working example of how to use the library and also
 hosts several interesting features that we'll outline below.
 
+## How to get it?
+
+Install `libdoug` via `pip`, the CLI is bundled in:
+
+```bash
+$ pip install libdoug
+```
+
 ## What is included?
 
 ### doug-cli
